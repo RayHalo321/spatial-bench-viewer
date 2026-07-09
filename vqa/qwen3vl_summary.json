@@ -1,0 +1,202 @@
+{
+  "model": "qwen3-vl-plus",
+  "cases": 76,
+  "result_path": "benchmarks/spatial_qwen3vl_vqa_full_20260709_132200/vqa_results.jsonl",
+  "summary_path": "benchmarks/spatial_qwen3vl_vqa_full_20260709_132200/summary.json",
+  "overall": {
+    "cases": 76,
+    "presence_score": 0.9513157894736842,
+    "relation_score": 0.8155701754385964,
+    "combined_score": 0.8427192982456142
+  },
+  "by_category": {
+    "absolute_location_2d": {
+      "cases": 6,
+      "presence_score": 1.0,
+      "relation_score": 0.8333333333333334,
+      "combined_score": 0.8666666666666666
+    },
+    "depth_front_back": {
+      "cases": 10,
+      "presence_score": 0.95,
+      "relation_score": 0.85,
+      "combined_score": 0.8699999999999999
+    },
+    "multi_relation_composition": {
+      "cases": 10,
+      "presence_score": 0.8666666666666666,
+      "relation_score": 0.7883333333333333,
+      "combined_score": 0.8039999999999999
+    },
+    "occlusion_visibility": {
+      "cases": 10,
+      "presence_score": 1.0,
+      "relation_score": 0.77,
+      "combined_score": 0.8160000000000001
+    },
+    "orientation_facing": {
+      "cases": 10,
+      "presence_score": 1.0,
+      "relation_score": 0.9800000000000001,
+      "combined_score": 0.984
+    },
+    "relative_position_2d": {
+      "cases": 10,
+      "presence_score": 1.0,
+      "relation_score": 0.8400000000000001,
+      "combined_score": 0.8719999999999999
+    },
+    "rotation_yaw": {
+      "cases": 10,
+      "presence_score": 0.9800000000000001,
+      "relation_score": 0.6900000000000001,
+      "combined_score": 0.748
+    },
+    "support_contact": {
+      "cases": 10,
+      "presence_score": 0.8333333333333333,
+      "relation_score": 0.78,
+      "combined_score": 0.7906666666666666
+    }
+  },
+  "by_level": {
+    "hard": {
+      "cases": 21,
+      "presence_score": 0.8873015873015873,
+      "relation_score": 0.7571428571428571,
+      "combined_score": 0.7831746031746031
+    },
+    "normal": {
+      "cases": 49,
+      "presence_score": 0.9727891156462585,
+      "relation_score": 0.83843537414966,
+      "combined_score": 0.8653061224489798
+    },
+    "simple": {
+      "cases": 6,
+      "presence_score": 1.0,
+      "relation_score": 0.8333333333333334,
+      "combined_score": 0.8666666666666666
+    }
+  },
+  "by_category_level": {
+    "absolute_location_2d::simple": {
+      "cases": 6,
+      "presence_score": 1.0,
+      "relation_score": 0.8333333333333334,
+      "combined_score": 0.8666666666666666
+    },
+    "depth_front_back::hard": {
+      "cases": 3,
+      "presence_score": 1.0,
+      "relation_score": 0.8333333333333334,
+      "combined_score": 0.8666666666666668
+    },
+    "depth_front_back::normal": {
+      "cases": 7,
+      "presence_score": 0.9285714285714286,
+      "relation_score": 0.8571428571428571,
+      "combined_score": 0.8714285714285713
+    },
+    "multi_relation_composition::hard": {
+      "cases": 3,
+      "presence_score": 0.6666666666666666,
+      "relation_score": 0.6,
+      "combined_score": 0.6133333333333334
+    },
+    "multi_relation_composition::normal": {
+      "cases": 7,
+      "presence_score": 0.9523809523809523,
+      "relation_score": 0.8690476190476192,
+      "combined_score": 0.8857142857142858
+    },
+    "occlusion_visibility::hard": {
+      "cases": 3,
+      "presence_score": 1.0,
+      "relation_score": 0.9,
+      "combined_score": 0.92
+    },
+    "occlusion_visibility::normal": {
+      "cases": 7,
+      "presence_score": 1.0,
+      "relation_score": 0.7142857142857143,
+      "combined_score": 0.7714285714285714
+    },
+    "orientation_facing::hard": {
+      "cases": 3,
+      "presence_score": 1.0,
+      "relation_score": 0.9333333333333332,
+      "combined_score": 0.9466666666666667
+    },
+    "orientation_facing::normal": {
+      "cases": 7,
+      "presence_score": 1.0,
+      "relation_score": 1.0,
+      "combined_score": 1.0
+    },
+    "relative_position_2d::hard": {
+      "cases": 3,
+      "presence_score": 1.0,
+      "relation_score": 0.7999999999999999,
+      "combined_score": 0.84
+    },
+    "relative_position_2d::normal": {
+      "cases": 7,
+      "presence_score": 1.0,
+      "relation_score": 0.8571428571428571,
+      "combined_score": 0.8857142857142858
+    },
+    "rotation_yaw::hard": {
+      "cases": 3,
+      "presence_score": 0.9333333333333332,
+      "relation_score": 0.6333333333333333,
+      "combined_score": 0.6933333333333334
+    },
+    "rotation_yaw::normal": {
+      "cases": 7,
+      "presence_score": 1.0,
+      "relation_score": 0.7142857142857143,
+      "combined_score": 0.7714285714285715
+    },
+    "support_contact::hard": {
+      "cases": 3,
+      "presence_score": 0.6111111111111112,
+      "relation_score": 0.6,
+      "combined_score": 0.6022222222222223
+    },
+    "support_contact::normal": {
+      "cases": 7,
+      "presence_score": 0.9285714285714286,
+      "relation_score": 0.8571428571428571,
+      "combined_score": 0.8714285714285713
+    }
+  },
+  "errors": [
+    {
+      "id": "SUP09",
+      "category": "support_contact",
+      "level": "hard",
+      "model": "qwen3-vl-plus",
+      "image": "/NAS/liox/hsr/spatial-bench-viewer/generated/zimage_turbo_1024/SUP09.png",
+      "question_count": 20,
+      "presence_score": 0.0,
+      "relation_score": 0.0,
+      "combined_score": 0.0,
+      "raw_response": "",
+      "error": "Expecting ',' delimiter: line 40 column 8 (char 1140)"
+    },
+    {
+      "id": "MUL08",
+      "category": "multi_relation_composition",
+      "level": "hard",
+      "model": "qwen3-vl-plus",
+      "image": "/NAS/liox/hsr/spatial-bench-viewer/generated/zimage_turbo_1024/MUL08.png",
+      "question_count": 17,
+      "presence_score": 0.0,
+      "relation_score": 0.0,
+      "combined_score": 0.0,
+      "raw_response": "",
+      "error": "Expecting ',' delimiter: line 94 column 8 (char 3402)"
+    }
+  ]
+}

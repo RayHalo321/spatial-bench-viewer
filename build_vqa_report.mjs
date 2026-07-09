@@ -80,6 +80,14 @@ function groupTable(title, data) {
   return `<section><h2>${esc(title)}</h2><table><thead><tr><th>group</th><th>cases</th><th>presence</th><th>relation</th><th>combined</th></tr></thead><tbody>${body}</tbody></table></section>`;
 }
 
+function errorTable(errors) {
+  if (!errors?.length) return "";
+  const body = errors.map((x) => `
+    <tr><td>${esc(x.id)}</td><td>${esc(x.category)}</td><td>${esc(x.level)}</td><td>${esc(x.error)}</td></tr>
+  `).join("");
+  return `<section><h2>Run Errors</h2><table><thead><tr><th>case</th><th>category</th><th>level</th><th>error</th></tr></thead><tbody>${body}</tbody></table></section>`;
+}
+
 function pack(rows) {
   const avg = (xs) => xs.length ? xs.reduce((a, b) => a + Number(b || 0), 0) / xs.length : 0;
   return {
@@ -176,6 +184,7 @@ const html = `<!doctype html>
   </header>
   <main>
     ${rows.length ? `${groupTable("By Category", summary.by_category)}${groupTable("By Level", summary.by_level)}` : ""}
+    ${errorTable(summary.errors)}
     ${manualSummary ? `
       <section>
         <h2>Manual-Agent</h2>
