@@ -46,7 +46,8 @@
     header h1 { font-size: 20px; margin: 0; letter-spacing: 0; }
     header .stats { color: var(--muted); font-size: 13px; }
     .header-actions { display: flex; align-items: center; gap: 12px; }
-    .toggle-sidebar { min-height: 30px; padding: 5px 9px; }
+    .toggle-sidebar, .report-link { min-height: 30px; padding: 5px 9px; }
+    .report-link { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 6px; color: var(--text); text-decoration: none; background: var(--panel); }
     main {
       display: grid;
       grid-template-columns: 300px minmax(300px, 400px) minmax(520px, 1fr);
@@ -306,6 +307,7 @@
   <header>
     <h1>Spatial Prompt Bench Viewer</h1>
     <div class="header-actions">
+      <a class="report-link" href="vqa_report.html">VQA report</a>
       <button id="toggleSidebar" class="toggle-sidebar" type="button" aria-controls="filters" aria-expanded="true">Hide sidebar</button>
       <div class="stats" id="stats"></div>
     </div>

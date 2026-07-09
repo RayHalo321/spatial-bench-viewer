@@ -1,0 +1,4851 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qwen3-VL VQA Report</title>
+  <style>
+    :root { --bg:#f7f3ea; --panel:#fffdf8; --text:#2f2a24; --muted:#756f66; --line:#e7ded2; --accent:#b85c38; --ok:#46784e; --fail:#a6463c; --unclear:#8a6b22; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:14px/1.45 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    header, main { max-width:1180px; margin:auto; padding:22px; }
+    h1, h2 { font-family:ui-serif,Georgia,Cambria,"Times New Roman",serif; margin:0 0 12px; }
+    a { color:var(--accent); text-decoration:none; }
+    section, details { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; margin:14px 0; }
+    .muted, summary span { color:var(--muted); }
+    .cards { display:grid; grid-template-columns:repeat(4,minmax(120px,1fr)); gap:10px; }
+    .cards div { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px; }
+    .cards b { display:block; font-size:24px; }
+    .cards span { color:var(--muted); }
+    table { width:100%; border-collapse:collapse; }
+    th, td { border-bottom:1px solid var(--line); padding:8px; text-align:left; vertical-align:top; }
+    th { color:var(--muted); font-size:12px; }
+    summary { cursor:pointer; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+    img { width:220px; max-width:100%; border-radius:10px; border:1px solid var(--line); margin:12px 0; }
+    code { white-space:nowrap; }
+    .prompt { font-size:16px; }
+    .pill { border:1px solid var(--line); border-radius:999px; padding:2px 8px; font-weight:700; }
+    .yes { color:var(--ok); }
+    .no { color:var(--fail); }
+    .unclear { color:var(--unclear); }
+    @media (max-width: 720px) { .cards { grid-template-columns:1fr 1fr; } summary { display:block; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Qwen3-VL VQA Report</h1>
+    <p class="muted">model: qwen3-vl-plus · generated: 2026/7/9 13:50:13 · <a href="index.html">back to viewer</a></p>
+    <h2>Qwen3-VL</h2><p class="muted">pending remote result import</p>
+  </header>
+  <main>
+    
+    
+      <section>
+        <h2>Manual-Agent</h2>
+        
+    <div class="cards">
+      <div><b>76</b><span>cases</span></div>
+      <div><b>99.5%</b><span>presence</span></div>
+      <div><b>83.6%</b><span>relation</span></div>
+      <div><b>91.5%</b><span>combined</span></div>
+    </div>
+      </section>
+      <section><h2>Manual By Category</h2><table><thead><tr><th>group</th><th>cases</th><th>presence</th><th>relation</th><th>combined</th></tr></thead><tbody>
+    <tr><td>absolute_location_2d</td><td>6</td><td>100.0%</td><td>83.3%</td><td>91.7%</td></tr>
+  
+    <tr><td>depth_front_back</td><td>10</td><td>100.0%</td><td>83.0%</td><td>91.5%</td></tr>
+  
+    <tr><td>multi_relation_composition</td><td>10</td><td>96.7%</td><td>93.3%</td><td>95.0%</td></tr>
+  
+    <tr><td>occlusion_visibility</td><td>10</td><td>100.0%</td><td>90.0%</td><td>95.0%</td></tr>
+  
+    <tr><td>orientation_facing</td><td>10</td><td>100.0%</td><td>85.0%</td><td>92.5%</td></tr>
+  
+    <tr><td>relative_position_2d</td><td>10</td><td>100.0%</td><td>83.5%</td><td>91.8%</td></tr>
+  
+    <tr><td>rotation_yaw</td><td>10</td><td>100.0%</td><td>52.5%</td><td>76.3%</td></tr>
+  
+    <tr><td>support_contact</td><td>10</td><td>99.2%</td><td>98.0%</td><td>98.6%</td></tr>
+  </tbody></table></section>
+      <section><h2>Manual By Level</h2><table><thead><tr><th>group</th><th>cases</th><th>presence</th><th>relation</th><th>combined</th></tr></thead><tbody>
+    <tr><td>hard</td><td>21</td><td>99.6%</td><td>91.4%</td><td>95.5%</td></tr>
+  
+    <tr><td>normal</td><td>49</td><td>99.3%</td><td>80.3%</td><td>89.8%</td></tr>
+  
+    <tr><td>simple</td><td>6</td><td>100.0%</td><td>83.3%</td><td>91.7%</td></tr>
+  </tbody></table></section>
+    
+    
+    <section><h2>Manual-Agent Cases</h2>
+    <details>
+      <summary>
+        <b>ABS01</b>
+        <span>absolute_location_2d / simple</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一把椅子放在空房间的左侧。<br>A chair is placed on the left side of a plain room.</p>
+      <img src="generated/zimage_turbo_1024/ABS01.png" alt="ABS01 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wooden chair is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>absolute_location:chair:left_side|pos</code></td>
+      <td>Is the chair on the left side of the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair sits on the left half of the image.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ABS02</b>
+        <span>absolute_location_2d / simple</span>
+        <span>presence 100.0%</span>
+        <span>relation 50.0%</span>
+        <span>combined 75.0%</span>
+      </summary>
+      <p class="prompt">一张沙发放在空房间的右侧。<br>A sofa is placed on the right side of a plain room.</p>
+      <img src="generated/zimage_turbo_1024/ABS02.png" alt="ABS02 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>absolute_location:sofa:right_side|pos</code></td>
+      <td>Is the sofa on the right side of the image?</td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>Sofa spans the center and right, not clearly right-side only.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ABS03</b>
+        <span>absolute_location_2d / simple</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一台电视放在空房间的中央。<br>A television is centered in a plain room.</p>
+      <img src="generated/zimage_turbo_1024/ABS03.png" alt="ABS03 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Television is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>absolute_location:tv:center|pos</code></td>
+      <td>Is the television in the center of the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Television is centered in the frame.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ABS04</b>
+        <span>absolute_location_2d / simple</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一张茶几放在空房间的中央。<br>A coffee table is centered in a plain room.</p>
+      <img src="generated/zimage_turbo_1024/ABS04.png" alt="ABS04 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>absolute_location:coffee_table:center|pos</code></td>
+      <td>Is the coffee table in the center of the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is centered in the frame.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ABS05</b>
+        <span>absolute_location_2d / simple</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个书架放在空房间的左侧。<br>A bookshelf is placed on the left side of a plain room.</p>
+      <img src="generated/zimage_turbo_1024/ABS05.png" alt="ABS05 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>absolute_location:bookshelf:left_side|pos</code></td>
+      <td>Is the bookshelf on the left side of the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf occupies the left side of the room.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ABS06</b>
+        <span>absolute_location_2d / simple</span>
+        <span>presence 100.0%</span>
+        <span>relation 50.0%</span>
+        <span>combined 75.0%</span>
+      </summary>
+      <p class="prompt">一个行李箱放在空房间的右侧。<br>A suitcase is placed on the right side of a plain room.</p>
+      <img src="generated/zimage_turbo_1024/ABS06.png" alt="ABS06 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>absolute_location:suitcase:right_side|pos</code></td>
+      <td>Is the suitcase on the right side of the image?</td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>Suitcase is near the center, not clearly right-side.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL01</b>
+        <span>relative_position_2d / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一把椅子在一张桌子的左侧。<br>A chair is to the left of a table.</p>
+      <img src="generated/zimage_turbo_1024/REL01.png" alt="REL01 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:table</code></td>
+      <td>Does the image contain table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Table is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:chair:table|pos</code></td>
+      <td>Is the chair to the left of the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is to the left of the table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:chair:table|neg</code></td>
+      <td>Is the chair to the right of the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not to the right of the table.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL02</b>
+        <span>relative_position_2d / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一张沙发在一个书架的右侧。<br>A sofa is to the right of a bookshelf.</p>
+      <img src="generated/zimage_turbo_1024/REL02.png" alt="REL02 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:sofa:bookshelf|pos</code></td>
+      <td>Is the sofa to the right of the bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is to the right of the bookshelf.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:sofa:bookshelf|neg</code></td>
+      <td>Is the sofa to the left of the bookshelf?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not left of the bookshelf.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL03</b>
+        <span>relative_position_2d / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">在办公桌上，一台笔记本电脑放在一盏台灯的左侧。<br>On an office desk, a laptop is to the left of a lamp.</p>
+      <img src="generated/zimage_turbo_1024/REL03.png" alt="REL03 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:office_desk</code></td>
+      <td>Does the image contain office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Desk surface is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|pos</code></td>
+      <td>Is the laptop on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop rests on the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|neg</code></td>
+      <td>Is the laptop under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:office_desk|pos</code></td>
+      <td>Is the lamp on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp base rests on the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:office_desk|neg</code></td>
+      <td>Is the lamp under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not under the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:laptop:lamp|pos</code></td>
+      <td>Is the laptop to the left of the lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is left of the lamp.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:laptop:lamp|neg</code></td>
+      <td>Is the laptop to the right of the lamp?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not right of the lamp.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL04</b>
+        <span>relative_position_2d / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 25.0%</span>
+        <span>combined 62.5%</span>
+      </summary>
+      <p class="prompt">一个花瓶放在沙发和茶几之间。<br>A vase is between a sofa and a coffee table.</p>
+      <img src="generated/zimage_turbo_1024/REL04.png" alt="REL04 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:vase</code></td>
+      <td>Does the image contain vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofas are visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is visible in front.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:sofa:vase|pos</code></td>
+      <td>Is the sofa to the left of the vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>A sofa is left of the vase.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:sofa:vase|neg</code></td>
+      <td>Is the sofa to the right of the vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Another sofa is right of the vase.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:coffee_table:vase|pos</code></td>
+      <td>Is the coffee table to the right of the vase?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Coffee table is foreground-left of the vase.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:coffee_table:vase|neg</code></td>
+      <td>Is the coffee table to the left of the vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is left of the vase.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL05</b>
+        <span>relative_position_2d / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 50.0%</span>
+        <span>combined 75.0%</span>
+      </summary>
+      <p class="prompt">一台电视在一个柜子的右侧。<br>A television is to the right of a cabinet.</p>
+      <img src="generated/zimage_turbo_1024/REL05.png" alt="REL05 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Television is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet/TV stand is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:tv:cabinet|pos</code></td>
+      <td>Is the television to the right of the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV sits on the cabinet, not to its right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:tv:cabinet|neg</code></td>
+      <td>Is the television to the left of the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV is not clearly left of the cabinet either.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL06</b>
+        <span>relative_position_2d / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个行李箱在长凳左侧，一盆盆栽在长凳右侧。<br>A suitcase is to the left of a bench, and a potted plant is to the right of the bench.</p>
+      <img src="generated/zimage_turbo_1024/REL06.png" alt="REL06 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bench</code></td>
+      <td>Does the image contain bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Potted plant is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:bench|pos</code></td>
+      <td>Is the suitcase to the left of the bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is left of the bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:bench|neg</code></td>
+      <td>Is the suitcase to the right of the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not right of the bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:potted_plant:bench|pos</code></td>
+      <td>Is the potted plant to the right of the bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plant is right of the bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:potted_plant:bench|neg</code></td>
+      <td>Is the potted plant to the left of the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Plant is not left of the bench.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL07</b>
+        <span>relative_position_2d / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一张边几在沙发右侧。<br>A side table is to the right of a sofa.</p>
+      <img src="generated/zimage_turbo_1024/REL07.png" alt="REL07 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:side_table</code></td>
+      <td>Does the image contain side table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Side table is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:side_table:sofa|pos</code></td>
+      <td>Is the side table to the right of the sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Side table is to the right of the sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:side_table:sofa|neg</code></td>
+      <td>Is the side table to the left of the sofa?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Side table is not left of the sofa.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL08</b>
+        <span>relative_position_2d / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 80.0%</span>
+        <span>combined 90.0%</span>
+      </summary>
+      <p class="prompt">沙发在茶几左侧，椅子在茶几右侧，行李箱在沙发左侧，柜子在椅子右侧，书架在柜子右侧。<br>A sofa is left of a coffee table, a chair is right of the coffee table, a suitcase is left of the sofa, a cabinet is right of the chair, and a bookshelf is right of the cabinet.</p>
+      <img src="generated/zimage_turbo_1024/REL08.png" alt="REL08 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:sofa:coffee_table|pos</code></td>
+      <td>Is the sofa to the left of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is left of the coffee table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:sofa:coffee_table|neg</code></td>
+      <td>Is the sofa to the right of the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not right of the coffee table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:chair:coffee_table|pos</code></td>
+      <td>Is the chair to the right of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is right of the coffee table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:chair:coffee_table|neg</code></td>
+      <td>Is the chair to the left of the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not left of the coffee table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:sofa|pos</code></td>
+      <td>Is the suitcase to the left of the sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is left of the sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:sofa|neg</code></td>
+      <td>Is the suitcase to the right of the sofa?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not right of the sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:cabinet:chair|pos</code></td>
+      <td>Is the cabinet to the right of the chair?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Cabinet is left of the chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:cabinet:chair|neg</code></td>
+      <td>Is the cabinet to the left of the chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet appears left of the chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:bookshelf:cabinet|pos</code></td>
+      <td>Is the bookshelf to the right of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is right of the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:bookshelf:cabinet|neg</code></td>
+      <td>Is the bookshelf to the left of the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Bookshelf is not left of the cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL09</b>
+        <span>relative_position_2d / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">在办公桌上，笔记本电脑位于左侧台灯和右侧花瓶之间，一把椅子放在桌子前方。<br>On an office desk, a laptop is between a lamp on the left and a vase on the right, and a chair is in front of the desk.</p>
+      <img src="generated/zimage_turbo_1024/REL09.png" alt="REL09 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:office_desk</code></td>
+      <td>Does the image contain office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Office desk is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:vase</code></td>
+      <td>Does the image contain vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible in front.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|pos</code></td>
+      <td>Is the laptop on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop rests on the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|neg</code></td>
+      <td>Is the laptop under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:office_desk|pos</code></td>
+      <td>Is the lamp on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp rests on the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:office_desk|neg</code></td>
+      <td>Is the lamp under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not under the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:office_desk|pos</code></td>
+      <td>Is the vase on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase rests on the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:office_desk|neg</code></td>
+      <td>Is the vase under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Vase is not under the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:lamp:laptop|pos</code></td>
+      <td>Is the lamp to the left of the laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is left of the laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:lamp:laptop|neg</code></td>
+      <td>Is the lamp to the right of the laptop?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not right of the laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:vase:laptop|pos</code></td>
+      <td>Is the vase to the right of the laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is right of the laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:vase:laptop|neg</code></td>
+      <td>Is the vase to the left of the laptop?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Vase is not left of the laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:office_desk|pos</code></td>
+      <td>Is the chair in front of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is in front of the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:office_desk|neg</code></td>
+      <td>Is the chair behind the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not behind the desk.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>REL10</b>
+        <span>relative_position_2d / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 80.0%</span>
+        <span>combined 90.0%</span>
+      </summary>
+      <p class="prompt">柜子位于左侧书架和右侧椅子之间；行李箱在书架和柜子的左侧，盆栽在椅子右侧。<br>A cabinet is between a bookshelf on the left and a chair on the right, a suitcase is left of the bookshelf and the cabinet, and a potted plant is right of the chair.</p>
+      <img src="generated/zimage_turbo_1024/REL10.png" alt="REL10 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Potted plant is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:bookshelf:cabinet|pos</code></td>
+      <td>Is the bookshelf to the left of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is left of the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:bookshelf:cabinet|neg</code></td>
+      <td>Is the bookshelf to the right of the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Bookshelf is not right of the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:chair:cabinet|pos</code></td>
+      <td>Is the chair to the right of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is right of the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:chair:cabinet|neg</code></td>
+      <td>Is the chair to the left of the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not left of the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:bookshelf|pos</code></td>
+      <td>Is the suitcase to the left of the bookshelf?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is in front of the bookshelf, not left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:bookshelf|neg</code></td>
+      <td>Is the suitcase to the right of the bookshelf?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not clearly right of the bookshelf either.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:potted_plant:chair|pos</code></td>
+      <td>Is the potted plant to the right of the chair?</td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>Plant overlaps behind the chair, not clearly right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:potted_plant:chair|neg</code></td>
+      <td>Is the potted plant to the left of the chair?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Plant is not clearly left of the chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:cabinet|pos</code></td>
+      <td>Is the suitcase to the left of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is left of the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:cabinet|neg</code></td>
+      <td>Is the suitcase to the right of the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not right of the cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP01</b>
+        <span>depth_front_back / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一把椅子在沙发前方。<br>A chair is in front of a sofa.</p>
+      <img src="generated/zimage_turbo_1024/DEP01.png" alt="DEP01 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is clearly visible in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is clearly visible behind chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:sofa|pos</code></td>
+      <td>Is the chair in front of the sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair occludes and sits closer than sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:sofa|neg</code></td>
+      <td>Is the chair behind the sofa?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not behind the sofa.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP02</b>
+        <span>depth_front_back / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一张茶几在沙发前方。<br>A coffee table is in front of a sofa.</p>
+      <img src="generated/zimage_turbo_1024/DEP02.png" alt="DEP02 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is prominent in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible in the back.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:coffee_table:sofa|pos</code></td>
+      <td>Is the coffee table in front of the sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is closer than sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:coffee_table:sofa|neg</code></td>
+      <td>Is the coffee table behind the sofa?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Coffee table is not behind sofa.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP03</b>
+        <span>depth_front_back / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个行李箱在柜子前方。<br>A suitcase is in front of a cabinet.</p>
+      <img src="generated/zimage_turbo_1024/DEP03.png" alt="DEP03 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is clearly visible in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet/counter is visible behind suitcase.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:cabinet|pos</code></td>
+      <td>Is the suitcase in front of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase stands in front of cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:cabinet|neg</code></td>
+      <td>Is the suitcase behind the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not behind cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP04</b>
+        <span>depth_front_back / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个木桶在木箱后方。<br>A barrel is behind a crate.</p>
+      <img src="generated/zimage_turbo_1024/DEP04.png" alt="DEP04 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:barrel</code></td>
+      <td>Does the image contain barrel?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wooden barrel is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:crate</code></td>
+      <td>Does the image contain crate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wood crate is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:barrel:crate|pos</code></td>
+      <td>Is the barrel behind the crate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Barrel is behind the crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:barrel:crate|neg</code></td>
+      <td>Is the barrel in front of the crate?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Barrel is not in front of crate.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP05</b>
+        <span>depth_front_back / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 50.0%</span>
+        <span>combined 75.0%</span>
+      </summary>
+      <p class="prompt">一盆盆栽在长凳后方。<br>A potted plant is behind a bench.</p>
+      <img src="generated/zimage_turbo_1024/DEP05.png" alt="DEP05 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Potted plant is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bench</code></td>
+      <td>Does the image contain bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wood bench/table surface is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:potted_plant:bench|pos</code></td>
+      <td>Is the potted plant behind the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Plant sits on the surface, not behind it.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:potted_plant:bench|neg</code></td>
+      <td>Is the potted plant in front of the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Plant is not clearly in front either.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP06</b>
+        <span>depth_front_back / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 0.0%</span>
+        <span>combined 50.0%</span>
+      </summary>
+      <p class="prompt">一张桌子在椅子后方。<br>A table is behind a chair.</p>
+      <img src="generated/zimage_turbo_1024/DEP06.png" alt="DEP06 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:table</code></td>
+      <td>Does the image contain table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Large table is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible behind table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:table:chair|pos</code></td>
+      <td>Is the table behind the chair?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Table occludes the chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:table:chair|neg</code></td>
+      <td>Is the table in front of the chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Table is in front of the chair.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP07</b>
+        <span>depth_front_back / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个木箱在金属货架前方。<br>A crate is in front of metal shelves.</p>
+      <img src="generated/zimage_turbo_1024/DEP07.png" alt="DEP07 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:crate</code></td>
+      <td>Does the image contain crate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Crate is clearly visible in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:metal_shelves</code></td>
+      <td>Does the image contain metal shelves?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Metal shelves fill the background.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:crate:metal_shelves|pos</code></td>
+      <td>Is the crate in front of the metal shelves?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Crate is closer than shelves.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:crate:metal_shelves|neg</code></td>
+      <td>Is the crate behind the metal shelves?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Crate is not behind shelves.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP08</b>
+        <span>depth_front_back / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">椅子在茶几前方，椅子和茶几都在沙发前方，沙发在柜子和书架前方。<br>A chair is in front of a coffee table, both are in front of a sofa, and the sofa is in front of a cabinet and a bookshelf.</p>
+      <img src="generated/zimage_turbo_1024/DEP08.png" alt="DEP08 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is visible in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is visible at back left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is visible at back right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:coffee_table|pos</code></td>
+      <td>Is the chair in front of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair appears slightly closer than coffee table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:coffee_table|neg</code></td>
+      <td>Is the chair behind the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not behind coffee table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:sofa|pos</code></td>
+      <td>Is the chair in front of the sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is closer than sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:sofa|neg</code></td>
+      <td>Is the chair behind the sofa?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not behind sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:coffee_table:sofa|pos</code></td>
+      <td>Is the coffee table in front of the sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is closer than sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:coffee_table:sofa|neg</code></td>
+      <td>Is the coffee table behind the sofa?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Coffee table is not behind sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:sofa:cabinet|pos</code></td>
+      <td>Is the sofa in front of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is closer than cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:sofa:cabinet|neg</code></td>
+      <td>Is the sofa behind the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not behind cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:sofa:bookshelf|pos</code></td>
+      <td>Is the sofa in front of the bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is closer than bookshelf.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:sofa:bookshelf|neg</code></td>
+      <td>Is the sofa behind the bookshelf?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not behind bookshelf.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP09</b>
+        <span>depth_front_back / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">木箱和行李箱在长凳前方，木桶在长凳后方，金属货架在木桶后方。<br>A crate and a suitcase are in front of a bench, while a barrel is behind the bench and metal shelves are behind the barrel.</p>
+      <img src="generated/zimage_turbo_1024/DEP09.png" alt="DEP09 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:crate</code></td>
+      <td>Does the image contain crate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Crate is visible in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bench</code></td>
+      <td>Does the image contain bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is visible behind crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:barrel</code></td>
+      <td>Does the image contain barrel?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Barrel is visible behind bench area.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:metal_shelves</code></td>
+      <td>Does the image contain metal shelves?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Metal shelves fill the background.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:crate:bench|pos</code></td>
+      <td>Is the crate in front of the bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Crate is closer than bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:crate:bench|neg</code></td>
+      <td>Is the crate behind the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Crate is not behind bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:bench|pos</code></td>
+      <td>Is the suitcase in front of the bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is closer than bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:bench|neg</code></td>
+      <td>Is the suitcase behind the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not behind bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:barrel:bench|pos</code></td>
+      <td>Is the barrel behind the bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Barrel sits behind the bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:barrel:bench|neg</code></td>
+      <td>Is the barrel in front of the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Barrel is not in front of bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:metal_shelves:barrel|pos</code></td>
+      <td>Is the metal shelves behind the barrel?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Shelves are behind barrel.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:metal_shelves:barrel|neg</code></td>
+      <td>Is the metal shelves in front of the barrel?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Shelves are not in front of barrel.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:bench:metal_shelves|pos</code></td>
+      <td>Is the bench in front of the metal shelves?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is closer than shelves.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:bench:metal_shelves|neg</code></td>
+      <td>Is the bench behind the metal shelves?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Bench is not behind shelves.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>DEP10</b>
+        <span>depth_front_back / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 80.0%</span>
+        <span>combined 90.0%</span>
+      </summary>
+      <p class="prompt">行李箱和椅子在桌子前方，沙发和柜子在桌子后方。<br>A suitcase and a chair are in front of a table, while a sofa and a cabinet are behind the table.</p>
+      <img src="generated/zimage_turbo_1024/DEP10.png" alt="DEP10 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible at right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:table</code></td>
+      <td>Does the image contain table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Round table is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible at left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is visible at back right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:table|pos</code></td>
+      <td>Is the suitcase in front of the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is closer than table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:table|neg</code></td>
+      <td>Is the suitcase behind the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not behind table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:table|pos</code></td>
+      <td>Is the chair in front of the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair appears behind the table edge.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:table|neg</code></td>
+      <td>Is the chair behind the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is behind the table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:sofa:table|pos</code></td>
+      <td>Is the sofa behind the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is behind the table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:sofa:table|neg</code></td>
+      <td>Is the sofa in front of the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not in front of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:cabinet:table|pos</code></td>
+      <td>Is the cabinet behind the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is behind the table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:cabinet:table|neg</code></td>
+      <td>Is the cabinet in front of the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Cabinet is not in front of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:table:sofa|pos</code></td>
+      <td>Is the table in front of the sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Table is closer than sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:table:sofa|neg</code></td>
+      <td>Is the table behind the sofa?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Table is not behind sofa.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP01</b>
+        <span>support_contact / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个花瓶放在茶几上。<br>A vase sits on top of a coffee table.</p>
+      <img src="generated/zimage_turbo_1024/SUP01.png" alt="SUP01 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:vase</code></td>
+      <td>Does the image contain vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:coffee_table|pos</code></td>
+      <td>Is the vase on top of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase sits on the table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:coffee_table|neg</code></td>
+      <td>Is the vase under the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Vase is not under table.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP02</b>
+        <span>support_contact / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一台笔记本电脑放在办公桌上。<br>A laptop rests on top of an office desk.</p>
+      <img src="generated/zimage_turbo_1024/SUP02.png" alt="SUP02 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:office_desk</code></td>
+      <td>Does the image contain office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Office desk is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|pos</code></td>
+      <td>Is the laptop on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop rests on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|neg</code></td>
+      <td>Is the laptop under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under desk.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP03</b>
+        <span>support_contact / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个碗放在边几上。<br>A bowl sits on top of a side table.</p>
+      <img src="generated/zimage_turbo_1024/SUP03.png" alt="SUP03 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:bowl</code></td>
+      <td>Does the image contain bowl?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bowl is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:side_table</code></td>
+      <td>Does the image contain side table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Side table is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:bowl:side_table|pos</code></td>
+      <td>Is the bowl on top of the side table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bowl sits on side table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:bowl:side_table|neg</code></td>
+      <td>Is the bowl under the side table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Bowl is not under table.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP04</b>
+        <span>support_contact / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一盏台灯放在床头柜上。<br>A lamp sits on top of a nightstand.</p>
+      <img src="generated/zimage_turbo_1024/SUP04.png" alt="SUP04 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:nightstand</code></td>
+      <td>Does the image contain nightstand?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Nightstand is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:nightstand|pos</code></td>
+      <td>Is the lamp on top of the nightstand?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp sits on nightstand.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:nightstand|neg</code></td>
+      <td>Is the lamp under the nightstand?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not under nightstand.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP05</b>
+        <span>support_contact / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一台电视放在柜子上。<br>A television sits on top of a cabinet.</p>
+      <img src="generated/zimage_turbo_1024/SUP05.png" alt="SUP05 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Television is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|pos</code></td>
+      <td>Is the television on top of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV sits on cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|neg</code></td>
+      <td>Is the tv under the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV is not under cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP06</b>
+        <span>support_contact / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个盘子放在桌子上。<br>A plate sits on top of a table.</p>
+      <img src="generated/zimage_turbo_1024/SUP06.png" alt="SUP06 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:plate</code></td>
+      <td>Does the image contain plate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plate is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:table</code></td>
+      <td>Does the image contain table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Table surface is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:plate:table|pos</code></td>
+      <td>Is the plate on top of the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plate sits on table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:plate:table|neg</code></td>
+      <td>Is the plate under the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Plate is not under table.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP07</b>
+        <span>support_contact / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一套杯具放在圆桌上。<br>A cup set sits on top of a round table.</p>
+      <img src="generated/zimage_turbo_1024/SUP07.png" alt="SUP07 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:cup_set</code></td>
+      <td>Does the image contain cup set?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cup set is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:round_table</code></td>
+      <td>Does the image contain round table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Round table is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:cup_set:round_table|pos</code></td>
+      <td>Is the cup set on top of the round table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cup set sits on round table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:cup_set:round_table|neg</code></td>
+      <td>Is the cup set under the round table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Cup set is not under table.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP08</b>
+        <span>support_contact / hard</span>
+        <span>presence 91.7%</span>
+        <span>relation 80.0%</span>
+        <span>combined 85.8%</span>
+      </summary>
+      <p class="prompt">在同一张办公桌上，笔记本电脑、台灯、花瓶、杯具和盘子都放在桌面上。<br>On one office desk, a laptop, a lamp, a vase, a cup set, and a plate all sit on top of the desk.</p>
+      <img src="generated/zimage_turbo_1024/SUP08.png" alt="SUP08 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:office_desk</code></td>
+      <td>Does the image contain office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Office desk is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Desk lamp is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:vase</code></td>
+      <td>Does the image contain vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vases are visible on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cup_set</code></td>
+      <td>Does the image contain cup set?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cups with saucers are visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:plate</code></td>
+      <td>Does the image contain plate?</td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>Only saucers are visible, no distinct plate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|pos</code></td>
+      <td>Is the laptop on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop rests on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|neg</code></td>
+      <td>Is the laptop under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:office_desk|pos</code></td>
+      <td>Is the lamp on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp sits on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:office_desk|neg</code></td>
+      <td>Is the lamp under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:office_desk|pos</code></td>
+      <td>Is the vase on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vases sit on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:office_desk|neg</code></td>
+      <td>Is the vase under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Vases are not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:cup_set:office_desk|pos</code></td>
+      <td>Is the cup set on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cup set sits on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:cup_set:office_desk|neg</code></td>
+      <td>Is the cup set under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Cup set is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:plate:office_desk|pos</code></td>
+      <td>Is the plate on top of the office desk?</td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>No distinct plate beyond saucers.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:plate:office_desk|neg</code></td>
+      <td>Is the plate under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>No plate is under desk.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP09</b>
+        <span>support_contact / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">花瓶在茶几上，台灯在床头柜上，电视在柜子上，笔记本电脑在办公桌上，碗在边几上。<br>A vase is on a coffee table, a lamp is on a nightstand, a television is on a cabinet, a laptop is on an office desk, and a bowl is on a side table.</p>
+      <img src="generated/zimage_turbo_1024/SUP09.png" alt="SUP09 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:vase</code></td>
+      <td>Does the image contain vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is visible on coffee table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is visible on nightstand.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:nightstand</code></td>
+      <td>Does the image contain nightstand?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Nightstand is visible at left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is visible under TV.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is visible at right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:office_desk</code></td>
+      <td>Does the image contain office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Office desk is visible at right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bowl</code></td>
+      <td>Does the image contain bowl?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bowl is visible on side table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:side_table</code></td>
+      <td>Does the image contain side table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Side table is visible foreground right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:coffee_table|pos</code></td>
+      <td>Is the vase on top of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase sits on coffee table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:coffee_table|neg</code></td>
+      <td>Is the vase under the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Vase is not under coffee table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:nightstand|pos</code></td>
+      <td>Is the lamp on top of the nightstand?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp sits on nightstand.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:nightstand|neg</code></td>
+      <td>Is the lamp under the nightstand?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not under nightstand.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|pos</code></td>
+      <td>Is the television on top of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV sits on cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|neg</code></td>
+      <td>Is the tv under the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV is not under cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|pos</code></td>
+      <td>Is the laptop on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop sits on office desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|neg</code></td>
+      <td>Is the laptop under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under office desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:bowl:side_table|pos</code></td>
+      <td>Is the bowl on top of the side table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bowl sits on side table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:bowl:side_table|neg</code></td>
+      <td>Is the bowl under the side table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Bowl is not under side table.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>SUP10</b>
+        <span>support_contact / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">在同一张桌子上，笔记本电脑、台灯、花瓶、碗和盘子都放在桌面上。<br>On one table, a laptop, a lamp, a vase, a bowl, and a plate all sit on top of the table.</p>
+      <img src="generated/zimage_turbo_1024/SUP10.png" alt="SUP10 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:table</code></td>
+      <td>Does the image contain table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Table is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:vase</code></td>
+      <td>Does the image contain vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bowl</code></td>
+      <td>Does the image contain bowl?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bowl is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:plate</code></td>
+      <td>Does the image contain plate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plate is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:table|pos</code></td>
+      <td>Is the laptop on top of the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop rests on table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:table|neg</code></td>
+      <td>Is the laptop under the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:table|pos</code></td>
+      <td>Is the lamp on top of the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp sits on table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:table|neg</code></td>
+      <td>Is the lamp under the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not under table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:table|pos</code></td>
+      <td>Is the vase on top of the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase sits on table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:table|neg</code></td>
+      <td>Is the vase under the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Vase is not under table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:bowl:table|pos</code></td>
+      <td>Is the bowl on top of the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bowl sits on table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:bowl:table|neg</code></td>
+      <td>Is the bowl under the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Bowl is not under table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:plate:table|pos</code></td>
+      <td>Is the plate on top of the table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plate sits on table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:plate:table|neg</code></td>
+      <td>Is the plate under the table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Plate is not under table.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC01</b>
+        <span>occlusion_visibility / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 50.0%</span>
+        <span>combined 75.0%</span>
+      </summary>
+      <p class="prompt">一盆较高的盆栽部分遮挡住一个柜子。<br>A tall potted plant partially occludes a cabinet.</p>
+      <img src="generated/zimage_turbo_1024/OCC01.png" alt="OCC01 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Tall potted plant is clear on the right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wood cabinet is visible on the left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:potted_plant:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Plant is mostly beside the cabinet, not blocking it.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:cabinet:potted_plant</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Cabinet does not block the plant.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC02</b>
+        <span>occlusion_visibility / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个行李箱部分遮挡住一张沙发。<br>A suitcase partially occludes a sofa.</p>
+      <img src="generated/zimage_turbo_1024/OCC02.png" alt="OCC02 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Black suitcase is prominent.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa cushions are visible behind it.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:suitcase:sofa</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase blocks part of the sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:sofa:suitcase</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is behind the suitcase.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC03</b>
+        <span>occlusion_visibility / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一张长凳部分遮挡住一个书架。<br>A bench partially occludes a bookshelf.</p>
+      <img src="generated/zimage_turbo_1024/OCC03.png" alt="OCC03 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:bench</code></td>
+      <td>Does the image contain bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench fills the foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelves are visible behind it.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:bench:bookshelf</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench covers lower shelves and books.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:bookshelf:bench</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Bookshelf stays behind the bench.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC04</b>
+        <span>occlusion_visibility / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个木箱部分遮挡住一个木桶。<br>A crate partially occludes a barrel.</p>
+      <img src="generated/zimage_turbo_1024/OCC04.png" alt="OCC04 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:crate</code></td>
+      <td>Does the image contain crate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plastic crate is on top.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:barrel</code></td>
+      <td>Does the image contain barrel?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wood barrel is underneath.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:crate:barrel</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Crate covers the barrel top.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:barrel:crate</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Barrel does not block the crate.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC05</b>
+        <span>occlusion_visibility / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一把椅子部分遮挡住一张茶几。<br>A chair partially occludes a coffee table.</p>
+      <img src="generated/zimage_turbo_1024/OCC05.png" alt="OCC05 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is in the foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is visible on the left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:chair:coffee_table</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair arm and leg cover the table edge.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:coffee_table:chair</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Table does not block the chair.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC06</b>
+        <span>occlusion_visibility / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 50.0%</span>
+        <span>combined 75.0%</span>
+      </summary>
+      <p class="prompt">一个行李箱部分遮挡住一个柜子。<br>A suitcase partially occludes a cabinet.</p>
+      <img src="generated/zimage_turbo_1024/OCC06.png" alt="OCC06 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Black suitcase is clear on the right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wood cabinet is clear on the left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:suitcase:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>They appear side by side with little overlap.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:cabinet:suitcase</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Cabinet does not block the suitcase.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC07</b>
+        <span>occlusion_visibility / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一盆盆栽部分遮挡住一个书架。<br>A potted plant partially occludes a bookshelf.</p>
+      <img src="generated/zimage_turbo_1024/OCC07.png" alt="OCC07 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Potted plant sits on the shelf.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf and books are visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:potted_plant:bookshelf</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Leaves cover books and shelf space.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:bookshelf:potted_plant</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Shelf does not block the plant.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC08</b>
+        <span>occlusion_visibility / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一盆盆栽部分遮挡住柜子；行李箱在柜子前方，沙发在柜子左侧且位于行李箱后方，椅子在柜子右侧。<br>A potted plant partially occludes a cabinet, a suitcase is in front of the cabinet, a sofa is left of the cabinet and behind the suitcase, and a chair is right of the cabinet.</p>
+      <img src="generated/zimage_turbo_1024/OCC08.png" alt="OCC08 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plants are visible, including one on the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wood cabinet is central.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is in front center.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible on the left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible on the right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:potted_plant:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Trailing leaves cover cabinet front.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:cabinet:potted_plant</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Cabinet does not block the plant.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase stands before the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:behind:suitcase:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not behind the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:sofa:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is to the cabinet&#39;s left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:right_of:sofa:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not to the right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:sofa:suitcase</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa sits farther back than suitcase.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:in_front:sofa:suitcase</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not in front of suitcase.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:chair:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is on the right side.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:left_of:chair:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not left of cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC09</b>
+        <span>occlusion_visibility / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个木箱部分遮挡住木桶；行李箱在木箱左侧，长凳在木箱右侧，金属货架在木桶后方。<br>A crate partially occludes a barrel, a suitcase is left of the crate, a bench is right of the crate, and metal shelves are behind the barrel.</p>
+      <img src="generated/zimage_turbo_1024/OCC09.png" alt="OCC09 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:crate</code></td>
+      <td>Does the image contain crate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Crate is in the foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:barrel</code></td>
+      <td>Does the image contain barrel?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Barrel is central.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is at the left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bench</code></td>
+      <td>Does the image contain bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is at the right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:metal_shelves</code></td>
+      <td>Does the image contain metal shelves?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Metal shelves fill the background.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:crate:barrel</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Crate blocks the lower barrel.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:barrel:crate</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Barrel does not block the crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:crate</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is left of crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:right_of:suitcase:crate</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not right of crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:bench:crate</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is right of crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:left_of:bench:crate</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Bench is not left of crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:metal_shelves:barrel</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Shelves are behind barrel.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:in_front:metal_shelves:barrel</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Shelves are not in front.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:barrel:metal_shelves</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Barrel stands before shelves.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:behind:barrel:metal_shelves</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Barrel is not behind shelves.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>OCC10</b>
+        <span>occlusion_visibility / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一把椅子部分遮挡住茶几；沙发在茶几后方，行李箱在椅子左侧，柜子在椅子右侧。<br>A chair partially occludes a coffee table, a sofa is behind the coffee table, a suitcase is left of the chair, and a cabinet is right of the chair.</p>
+      <img src="generated/zimage_turbo_1024/OCC10.png" alt="OCC10 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is foreground right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is central.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is in the back.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is at left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is at upper right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:chair:coffee_table</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair covers table edge.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:partially_occludes:coffee_table:chair</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Table does not block chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:sofa:coffee_table</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is behind the table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:in_front:sofa:coffee_table</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not in front of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:chair</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is left of chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:right_of:suitcase:chair</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not right of chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:cabinet:chair</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is to the chair&#39;s right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:left_of:cabinet:chair</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Cabinet is not left of chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:coffee_table:sofa</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is before sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:behind:coffee_table:sofa</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Table is not behind sofa.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI01</b>
+        <span>orientation_facing / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一台电视正面朝向画面，屏幕清晰可见。<br>A television is shown front-facing with its screen clearly visible.</p>
+      <img src="generated/zimage_turbo_1024/ORI01.png" alt="ORI01 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Television is centered.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:tv:front_facing</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Screen faces the viewer.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI02</b>
+        <span>orientation_facing / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个柜子正面朝向画面，柜门清晰可见。<br>A cabinet is shown front-facing with its doors clearly visible.</p>
+      <img src="generated/zimage_turbo_1024/ORI02.png" alt="ORI02 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is clear.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:cabinet:front_facing</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Doors face the viewer.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI03</b>
+        <span>orientation_facing / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一盏台灯朝向画面左侧。<br>A desk lamp points to the left side of the image.</p>
+      <img src="generated/zimage_turbo_1024/ORI03.png" alt="ORI03 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Desk lamp is clear.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:lamp:left_side</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp head points leftward.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:face_away:lamp:left_side</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not pointing away from left.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI04</b>
+        <span>orientation_facing / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一台打开的笔记本电脑放在书桌上，屏幕清晰可见。<br>A laptop is open on a desk with its screen clearly visible.</p>
+      <img src="generated/zimage_turbo_1024/ORI04.png" alt="ORI04 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Open laptop is centered.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:desk</code></td>
+      <td>Does the image contain desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wood desk is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:desk</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop rests on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:under:laptop:desk</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:laptop:screen_visible</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Screen is clearly visible.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI05</b>
+        <span>orientation_facing / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 0.0%</span>
+        <span>combined 50.0%</span>
+      </summary>
+      <p class="prompt">一把椅子朝画面左侧倾斜摆放。<br>A chair is angled toward the left side of the image.</p>
+      <img src="generated/zimage_turbo_1024/ORI05.png" alt="ORI05 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is clear.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:chair:left_side</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair faces toward the right side.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:face_away:chair:left_side</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>It faces away from the left side.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI06</b>
+        <span>orientation_facing / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 50.0%</span>
+        <span>combined 75.0%</span>
+      </summary>
+      <p class="prompt">一张沙发朝画面右侧倾斜摆放。<br>A sofa is angled toward the right side of the image.</p>
+      <img src="generated/zimage_turbo_1024/ORI06.png" alt="ORI06 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is clear.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:sofa:right_side</code></td>
+      <td></td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>Sofa looks mostly front-facing.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:face_away:sofa:right_side</code></td>
+      <td></td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>No clear opposite facing direction.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI07</b>
+        <span>orientation_facing / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个书架正面朝向画面，开放的正面清晰可见。<br>A bookshelf is shown with its open front clearly visible.</p>
+      <img src="generated/zimage_turbo_1024/ORI07.png" alt="ORI07 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:bookshelf:open_front_visible</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Open shelves and books face the viewer.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI08</b>
+        <span>orientation_facing / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">在办公桌上，一台打开的笔记本电脑屏幕清晰可见；台灯在笔记本右侧，椅子在桌子前方，沙发在椅子后方。<br>On an office desk, a laptop is open with its screen clearly visible, a lamp is to the right of the laptop, a chair is in front of the desk, and a sofa is behind the chair.</p>
+      <img src="generated/zimage_turbo_1024/ORI08.png" alt="ORI08 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:office_desk</code></td>
+      <td>Does the image contain office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Office desk is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is on the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is on the right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is in front left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is in the background.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop rests on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:under:laptop:office_desk</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:office_desk</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp rests on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:under:lamp:office_desk</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:laptop:screen_visible</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop screen is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:lamp:laptop</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is right of laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:left_of:lamp:laptop</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not left of laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:office_desk</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is before desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:behind:chair:office_desk</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not behind desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:sofa:chair</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is behind chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:in_front:sofa:chair</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not in front of chair.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI09</b>
+        <span>orientation_facing / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一台电视放在柜子上，屏幕清晰可见；沙发在柜子左侧，椅子在柜子右侧，茶几在柜子前方。<br>A television is on a cabinet with its screen clearly visible, a sofa is left of the cabinet, a chair is right of the cabinet, and a coffee table is in front of the cabinet.</p>
+      <img src="generated/zimage_turbo_1024/ORI09.png" alt="ORI09 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is on the cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Wood cabinet is clear.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is partly visible left/front.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible at right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV rests on cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:under:tv:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>TV is not under cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:tv:screen_visible</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV screen faces viewer.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:sofa:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is left of cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:right_of:sofa:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not right of cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:chair:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is right of cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:left_of:chair:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not left of cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:coffee_table:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is before cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:behind:coffee_table:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Table is not behind cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ORI10</b>
+        <span>orientation_facing / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个书架正面清晰可见；柜子在书架右侧，椅子在柜子前方，行李箱在椅子左侧，盆栽在柜子右侧。<br>A bookshelf is shown with its open front clearly visible, a cabinet is right of the bookshelf, a chair is in front of the cabinet, a suitcase is left of the chair, and a potted plant is right of the cabinet.</p>
+      <img src="generated/zimage_turbo_1024/ORI10.png" alt="ORI10 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Open shelving with books is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Right cabinet section is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is in front.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is at lower left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Potted plant is at right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:bookshelf:open_front_visible</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Shelf openings face viewer.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:cabinet:bookshelf</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet section is right of bookshelf.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:left_of:cabinet:bookshelf</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Cabinet is not left of bookshelf.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair stands before cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:behind:chair:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not behind cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:chair</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is left of chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:right_of:suitcase:chair</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not right of chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:potted_plant:cabinet</code></td>
+      <td></td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plant is right of cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>inverse:left_of:potted_plant:cabinet</code></td>
+      <td></td>
+      <td><span class="pill no">no</span></td>
+      <td>Plant is not left of cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT01</b>
+        <span>rotation_yaw / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一台电视在画面中向左旋转约 30 度。<br>A television is rotated 30 degrees to the left in the image.</p>
+      <img src="generated/zimage_turbo_1024/ROT01.png" alt="ROT01 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:tv:30_degrees_to_the_left|pos</code></td>
+      <td>Is the television rotated 30 degrees to the left in the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is angled left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:tv:30_degrees_to_the_left|neg</code></td>
+      <td>Is the television rotated 30 degrees to the right in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>It does not read as a right turn.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT02</b>
+        <span>rotation_yaw / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 0.0%</span>
+        <span>combined 50.0%</span>
+      </summary>
+      <p class="prompt">一把椅子在画面中向右旋转约 45 度。<br>A chair is rotated 45 degrees to the right in the image.</p>
+      <img src="generated/zimage_turbo_1024/ROT02.png" alt="ROT02 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:chair:45_degrees_to_the_right|pos</code></td>
+      <td>Is the chair rotated 45 degrees to the right in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is turned the other way.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:chair:45_degrees_to_the_right|neg</code></td>
+      <td>Is the chair rotated 45 degrees to the left in the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair appears rotated left.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT03</b>
+        <span>rotation_yaw / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 75.0%</span>
+        <span>combined 87.5%</span>
+      </summary>
+      <p class="prompt">一台放在书桌上的笔记本电脑顺时针旋转约 90 度。<br>A laptop on a desk is rotated 90 degrees clockwise in the image.</p>
+      <img src="generated/zimage_turbo_1024/ROT03.png" alt="ROT03 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:desk</code></td>
+      <td>Does the image contain desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Desk surface is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:desk|pos</code></td>
+      <td>Is the laptop on top of the desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is on the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:desk|neg</code></td>
+      <td>Is the laptop under the desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under the desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:laptop:90_degrees_clockwise|pos</code></td>
+      <td>Is the laptop rotated 90 degrees clockwise on the desk?</td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>Rotation is diagonal, not clearly 90 degrees.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT04</b>
+        <span>rotation_yaw / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一张沙发在画面中略微向左旋转。<br>A sofa is rotated slightly to the left in the image.</p>
+      <img src="generated/zimage_turbo_1024/ROT04.png" alt="ROT04 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:sofa:slightly_to_the_left|pos</code></td>
+      <td>Is the sofa rotated slightly to the left in the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Right side is visible from a left turn.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:sofa:slightly_to_the_left|neg</code></td>
+      <td>Is the sofa rotated slightly to the right in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>It is not turned right.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT05</b>
+        <span>rotation_yaw / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 0.0%</span>
+        <span>combined 50.0%</span>
+      </summary>
+      <p class="prompt">一个柜子在画面中向右旋转约 30 度。<br>A cabinet is rotated 30 degrees to the right in the image.</p>
+      <img src="generated/zimage_turbo_1024/ROT05.png" alt="ROT05 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:cabinet:30_degrees_to_the_right|pos</code></td>
+      <td>Is the cabinet rotated 30 degrees to the right in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Right turn is not apparent.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:cabinet:30_degrees_to_the_right|neg</code></td>
+      <td>Is the cabinet rotated 30 degrees to the left in the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet appears turned left.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT06</b>
+        <span>rotation_yaw / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 0.0%</span>
+        <span>combined 50.0%</span>
+      </summary>
+      <p class="prompt">一个书架在画面中向左旋转约 45 度。<br>A bookshelf is rotated 45 degrees to the left in the image.</p>
+      <img src="generated/zimage_turbo_1024/ROT06.png" alt="ROT06 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:bookshelf:45_degrees_to_the_left|pos</code></td>
+      <td>Is the bookshelf rotated 45 degrees to the left in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>It tilts/rotates the other way.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:bookshelf:45_degrees_to_the_left|neg</code></td>
+      <td>Is the bookshelf rotated 45 degrees to the right in the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>It appears rotated right.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT07</b>
+        <span>rotation_yaw / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 50.0%</span>
+        <span>combined 75.0%</span>
+      </summary>
+      <p class="prompt">一张长凳在画面中向左旋转约 45 度。<br>A bench is rotated 45 degrees to the left in the image.</p>
+      <img src="generated/zimage_turbo_1024/ROT07.png" alt="ROT07 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:bench</code></td>
+      <td>Does the image contain bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is clearly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:bench:45_degrees_to_the_left|pos</code></td>
+      <td>Is the bench rotated 45 degrees to the left in the image?</td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>Bench has no clear front direction.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:bench:45_degrees_to_the_left|neg</code></td>
+      <td>Is the bench rotated 45 degrees to the right in the image?</td>
+      <td><span class="pill unclear">unclear</span></td>
+      <td>Opposite rotation is also ambiguous.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT08</b>
+        <span>rotation_yaw / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 80.0%</span>
+        <span>combined 90.0%</span>
+      </summary>
+      <p class="prompt">在办公桌上，笔记本电脑顺时针旋转约 90 度；台灯在笔记本右侧，花瓶在笔记本前方。<br>On an office desk, a laptop is rotated 90 degrees clockwise, a lamp is to the right of the laptop, and a vase is in front of the laptop.</p>
+      <img src="generated/zimage_turbo_1024/ROT08.png" alt="ROT08 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:office_desk</code></td>
+      <td>Does the image contain office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Office desk is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:vase</code></td>
+      <td>Does the image contain vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|pos</code></td>
+      <td>Is the laptop on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop rests on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|neg</code></td>
+      <td>Is the laptop under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:office_desk|pos</code></td>
+      <td>Is the lamp on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp base is on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:lamp:office_desk|neg</code></td>
+      <td>Is the lamp under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:laptop:90_degrees_clockwise|pos</code></td>
+      <td>Is the laptop rotated 90 degrees clockwise?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is mostly front-facing.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:lamp:laptop|pos</code></td>
+      <td>Is the lamp to the right of the laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is right of laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:lamp:laptop|neg</code></td>
+      <td>Is the lamp to the left of the laptop?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not left of laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:vase:laptop|pos</code></td>
+      <td>Is the vase in front of the laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is closer to viewer than laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:vase:laptop|neg</code></td>
+      <td>Is the vase behind the laptop?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Vase is not behind laptop.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT09</b>
+        <span>rotation_yaw / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 30.0%</span>
+        <span>combined 65.0%</span>
+      </summary>
+      <p class="prompt">一把椅子向右旋转约 45 度，一张沙发略微向左旋转；茶几位于它们之间，行李箱在椅子前方。<br>A chair is rotated 45 degrees to the right, a sofa is rotated slightly to the left, a coffee table sits between them, and a suitcase is in front of the chair.</p>
+      <img src="generated/zimage_turbo_1024/ROT09.png" alt="ROT09 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:chair:45_degrees_to_the_right|pos</code></td>
+      <td>Is the chair rotated 45 degrees to the right in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair turns the other way.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:chair:45_degrees_to_the_right|neg</code></td>
+      <td>Is the chair rotated 45 degrees to the left in the image?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair appears rotated left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:sofa:slightly_to_the_left|pos</code></td>
+      <td>Is the sofa rotated slightly to the left in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is nearly straight.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:sofa:slightly_to_the_left|neg</code></td>
+      <td>Is the sofa rotated slightly to the right in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>It is not clearly right-rotated either.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:chair:coffee_table|pos</code></td>
+      <td>Is the chair to the left of the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is on the right side.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:chair:coffee_table|neg</code></td>
+      <td>Is the chair to the right of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is right of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:sofa:coffee_table|pos</code></td>
+      <td>Is the sofa to the right of the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not right of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:sofa:coffee_table|neg</code></td>
+      <td>Is the sofa to the left of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is left of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:chair|pos</code></td>
+      <td>Is the suitcase in front of the chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase stands before chair.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:chair|neg</code></td>
+      <td>Is the suitcase behind the chair?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not behind chair.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>ROT10</b>
+        <span>rotation_yaw / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 90.0%</span>
+        <span>combined 95.0%</span>
+      </summary>
+      <p class="prompt">一台电视向左旋转约 45 度并放在柜子上；椅子在柜子前方，沙发在柜子左侧，行李箱在柜子右侧。<br>A television is rotated 45 degrees to the left, the television sits on a cabinet, a chair is in front of the cabinet, a sofa is left of the cabinet, and a suitcase is right of the cabinet.</p>
+      <img src="generated/zimage_turbo_1024/ROT10.png" alt="ROT10 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Foreground chair is partly visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is partly visible at left.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible at right.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:tv:45_degrees_to_the_left|pos</code></td>
+      <td>Is the television rotated 45 degrees to the left in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV is nearly front-facing.</td>
+    </tr>
+  
+    <tr>
+      <td><code>rotate_yaw:tv:45_degrees_to_the_left|neg</code></td>
+      <td>Is the television rotated 45 degrees to the right in the image?</td>
+      <td><span class="pill no">no</span></td>
+      <td>It is not clearly right-rotated either.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|pos</code></td>
+      <td>Is the television on top of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV rests on cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|neg</code></td>
+      <td>Is the tv under the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV is not under cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:cabinet|pos</code></td>
+      <td>Is the chair in front of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:cabinet|neg</code></td>
+      <td>Is the chair behind the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not behind cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:sofa:cabinet|pos</code></td>
+      <td>Is the sofa to the left of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is left of cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:sofa:cabinet|neg</code></td>
+      <td>Is the sofa to the right of the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not right of cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:suitcase:cabinet|pos</code></td>
+      <td>Is the suitcase to the right of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is right of cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:suitcase:cabinet|neg</code></td>
+      <td>Is the suitcase to the left of the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not left of cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL01</b>
+        <span>multi_relation_composition / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个花瓶放在茶几上，茶几在沙发前方。<br>A vase is on a coffee table in front of a sofa.</p>
+      <img src="generated/zimage_turbo_1024/MUL01.png" alt="MUL01 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:vase</code></td>
+      <td>Does the image contain vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:coffee_table|pos</code></td>
+      <td>Is the vase on top of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase sits on table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:vase:coffee_table|neg</code></td>
+      <td>Is the vase under the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Vase is not under table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:coffee_table:sofa|pos</code></td>
+      <td>Is the coffee table in front of the sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Table is before sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:coffee_table:sofa|neg</code></td>
+      <td>Is the coffee table behind the sofa?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Table is not behind sofa.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL02</b>
+        <span>multi_relation_composition / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一张长凳在书架前方，一个行李箱在长凳右侧。<br>A bench is in front of a bookshelf, and a suitcase is to the right of the bench.</p>
+      <img src="generated/zimage_turbo_1024/MUL02.png" alt="MUL02 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:bench</code></td>
+      <td>Does the image contain bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bookshelf</code></td>
+      <td>Does the image contain bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bookshelf is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:bench:bookshelf|pos</code></td>
+      <td>Is the bench in front of the bookshelf?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is before bookshelf.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:bench:bookshelf|neg</code></td>
+      <td>Is the bench behind the bookshelf?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Bench is not behind bookshelf.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:suitcase:bench|pos</code></td>
+      <td>Is the suitcase to the right of the bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is right of bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:suitcase:bench|neg</code></td>
+      <td>Is the suitcase to the left of the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not left of bench.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL03</b>
+        <span>multi_relation_composition / normal</span>
+        <span>presence 66.7%</span>
+        <span>relation 33.3%</span>
+        <span>combined 50.0%</span>
+      </summary>
+      <p class="prompt">在办公桌上，一套杯具放在笔记本电脑前方。<br>On an office desk, a cup set is in front of a laptop.</p>
+      <img src="generated/zimage_turbo_1024/MUL03.png" alt="MUL03 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:office_desk</code></td>
+      <td>Does the image contain office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Office desk is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cup_set</code></td>
+      <td>Does the image contain cup set?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Only one cup is visible, not a cup set.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|pos</code></td>
+      <td>Is the laptop on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|neg</code></td>
+      <td>Is the laptop under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:cup_set:office_desk|pos</code></td>
+      <td>Is the cup set on top of the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>No cup set is present.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:cup_set:office_desk|neg</code></td>
+      <td>Is the cup set under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>No cup set is under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:cup_set:laptop|pos</code></td>
+      <td>Is the cup set in front of the laptop?</td>
+      <td><span class="pill no">no</span></td>
+      <td>No cup set is present.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:cup_set:laptop|neg</code></td>
+      <td>Is the cup set behind the laptop?</td>
+      <td><span class="pill no">no</span></td>
+      <td>No cup set is behind laptop.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL04</b>
+        <span>multi_relation_composition / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一台电视放在柜子上，屏幕清晰可见；一把椅子在柜子前方。<br>A television is on a cabinet with its screen clearly visible, and a chair is in front of the cabinet.</p>
+      <img src="generated/zimage_turbo_1024/MUL04.png" alt="MUL04 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is partly visible in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|pos</code></td>
+      <td>Is the television on top of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV sits on cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|neg</code></td>
+      <td>Is the tv under the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV is not under cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:tv:screen_visible|pos</code></td>
+      <td>Is the television screen clearly visible?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Screen is clearly front-visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:cabinet|pos</code></td>
+      <td>Is the chair in front of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is before cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:cabinet|neg</code></td>
+      <td>Is the chair behind the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not behind cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL05</b>
+        <span>multi_relation_composition / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个碗放在边几上，一盏台灯在边几左侧。<br>A bowl is on a side table, and a lamp is to the left of the side table.</p>
+      <img src="generated/zimage_turbo_1024/MUL05.png" alt="MUL05 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:bowl</code></td>
+      <td>Does the image contain bowl?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bowl is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:side_table</code></td>
+      <td>Does the image contain side table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Side table is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:bowl:side_table|pos</code></td>
+      <td>Is the bowl on top of the side table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bowl sits on table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:bowl:side_table|neg</code></td>
+      <td>Is the bowl under the side table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Bowl is not under table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:lamp:side_table|pos</code></td>
+      <td>Is the lamp to the left of the side table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is left of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:lamp:side_table|neg</code></td>
+      <td>Is the lamp to the right of the side table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not right of table.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL06</b>
+        <span>multi_relation_composition / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一台电视放在柜子上，屏幕清晰可见。<br>A television sits on a cabinet with its screen clearly visible.</p>
+      <img src="generated/zimage_turbo_1024/MUL06.png" alt="MUL06 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:tv:screen_visible|pos</code></td>
+      <td>Is the television screen clearly visible?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Screen faces viewer.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|pos</code></td>
+      <td>Is the television on top of the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is on cabinet.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:tv:cabinet|neg</code></td>
+      <td>Is the tv under the cabinet?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV is not under cabinet.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL07</b>
+        <span>multi_relation_composition / normal</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">一个行李箱在长凳前方，一盆盆栽在长凳右侧。<br>A suitcase is in front of a bench, and a potted plant is to the right of the bench.</p>
+      <img src="generated/zimage_turbo_1024/MUL07.png" alt="MUL07 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bench</code></td>
+      <td>Does the image contain bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Potted plant is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:bench|pos</code></td>
+      <td>Is the suitcase in front of the bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is before bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:suitcase:bench|neg</code></td>
+      <td>Is the suitcase behind the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not behind bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:potted_plant:bench|pos</code></td>
+      <td>Is the potted plant to the right of the bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plant is right of bench.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:potted_plant:bench|neg</code></td>
+      <td>Is the potted plant to the left of the bench?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Plant is not left of bench.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL08</b>
+        <span>multi_relation_composition / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">沙发在茶几后方，椅子在茶几左侧，行李箱在茶几右侧；屏幕可见的电视在沙发后方，盆栽部分遮挡住电视。<br>A sofa is behind a coffee table, a chair is left of the coffee table, a suitcase is right of the coffee table, a television with its screen visible is behind the sofa, and a potted plant partially occludes the television.</p>
+      <img src="generated/zimage_turbo_1024/MUL08.png" alt="MUL08 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:sofa</code></td>
+      <td>Does the image contain sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:coffee_table</code></td>
+      <td>Does the image contain coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Coffee table is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:tv</code></td>
+      <td>Does the image contain television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Potted plants are visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:sofa:coffee_table|pos</code></td>
+      <td>Is the sofa behind the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Sofa is behind table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:sofa:coffee_table|neg</code></td>
+      <td>Is the sofa in front of the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Sofa is not in front of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:chair:coffee_table|pos</code></td>
+      <td>Is the chair to the left of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is left of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:chair:coffee_table|neg</code></td>
+      <td>Is the chair to the right of the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not right of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:suitcase:coffee_table|pos</code></td>
+      <td>Is the suitcase to the right of the coffee table?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is right of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:suitcase:coffee_table|neg</code></td>
+      <td>Is the suitcase to the left of the coffee table?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not left of table.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:tv:screen_visible|pos</code></td>
+      <td>Is the television screen clearly visible?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Screen is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:tv:sofa|pos</code></td>
+      <td>Is the television behind the sofa?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>TV is behind sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:tv:sofa|neg</code></td>
+      <td>Is the television in front of the sofa?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV is not in front of sofa.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:potted_plant:tv|pos</code></td>
+      <td>Is the potted plant partially blocking the television?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plant overlaps part of TV area.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:potted_plant:tv|neg</code></td>
+      <td>Does the tv partially block the potted plant?</td>
+      <td><span class="pill no">no</span></td>
+      <td>TV does not block the plant.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL09</b>
+        <span>multi_relation_composition / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">木箱在木桶前方，柜子在木桶后方；行李箱在木箱左侧，长凳在木箱右侧，盆栽部分遮挡住柜子。<br>A crate is in front of a barrel, a cabinet stands behind the barrel, a suitcase is left of the crate, a bench is right of the crate, and a potted plant partially occludes the cabinet.</p>
+      <img src="generated/zimage_turbo_1024/MUL09.png" alt="MUL09 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:crate</code></td>
+      <td>Does the image contain crate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Crate is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:barrel</code></td>
+      <td>Does the image contain barrel?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Barrel is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:cabinet</code></td>
+      <td>Does the image contain cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:suitcase</code></td>
+      <td>Does the image contain suitcase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:bench</code></td>
+      <td>Does the image contain bench?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:potted_plant</code></td>
+      <td>Does the image contain potted plant?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Potted plant is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:crate:barrel|pos</code></td>
+      <td>Is the crate in front of the barrel?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Crate is before barrel.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:crate:barrel|neg</code></td>
+      <td>Is the crate behind the barrel?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Crate is not behind barrel.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:cabinet:barrel|pos</code></td>
+      <td>Is the cabinet behind the barrel?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Cabinet sits behind/over barrel.</td>
+    </tr>
+  
+    <tr>
+      <td><code>behind:cabinet:barrel|neg</code></td>
+      <td>Is the cabinet in front of the barrel?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Cabinet is not in front of barrel.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:crate|pos</code></td>
+      <td>Is the suitcase to the left of the crate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Suitcase is left of crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:suitcase:crate|neg</code></td>
+      <td>Is the suitcase to the right of the crate?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Suitcase is not right of crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:bench:crate|pos</code></td>
+      <td>Is the bench to the right of the crate?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Bench is right of crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:bench:crate|neg</code></td>
+      <td>Is the bench to the left of the crate?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Bench is not left of crate.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:potted_plant:cabinet|pos</code></td>
+      <td>Is the potted plant partially blocking the cabinet?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Plant overlaps cabinet side.</td>
+    </tr>
+  
+    <tr>
+      <td><code>partially_occludes:potted_plant:cabinet|neg</code></td>
+      <td>Does the cabinet partially block the potted plant?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Cabinet does not block plant.</td>
+    </tr>
+  </tbody></table>
+    </details>
+    <details>
+      <summary>
+        <b>MUL10</b>
+        <span>multi_relation_composition / hard</span>
+        <span>presence 100.0%</span>
+        <span>relation 100.0%</span>
+        <span>combined 100.0%</span>
+      </summary>
+      <p class="prompt">在办公桌上，打开的笔记本电脑屏幕清晰可见；花瓶在笔记本右侧，台灯在笔记本左侧，椅子在桌子前方。<br>On an office desk, a laptop is open with its screen visible, a vase is right of the laptop, a lamp is left of the laptop, and a chair is in front of the desk.</p>
+      <img src="generated/zimage_turbo_1024/MUL10.png" alt="MUL10 sample">
+      <table><thead><tr><th>id</th><th>question</th><th>answer</th><th>reason</th></tr></thead><tbody>
+    <tr>
+      <td><code>presence:office_desk</code></td>
+      <td>Does the image contain office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Office desk is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:laptop</code></td>
+      <td>Does the image contain laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:vase</code></td>
+      <td>Does the image contain vase?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:lamp</code></td>
+      <td>Does the image contain lamp?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>presence:chair</code></td>
+      <td>Does the image contain chair?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is partly visible in foreground.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|pos</code></td>
+      <td>Is the laptop on top of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop rests on desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>on_top:laptop:office_desk|neg</code></td>
+      <td>Is the laptop under the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Laptop is not under desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>face:laptop:screen_visible|pos</code></td>
+      <td>Is the laptop open with its screen visible?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Laptop screen is visible.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:vase:laptop|pos</code></td>
+      <td>Is the vase to the right of the laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Vase is right of laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>right_of:vase:laptop|neg</code></td>
+      <td>Is the vase to the left of the laptop?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Vase is not left of laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:lamp:laptop|pos</code></td>
+      <td>Is the lamp to the left of the laptop?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Lamp is left of laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>left_of:lamp:laptop|neg</code></td>
+      <td>Is the lamp to the right of the laptop?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Lamp is not right of laptop.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:office_desk|pos</code></td>
+      <td>Is the chair in front of the office desk?</td>
+      <td><span class="pill yes">yes</span></td>
+      <td>Chair is before desk.</td>
+    </tr>
+  
+    <tr>
+      <td><code>in_front:chair:office_desk|neg</code></td>
+      <td>Is the chair behind the office desk?</td>
+      <td><span class="pill no">no</span></td>
+      <td>Chair is not behind desk.</td>
+    </tr>
+  </tbody></table>
+    </details></section>
+  </main>
+</body>
+</html>
