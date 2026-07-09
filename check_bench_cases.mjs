@@ -64,6 +64,9 @@ for (const item of cases) {
     if (relation.target && allowedAssets.has(relation.target) && !objectIds.has(relation.target)) {
       fail(`${item.id}: relation target not in objects: ${relation.target}`);
     }
+    if (relation.target2 && allowedAssets.has(relation.target2) && !objectIds.has(relation.target2)) {
+      fail(`${item.id}: relation target2 not in objects: ${relation.target2}`);
+    }
   }
 
   if (item.sample?.status === "success") {
@@ -87,7 +90,7 @@ for (const item of cases) {
 
   if (!["normal", "hard"].includes(item.level)) fail(`${item.id}: invalid level ${item.level}`);
   if (item.difficulty !== item.level) fail(`${item.id}: difficulty should mirror level`);
-  if (item.level === "hard" && pairCount < 5) fail(`${item.id}: hard case has only ${pairCount} pairs`);
+  if (item.level === "hard" && pairCount < 4) fail(`${item.id}: hard case has only ${pairCount} relation checks`);
   if (item.level === "hard" && pairCount > 6) fail(`${item.id}: hard case has too many pairs: ${pairCount}`);
   if (item.level === "normal" && pairCount >= 5) fail(`${item.id}: normal case has ${pairCount} pairs`);
   if (item.level === "hard") hardCount += 1;

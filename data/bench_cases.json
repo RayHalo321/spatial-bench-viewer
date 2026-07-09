@@ -678,7 +678,7 @@
     "category": "relative_position_2d",
     "level": "normal",
     "difficulty": "normal",
-    "pair_count": 2,
+    "pair_count": 1,
     "subtype": "object_between_large_anchors",
     "prompt": "A vase is between a sofa and a coffee table.",
     "prompt_zh": "一个花瓶放在沙发和茶几之间。",
@@ -704,16 +704,11 @@
     ],
     "relations": [
       {
-        "subject": "sofa",
-        "text_span": "left of",
-        "type": "left_of",
-        "target": "vase"
-      },
-      {
-        "subject": "coffee_table",
-        "text_span": "right of",
-        "type": "right_of",
-        "target": "vase"
+        "subject": "vase",
+        "text_span": "between",
+        "type": "between",
+        "target": "sofa",
+        "target2": "coffee_table"
       }
     ],
     "checklist": [
@@ -754,30 +749,17 @@
         "expected_answer": "yes"
       },
       {
-        "check_id": "left_of:sofa:vase",
+        "check_id": "between:vase:sofa:coffee_table",
         "type": "relation",
-        "subject": "sofa",
-        "relation": "left_of",
-        "target": "vase",
-        "label_zh": "沙发是否在花瓶的左侧？",
-        "pair_zh": "沙发在花瓶左侧",
-        "label_en": "Is the sofa to the left of the vase?",
-        "vqa_question": "Is the sofa to the left of the vase?",
-        "vqa_question_zh": "沙发是否在花瓶的左侧？",
-        "expected_answer": "yes",
-        "source": "prompt_relation"
-      },
-      {
-        "check_id": "right_of:coffee_table:vase",
-        "type": "relation",
-        "subject": "coffee_table",
-        "relation": "right_of",
-        "target": "vase",
-        "label_zh": "茶几是否在花瓶的右侧？",
-        "pair_zh": "茶几在花瓶右侧",
-        "label_en": "Is the coffee table to the right of the vase?",
-        "vqa_question": "Is the coffee table to the right of the vase?",
-        "vqa_question_zh": "茶几是否在花瓶的右侧？",
+        "subject": "vase",
+        "relation": "between",
+        "target": "sofa",
+        "target2": "coffee_table",
+        "label_zh": "花瓶是否位于沙发和茶几之间？",
+        "pair_zh": "花瓶在沙发和茶几之间",
+        "label_en": "Is the vase between the sofa and the coffee table?",
+        "vqa_question": "Is the vase between the sofa and the coffee table?",
+        "vqa_question_zh": "花瓶是否位于沙发和茶几之间？",
         "expected_answer": "yes",
         "source": "prompt_relation"
       }
@@ -1311,7 +1293,7 @@
     "category": "relative_position_2d",
     "level": "hard",
     "difficulty": "hard",
-    "pair_count": 6,
+    "pair_count": 5,
     "subtype": "desk_grid_layout",
     "prompt": "On an office desk, a laptop is between a lamp on the left and a vase on the right, and a chair is in front of the desk.",
     "prompt_zh": "在办公桌上，笔记本电脑位于左侧台灯和右侧花瓶之间，一把椅子放在桌子前方。",
@@ -1367,16 +1349,11 @@
         "target": "office_desk"
       },
       {
-        "subject": "lamp",
-        "text_span": "left of",
-        "type": "left_of",
-        "target": "laptop"
-      },
-      {
-        "subject": "vase",
-        "text_span": "right of",
-        "type": "right_of",
-        "target": "laptop"
+        "subject": "laptop",
+        "text_span": "between",
+        "type": "between",
+        "target": "lamp",
+        "target2": "vase"
       },
       {
         "subject": "chair",
@@ -1489,30 +1466,17 @@
         "source": "prompt_relation"
       },
       {
-        "check_id": "left_of:lamp:laptop",
+        "check_id": "between:laptop:lamp:vase",
         "type": "relation",
-        "subject": "lamp",
-        "relation": "left_of",
-        "target": "laptop",
-        "label_zh": "台灯是否在笔记本电脑的左侧？",
-        "pair_zh": "台灯在笔记本电脑左侧",
-        "label_en": "Is the lamp to the left of the laptop?",
-        "vqa_question": "Is the lamp to the left of the laptop?",
-        "vqa_question_zh": "台灯是否在笔记本电脑的左侧？",
-        "expected_answer": "yes",
-        "source": "prompt_relation"
-      },
-      {
-        "check_id": "right_of:vase:laptop",
-        "type": "relation",
-        "subject": "vase",
-        "relation": "right_of",
-        "target": "laptop",
-        "label_zh": "花瓶是否在笔记本电脑的右侧？",
-        "pair_zh": "花瓶在笔记本电脑右侧",
-        "label_en": "Is the vase to the right of the laptop?",
-        "vqa_question": "Is the vase to the right of the laptop?",
-        "vqa_question_zh": "花瓶是否在笔记本电脑的右侧？",
+        "subject": "laptop",
+        "relation": "between",
+        "target": "lamp",
+        "target2": "vase",
+        "label_zh": "笔记本电脑是否位于台灯和花瓶之间？",
+        "pair_zh": "笔记本电脑在台灯和花瓶之间",
+        "label_en": "Is the laptop between the lamp and the vase?",
+        "vqa_question": "Is the laptop between the lamp and the vase?",
+        "vqa_question_zh": "笔记本电脑是否位于台灯和花瓶之间？",
         "expected_answer": "yes",
         "source": "prompt_relation"
       },
@@ -1546,7 +1510,7 @@
     "category": "relative_position_2d",
     "level": "hard",
     "difficulty": "hard",
-    "pair_count": 5,
+    "pair_count": 4,
     "subtype": "wall_furniture_layout",
     "prompt": "A cabinet is between a bookshelf on the left and a chair on the right, a suitcase is left of the bookshelf and the cabinet, and a potted plant is right of the chair.",
     "prompt_zh": "柜子位于左侧书架和右侧椅子之间；行李箱在书架和柜子的左侧，盆栽在椅子右侧。",
@@ -1584,16 +1548,11 @@
     ],
     "relations": [
       {
-        "subject": "bookshelf",
-        "text_span": "left of",
-        "type": "left_of",
-        "target": "cabinet"
-      },
-      {
-        "subject": "chair",
-        "text_span": "right of",
-        "type": "right_of",
-        "target": "cabinet"
+        "subject": "cabinet",
+        "text_span": "between",
+        "type": "between",
+        "target": "bookshelf",
+        "target2": "chair"
       },
       {
         "subject": "suitcase",
@@ -1676,30 +1635,17 @@
         "expected_answer": "yes"
       },
       {
-        "check_id": "left_of:bookshelf:cabinet",
+        "check_id": "between:cabinet:bookshelf:chair",
         "type": "relation",
-        "subject": "bookshelf",
-        "relation": "left_of",
-        "target": "cabinet",
-        "label_zh": "书架是否在柜子的左侧？",
-        "pair_zh": "书架在柜子左侧",
-        "label_en": "Is the bookshelf to the left of the cabinet?",
-        "vqa_question": "Is the bookshelf to the left of the cabinet?",
-        "vqa_question_zh": "书架是否在柜子的左侧？",
-        "expected_answer": "yes",
-        "source": "prompt_relation"
-      },
-      {
-        "check_id": "right_of:chair:cabinet",
-        "type": "relation",
-        "subject": "chair",
-        "relation": "right_of",
-        "target": "cabinet",
-        "label_zh": "椅子是否在柜子的右侧？",
-        "pair_zh": "椅子在柜子右侧",
-        "label_en": "Is the chair to the right of the cabinet?",
-        "vqa_question": "Is the chair to the right of the cabinet?",
-        "vqa_question_zh": "椅子是否在柜子的右侧？",
+        "subject": "cabinet",
+        "relation": "between",
+        "target": "bookshelf",
+        "target2": "chair",
+        "label_zh": "柜子是否位于书架和椅子之间？",
+        "pair_zh": "柜子在书架和椅子之间",
+        "label_en": "Is the cabinet between the bookshelf and the chair?",
+        "vqa_question": "Is the cabinet between the bookshelf and the chair?",
+        "vqa_question_zh": "柜子是否位于书架和椅子之间？",
         "expected_answer": "yes",
         "source": "prompt_relation"
       },
@@ -7348,7 +7294,7 @@
     "category": "rotation_yaw",
     "level": "hard",
     "difficulty": "hard",
-    "pair_count": 5,
+    "pair_count": 4,
     "subtype": "furniture_rotation_bundle",
     "prompt": "A chair is rotated 45 degrees to the right, a sofa is rotated slightly to the left, a coffee table sits between them, and a suitcase is in front of the chair.",
     "prompt_zh": "一把椅子向右旋转约 45 度，一张沙发略微向左旋转；茶几位于它们之间，行李箱在椅子前方。",
@@ -7390,16 +7336,11 @@
         "type": "rotation_yaw"
       },
       {
-        "subject": "chair",
-        "text_span": "left of",
-        "type": "left_of",
-        "target": "coffee_table"
-      },
-      {
-        "subject": "sofa",
-        "text_span": "right of",
-        "type": "right_of",
-        "target": "coffee_table"
+        "subject": "coffee_table",
+        "text_span": "between",
+        "type": "between",
+        "target": "chair",
+        "target2": "sofa"
       },
       {
         "subject": "suitcase",
@@ -7486,30 +7427,17 @@
         "source": "prompt_relation"
       },
       {
-        "check_id": "left_of:chair:coffee_table",
+        "check_id": "between:coffee_table:chair:sofa",
         "type": "relation",
-        "subject": "chair",
-        "relation": "left_of",
-        "target": "coffee_table",
-        "label_zh": "椅子是否在茶几的左侧？",
-        "pair_zh": "椅子在茶几左侧",
-        "label_en": "Is the chair to the left of the coffee table?",
-        "vqa_question": "Is the chair to the left of the coffee table?",
-        "vqa_question_zh": "椅子是否在茶几的左侧？",
-        "expected_answer": "yes",
-        "source": "prompt_relation"
-      },
-      {
-        "check_id": "right_of:sofa:coffee_table",
-        "type": "relation",
-        "subject": "sofa",
-        "relation": "right_of",
-        "target": "coffee_table",
-        "label_zh": "沙发是否在茶几的右侧？",
-        "pair_zh": "沙发在茶几右侧",
-        "label_en": "Is the sofa to the right of the coffee table?",
-        "vqa_question": "Is the sofa to the right of the coffee table?",
-        "vqa_question_zh": "沙发是否在茶几的右侧？",
+        "subject": "coffee_table",
+        "relation": "between",
+        "target": "chair",
+        "target2": "sofa",
+        "label_zh": "茶几是否位于椅子和沙发之间？",
+        "pair_zh": "茶几在椅子和沙发之间",
+        "label_en": "Is the coffee table between the chair and the sofa?",
+        "vqa_question": "Is the coffee table between the chair and the sofa?",
+        "vqa_question_zh": "茶几是否位于椅子和沙发之间？",
         "expected_answer": "yes",
         "source": "prompt_relation"
       },

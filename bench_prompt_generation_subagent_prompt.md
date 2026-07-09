@@ -68,7 +68,7 @@
 - 当前弱覆盖关系：above, below, inside, under, same_surface。
 
 类别和 ID 前缀：
-- REL: relative_position_2d，left/right/above/below/between。between 必须拆成两个原子关系。
+- REL: relative_position_2d，left/right/above/below/between。between 必须保留为一个三元关系，直接问 “X 是否在 Y 和 Z 之间”，不要拆成两个 left/right 原子关系。
 - DEP: depth_front_back，in_front/behind。
 - OCC: occlusion_visibility，partially_occludes，必须强调 partial visibility。
 - SUP: support_contact，on_top/under/inside/same_surface。

@@ -151,6 +151,7 @@ const relationText = {
   above: "above",
   below: "below",
   behind: "behind",
+  between: "between",
   face: "facing",
   in_front: "in front of",
   inside: "inside",
@@ -168,6 +169,7 @@ const zhRelationText = {
   above: "在上方",
   below: "在下方",
   behind: "在后方",
+  between: "在之间",
   face: "朝向",
   in_front: "在前方",
   inside: "在内部",
@@ -183,6 +185,7 @@ const zhRelationText = {
 const checkTypeByRelation = {
   absolute_location: "absolute_location",
   behind: "depth",
+  between: "relation",
   face: "orientation",
   in_front: "depth",
   inside: "support",
@@ -230,7 +233,7 @@ const cases = [
     o("vase", "subject"),
     o("sofa", "object"),
     o("coffee_table", "object"),
-  ], [r("sofa", "left_of", "vase"), r("coffee_table", "right_of", "vase")]),
+  ], [r("vase", "between", "sofa", "between", { target2: "coffee_table" })]),
   c("REL05", "relative_position_2d", "normal", "large_pair_left_right", "A television is to the right of a cabinet.", [
     o("tv", "subject"),
     o("cabinet", "object"),
@@ -258,14 +261,14 @@ const cases = [
     o("lamp", "object"),
     o("vase", "object"),
     o("chair", "object"),
-  ], [r("laptop", "on_top", "office_desk"), r("lamp", "on_top", "office_desk"), r("vase", "on_top", "office_desk"), r("lamp", "left_of", "laptop"), r("vase", "right_of", "laptop"), r("chair", "in_front", "office_desk")]),
+  ], [r("laptop", "on_top", "office_desk"), r("lamp", "on_top", "office_desk"), r("vase", "on_top", "office_desk"), r("laptop", "between", "lamp", "between", { target2: "vase" }), r("chair", "in_front", "office_desk")]),
   c("REL10", "relative_position_2d", "hard", "wall_furniture_layout", "A cabinet is between a bookshelf on the left and a chair on the right, a suitcase is left of the bookshelf and the cabinet, and a potted plant is right of the chair.", [
     o("cabinet", "subject"),
     o("bookshelf", "object"),
     o("chair", "object"),
     o("suitcase", "object"),
     o("potted_plant", "object"),
-  ], [r("bookshelf", "left_of", "cabinet"), r("chair", "right_of", "cabinet"), r("suitcase", "left_of", "bookshelf"), r("potted_plant", "right_of", "chair"), r("suitcase", "left_of", "cabinet")]),
+  ], [r("cabinet", "between", "bookshelf", "between", { target2: "chair" }), r("suitcase", "left_of", "bookshelf"), r("potted_plant", "right_of", "chair"), r("suitcase", "left_of", "cabinet")]),
 
   c("DEP01", "depth_front_back", "normal", "large_depth_pair", "A chair is in front of a sofa.", [
     o("chair", "subject"),
@@ -501,7 +504,7 @@ const cases = [
     o("sofa", "object"),
     o("coffee_table", "object"),
     o("suitcase", "object"),
-  ], [r("chair", "rotate_yaw", "", "45 degrees to the right", { question: "Is the chair rotated 45 degrees to the right in the image?" }), r("sofa", "rotate_yaw", "", "slightly to the left", { question: "Is the sofa rotated slightly to the left in the image?" }), r("chair", "left_of", "coffee_table"), r("sofa", "right_of", "coffee_table"), r("suitcase", "in_front", "chair")]),
+  ], [r("chair", "rotate_yaw", "", "45 degrees to the right", { question: "Is the chair rotated 45 degrees to the right in the image?" }), r("sofa", "rotate_yaw", "", "slightly to the left", { question: "Is the sofa rotated slightly to the left in the image?" }), r("coffee_table", "between", "chair", "between", { target2: "sofa" }), r("suitcase", "in_front", "chair")]),
   c("ROT10", "rotation_yaw", "hard", "tv_rotation_bundle", "A television is rotated 45 degrees to the left, the television sits on a cabinet, a chair is in front of the cabinet, a sofa is left of the cabinet, and a suitcase is right of the cabinet.", [
     o("tv", "subject"),
     o("cabinet", "support"),
@@ -666,16 +669,19 @@ function checkForRelation(rel) {
   const subjectZh = aliasesZh[rel.subject] || subject;
   const target = aliases[rel.target] || rel.target || rel.text;
   const targetZh = rel.target ? (aliasesZh[rel.target] || target) : zhRegion(rel.text);
+  const target2 = aliases[rel.target2] || rel.target2 || "";
+  const target2Zh = rel.target2 ? (aliasesZh[rel.target2] || target2) : "";
   const question = rel.question || relationQuestionEn(rel, subject, target);
-  const questionZh = relationQuestionZh(rel, subjectZh, targetZh);
+  const questionZh = relationQuestionZh(rel, subjectZh, targetZh, target2Zh);
   return {
-    check_id: `${rel.relation}:${rel.subject}:${rel.target || slug(rel.text)}`,
+    check_id: `${rel.relation}:${rel.subject}:${rel.target || slug(rel.text)}${rel.target2 ? `:${rel.target2}` : ""}`,
     type: checkTypeByRelation[rel.relation] || "relation",
     subject: rel.subject,
     relation: rel.relation,
     target: rel.target || "",
+    ...(rel.target2 ? { target2: rel.target2 } : {}),
     label_zh: questionZh,
-    pair_zh: relationPhraseZh(rel, subjectZh, targetZh),
+    pair_zh: relationPhraseZh(rel, subjectZh, targetZh, target2Zh),
     label_en: question,
     vqa_question: question,
     vqa_question_zh: questionZh,
@@ -687,6 +693,7 @@ function checkForRelation(rel) {
 function relationQuestionEn(rel, subject, target) {
   const s = withArticle(subject);
   const t = withArticle(target);
+  const t2 = withArticle(aliases[rel.target2] || rel.target2 || "");
   switch (rel.relation) {
     case "absolute_location":
       return `Is ${s} ${target === "center" ? "in the center of" : `on the ${target} of`} the image?`;
@@ -694,6 +701,8 @@ function relationQuestionEn(rel, subject, target) {
       return `Is ${s} to the left of ${t}?`;
     case "right_of":
       return `Is ${s} to the right of ${t}?`;
+    case "between":
+      return `Is ${s} between ${t} and ${t2}?`;
     case "in_front":
       return `Is ${s} in front of ${t}?`;
     case "behind":
@@ -716,7 +725,7 @@ function relationQuestionEn(rel, subject, target) {
   }
 }
 
-function relationQuestionZh(rel, subject, target) {
+function relationQuestionZh(rel, subject, target, target2 = "") {
   switch (rel.relation) {
     case "absolute_location":
       return `${subject}是否位于画面${target}？`;
@@ -724,6 +733,8 @@ function relationQuestionZh(rel, subject, target) {
       return `${subject}是否在${target}的左侧？`;
     case "right_of":
       return `${subject}是否在${target}的右侧？`;
+    case "between":
+      return `${subject}是否位于${target}和${target2}之间？`;
     case "in_front":
       return `${subject}是否在${target}的前方？`;
     case "behind":
@@ -747,7 +758,7 @@ function relationQuestionZh(rel, subject, target) {
   }
 }
 
-function relationPhraseZh(rel, subject, target) {
+function relationPhraseZh(rel, subject, target, target2 = "") {
   switch (rel.relation) {
     case "absolute_location":
       return `${subject}位于画面${target}`;
@@ -755,6 +766,8 @@ function relationPhraseZh(rel, subject, target) {
       return `${subject}在${target}左侧`;
     case "right_of":
       return `${subject}在${target}右侧`;
+    case "between":
+      return `${subject}在${target}和${target2}之间`;
     case "in_front":
       return `${subject}在${target}前方`;
     case "behind":
@@ -823,6 +836,7 @@ function relationEntry(rel) {
     type: rel.relation,
   };
   if (rel.target) out.target = rel.target;
+  if (rel.target2) out.target2 = rel.target2;
   if (rel.relation === "face") {
     out.type = "face";
     out.relation = "orientation";
