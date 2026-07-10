@@ -1,0 +1,84 @@
+[1/76] ABS01 relation=0.000 presence=1.000 err=
+[2/76] ABS02 relation=0.000 presence=1.000 err=
+[3/76] ABS03 relation=1.000 presence=1.000 err=
+[4/76] ABS04 relation=1.000 presence=1.000 err=
+[5/76] ABS05 relation=1.000 presence=1.000 err=
+[6/76] ABS06 relation=0.000 presence=1.000 err=
+[7/76] REL01 relation=1.000 presence=1.000 err=
+[8/76] REL02 relation=1.000 presence=1.000 err=
+[9/76] REL03 relation=1.000 presence=1.000 err=
+[10/76] REL04 relation=1.000 presence=1.000 err=
+[11/76] REL05 relation=0.000 presence=1.000 err=
+[12/76] REL06 relation=1.000 presence=1.000 err=
+[13/76] REL07 relation=1.000 presence=1.000 err=
+[14/76] REL08 relation=1.000 presence=1.000 err=
+[15/76] REL09 relation=1.000 presence=1.000 err=
+[16/76] REL10 relation=0.750 presence=1.000 err=
+[17/76] DEP01 relation=1.000 presence=1.000 err=
+[18/76] DEP02 relation=1.000 presence=1.000 err=
+[19/76] DEP03 relation=1.000 presence=1.000 err=
+[20/76] DEP04 relation=1.000 presence=1.000 err=
+[21/76] DEP05 relation=0.000 presence=0.500 err=
+[22/76] DEP06 relation=1.000 presence=1.000 err=
+[23/76] DEP07 relation=1.000 presence=1.000 err=
+[24/76] DEP08 relation=0.600 presence=1.000 err=
+[25/76] DEP09 relation=0.800 presence=1.000 err=
+[26/76] DEP10 relation=0.700 presence=1.000 err=
+[27/76] OCC01 relation=0.000 presence=1.000 err=
+[28/76] OCC02 relation=1.000 presence=1.000 err=
+[29/76] OCC03 relation=1.000 presence=1.000 err=
+[30/76] OCC04 relation=0.000 presence=1.000 err=
+[31/76] OCC05 relation=0.000 presence=1.000 err=
+[32/76] OCC06 relation=0.000 presence=1.000 err=
+[33/76] OCC07 relation=1.000 presence=1.000 err=
+[34/76] OCC08 relation=0.600 presence=1.000 err=
+[35/76] OCC09 relation=0.600 presence=1.000 err=
+[36/76] OCC10 relation=0.800 presence=1.000 err=
+[37/76] SUP01 relation=1.000 presence=1.000 err=
+[38/76] SUP02 relation=1.000 presence=1.000 err=
+[39/76] SUP03 relation=1.000 presence=1.000 err=
+[40/76] SUP04 relation=1.000 presence=1.000 err=
+[41/76] SUP05 relation=1.000 presence=1.000 err=
+[42/76] SUP06 relation=1.000 presence=1.000 err=
+[43/76] SUP07 relation=1.000 presence=1.000 err=
+[44/76] SUP08 relation=1.000 presence=1.000 err=
+[45/76] SUP09 relation=1.000 presence=1.000 err=
+[46/76] SUP10 relation=1.000 presence=1.000 err=
+[47/76] ORI01 relation=1.000 presence=1.000 err=
+[48/76] ORI02 relation=1.000 presence=1.000 err=
+[49/76] ORI03 relation=1.000 presence=1.000 err=
+[50/76] ORI04 relation=1.000 presence=1.000 err=
+[51/76] ORI05 relation=1.000 presence=1.000 err=
+[52/76] ORI06 relation=1.000 presence=1.000 err=
+[53/76] ORI07 relation=1.000 presence=1.000 err=
+[54/76] ORI08 relation=1.000 presence=1.000 err=
+[55/76] ORI09 relation=1.000 presence=1.000 err=
+[56/76] ORI10 relation=0.600 presence=1.000 err=
+[57/76] ROT01 relation=0.000 presence=1.000 err=
+[58/76] ROT02 relation=0.000 presence=1.000 err=
+[59/76] ROT03 relation=0.500 presence=1.000 err=
+[60/76] ROT04 relation=0.000 presence=1.000 err=
+[61/76] ROT05 relation=0.000 presence=1.000 err=
+[62/76] ROT06 relation=1.000 presence=1.000 err=
+[63/76] ROT07 relation=0.000 presence=1.000 err=
+[64/76] ROT08 relation=0.800 presence=1.000 err=
+[65/76] ROT09 relation=0.500 presence=1.000 err=
+[66/76] ROT10 relation=0.500 presence=1.000 err=
+[67/76] MUL01 relation=1.000 presence=1.000 err=
+[68/76] MUL02 relation=1.000 presence=1.000 err=
+[69/76] MUL03 relation=0.333 presence=0.667 err=
+[70/76] MUL04 relation=1.000 presence=1.000 err=
+[71/76] MUL05 relation=1.000 presence=1.000 err=
+[72/76] MUL06 relation=1.000 presence=1.000 err=
+[73/76] MUL07 relation=1.000 presence=1.000 err=
+[74/76] MUL08 relation=0.833 presence=1.000 err=
+[75/76] MUL09 relation=0.800 presence=1.000 err=
+[76/76] MUL10 relation=1.000 presence=1.000 err=
+{
+  "cases": 76,
+  "presence_score": 0.9890350877192983,
+  "relation_score": 0.7462719298245615,
+  "combined_score": 0.7948245614035091
+}
+wrote /T2I-Blender/related_works/experiments/results/zimage_qwen3vl8b_judge_20260710/eval/full_neutral_ids/vqa_results.jsonl
+wrote /T2I-Blender/related_works/experiments/results/zimage_qwen3vl8b_judge_20260710/eval/full_neutral_ids/summary.json

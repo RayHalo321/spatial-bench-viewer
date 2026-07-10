@@ -1,0 +1,114 @@
+{
+  "overall": {
+    "cases": 76,
+    "relations": 174,
+    "presence_macro": 0.9912280701754386,
+    "relation_case_macro": 0.7491228070175437,
+    "relation_micro": 0.764367816091954,
+    "exact_case_pass_rate": 0.631578947368421,
+    "errors": 0
+  },
+  "by_category": {
+    "absolute_location_2d": {
+      "cases": 6,
+      "relations": 6,
+      "presence_macro": 1,
+      "relation_case_macro": 1,
+      "relation_micro": 1,
+      "exact_case_pass_rate": 1,
+      "errors": 0
+    },
+    "relative_position_2d": {
+      "cases": 10,
+      "relations": 24,
+      "presence_macro": 1,
+      "relation_case_macro": 0.775,
+      "relation_micro": 0.875,
+      "exact_case_pass_rate": 0.7,
+      "errors": 0
+    },
+    "depth_front_back": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 0.9800000000000001,
+      "relation_case_macro": 0.7899999999999999,
+      "relation_micro": 0.7045454545454546,
+      "exact_case_pass_rate": 0.6,
+      "errors": 0
+    },
+    "occlusion_visibility": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 0.9800000000000001,
+      "relation_case_macro": 0.33999999999999997,
+      "relation_micro": 0.4090909090909091,
+      "exact_case_pass_rate": 0.2,
+      "errors": 0
+    },
+    "support_contact": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 0.99,
+      "relation_case_macro": 0.9800000000000001,
+      "relation_micro": 0.9545454545454546,
+      "exact_case_pass_rate": 0.9,
+      "errors": 0
+    },
+    "orientation_facing": {
+      "cases": 10,
+      "relations": 24,
+      "presence_macro": 1,
+      "relation_case_macro": 0.96,
+      "relation_micro": 0.9166666666666666,
+      "exact_case_pass_rate": 0.9,
+      "errors": 0
+    },
+    "rotation_yaw": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 1,
+      "relation_case_macro": 0.33499999999999996,
+      "relation_micro": 0.5,
+      "exact_case_pass_rate": 0.1,
+      "errors": 0
+    },
+    "multi_relation_composition": {
+      "cases": 10,
+      "relations": 32,
+      "presence_macro": 0.9833333333333334,
+      "relation_case_macro": 0.9133333333333333,
+      "relation_micro": 0.859375,
+      "exact_case_pass_rate": 0.8,
+      "errors": 0
+    }
+  },
+  "by_level": {
+    "simple": {
+      "cases": 6,
+      "relations": 6,
+      "presence_macro": 1,
+      "relation_case_macro": 1,
+      "relation_micro": 1,
+      "exact_case_pass_rate": 1,
+      "errors": 0
+    },
+    "normal": {
+      "cases": 49,
+      "relations": 63,
+      "presence_macro": 1,
+      "relation_case_macro": 0.7244897959183674,
+      "relation_micro": 0.7777777777777778,
+      "exact_case_pass_rate": 0.7142857142857143,
+      "errors": 0
+    },
+    "hard": {
+      "cases": 21,
+      "relations": 105,
+      "presence_macro": 0.9682539682539681,
+      "relation_case_macro": 0.7349206349206351,
+      "relation_micro": 0.7428571428571429,
+      "exact_case_pass_rate": 0.3333333333333333,
+      "errors": 0
+    }
+  }
+}

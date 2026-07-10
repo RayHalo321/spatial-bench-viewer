@@ -575,14 +575,21 @@ const cases = [
 writeFileSync(new URL("./data/bench_cases.json", import.meta.url), JSON.stringify(cases, null, 2) + "\n");
 
 const indexUrl = new URL("./index.html", import.meta.url);
-const index = readFileSync(indexUrl, "utf8");
+let index = readFileSync(indexUrl, "utf8");
+if (!index.includes("const MODEL_DATA =")) {
+  index = index.replace(
+    "    const CASES =",
+    '    const MODEL_DATA = {"judge":{"model":"Qwen3-VL-8B-Instruct"},"models":[]};\n    const CASES =',
+  );
+}
+const casesPattern = /const CASES = .*?;\n    let filtered/s;
+if (!casesPattern.test(index)) {
+  throw new Error("Could not find inline CASES in index.html");
+}
 const updated = index.replace(
-  /const CASES = .*?;\n    let filtered/s,
+  casesPattern,
   `const CASES = ${JSON.stringify(cases)};\n    let filtered`,
 );
-if (updated === index) {
-  throw new Error("Could not replace inline CASES in index.html");
-}
 writeFileSync(indexUrl, updated);
 
 console.log(`wrote ${cases.length} bench cases`);
