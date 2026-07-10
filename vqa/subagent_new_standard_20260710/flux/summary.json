@@ -1,0 +1,114 @@
+{
+  "overall": {
+    "cases": 76,
+    "relations": 174,
+    "presence_macro": 0.9980263157894737,
+    "relation_case_macro": 0.8599780701754386,
+    "relation_micro": 0.896551724137931,
+    "exact_case_pass_rate": 0.7763157894736842,
+    "errors": 0
+  },
+  "by_category": {
+    "absolute_location_2d": {
+      "cases": 6,
+      "relations": 6,
+      "presence_macro": 1.0,
+      "relation_case_macro": 1.0,
+      "relation_micro": 1.0,
+      "exact_case_pass_rate": 1.0,
+      "errors": 0
+    },
+    "relative_position_2d": {
+      "cases": 10,
+      "relations": 24,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.73,
+      "relation_micro": 0.8333333333333334,
+      "exact_case_pass_rate": 0.6,
+      "errors": 0
+    },
+    "depth_front_back": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.9,
+      "relation_micro": 0.9545454545454546,
+      "exact_case_pass_rate": 0.9,
+      "errors": 0
+    },
+    "occlusion_visibility": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.89,
+      "relation_micro": 0.9318181818181818,
+      "exact_case_pass_rate": 0.8,
+      "errors": 0
+    },
+    "support_contact": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 0.985,
+      "relation_case_macro": 0.96,
+      "relation_micro": 0.9090909090909091,
+      "exact_case_pass_rate": 0.9,
+      "errors": 0
+    },
+    "orientation_facing": {
+      "cases": 10,
+      "relations": 24,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.8833333333333332,
+      "relation_micro": 0.9166666666666666,
+      "exact_case_pass_rate": 0.8,
+      "errors": 0
+    },
+    "rotation_yaw": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.5725,
+      "relation_micro": 0.6590909090909091,
+      "exact_case_pass_rate": 0.3,
+      "errors": 0
+    },
+    "multi_relation_composition": {
+      "cases": 10,
+      "relations": 32,
+      "presence_macro": 1.0,
+      "relation_case_macro": 1.0,
+      "relation_micro": 1.0,
+      "exact_case_pass_rate": 1.0,
+      "errors": 0
+    }
+  },
+  "by_level": {
+    "simple": {
+      "cases": 6,
+      "relations": 6,
+      "presence_macro": 1.0,
+      "relation_case_macro": 1.0,
+      "relation_micro": 1.0,
+      "exact_case_pass_rate": 1.0,
+      "errors": 0
+    },
+    "normal": {
+      "cases": 49,
+      "relations": 63,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.8163265306122449,
+      "relation_micro": 0.8412698412698413,
+      "exact_case_pass_rate": 0.7959183673469388,
+      "errors": 0
+    },
+    "hard": {
+      "cases": 21,
+      "relations": 105,
+      "presence_macro": 0.9928571428571429,
+      "relation_case_macro": 0.9218253968253969,
+      "relation_micro": 0.9238095238095239,
+      "exact_case_pass_rate": 0.6666666666666666,
+      "errors": 0
+    }
+  }
+}

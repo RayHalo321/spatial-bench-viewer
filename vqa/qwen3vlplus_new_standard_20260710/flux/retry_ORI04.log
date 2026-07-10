@@ -1,0 +1,9 @@
+[1/1] ORI04 relation=1.000 presence=1.000 err=
+{
+  "cases": 1,
+  "presence_score": 1.0,
+  "relation_score": 1.0,
+  "combined_score": 1.0
+}
+wrote retry_ORI04/vqa_results.jsonl
+wrote retry_ORI04/summary.json

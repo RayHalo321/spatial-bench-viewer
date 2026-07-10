@@ -1,0 +1,37 @@
+{
+  "model": "qwen3-vl-plus",
+  "cases": 1,
+  "result_path": "retry_ORI04/vqa_results.jsonl",
+  "summary_path": "retry_ORI04/summary.json",
+  "overall": {
+    "cases": 1,
+    "presence_score": 1.0,
+    "relation_score": 1.0,
+    "combined_score": 1.0
+  },
+  "by_category": {
+    "orientation_facing": {
+      "cases": 1,
+      "presence_score": 1.0,
+      "relation_score": 1.0,
+      "combined_score": 1.0
+    }
+  },
+  "by_level": {
+    "normal": {
+      "cases": 1,
+      "presence_score": 1.0,
+      "relation_score": 1.0,
+      "combined_score": 1.0
+    }
+  },
+  "by_category_level": {
+    "orientation_facing::normal": {
+      "cases": 1,
+      "presence_score": 1.0,
+      "relation_score": 1.0,
+      "combined_score": 1.0
+    }
+  },
+  "errors": []
+}

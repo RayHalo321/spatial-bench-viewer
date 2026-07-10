@@ -1,0 +1,94 @@
+{
+  "model": "qwen3-vl-plus",
+  "cases": 4,
+  "result_path": "retry_failed/vqa_results.jsonl",
+  "summary_path": "retry_failed/summary.json",
+  "overall": {
+    "cases": 4,
+    "presence_score": 0.4,
+    "relation_score": 0.1,
+    "combined_score": 0.16000000000000003
+  },
+  "by_category": {
+    "depth_front_back": {
+      "cases": 1,
+      "presence_score": 0.8,
+      "relation_score": 0.0,
+      "combined_score": 0.16000000000000003
+    },
+    "multi_relation_composition": {
+      "cases": 2,
+      "presence_score": 0.0,
+      "relation_score": 0.0,
+      "combined_score": 0.0
+    },
+    "rotation_yaw": {
+      "cases": 1,
+      "presence_score": 0.8,
+      "relation_score": 0.4,
+      "combined_score": 0.4800000000000001
+    }
+  },
+  "by_level": {
+    "hard": {
+      "cases": 2,
+      "presence_score": 0.8,
+      "relation_score": 0.2,
+      "combined_score": 0.32000000000000006
+    },
+    "normal": {
+      "cases": 2,
+      "presence_score": 0.0,
+      "relation_score": 0.0,
+      "combined_score": 0.0
+    }
+  },
+  "by_category_level": {
+    "depth_front_back::hard": {
+      "cases": 1,
+      "presence_score": 0.8,
+      "relation_score": 0.0,
+      "combined_score": 0.16000000000000003
+    },
+    "multi_relation_composition::normal": {
+      "cases": 2,
+      "presence_score": 0.0,
+      "relation_score": 0.0,
+      "combined_score": 0.0
+    },
+    "rotation_yaw::hard": {
+      "cases": 1,
+      "presence_score": 0.8,
+      "relation_score": 0.4,
+      "combined_score": 0.4800000000000001
+    }
+  },
+  "errors": [
+    {
+      "id": "MUL04",
+      "category": "multi_relation_composition",
+      "level": "normal",
+      "model": "qwen3-vl-plus",
+      "image": "/T2I-Blender/related_works/experiments/results/direct_sdxl/custom/default/current_20260708_full_20260710/images/MUL04.png",
+      "question_count": 8,
+      "presence_score": 0.0,
+      "relation_score": 0.0,
+      "combined_score": 0.0,
+      "raw_response": "",
+      "error": "Expecting ',' delimiter: line 34 column 8 (char 1083)"
+    },
+    {
+      "id": "MUL05",
+      "category": "multi_relation_composition",
+      "level": "normal",
+      "model": "qwen3-vl-plus",
+      "image": "/T2I-Blender/related_works/experiments/results/direct_sdxl/custom/default/current_20260708_full_20260710/images/MUL05.png",
+      "question_count": 7,
+      "presence_score": 0.0,
+      "relation_score": 0.0,
+      "combined_score": 0.0,
+      "raw_response": "",
+      "error": "Expecting ',' delimiter: line 25 column 2670 (char 3352)"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "model": "qwen3-vl-plus",
+  "cases": 1,
+  "result_path": "retry_failed/vqa_results.jsonl",
+  "summary_path": "retry_failed/summary.json",
+  "overall": {
+    "cases": 1,
+    "presence_score": 1.0,
+    "relation_score": 1.0,
+    "combined_score": 1.0
+  },
+  "by_category": {
+    "relative_position_2d": {
+      "cases": 1,
+      "presence_score": 1.0,
+      "relation_score": 1.0,
+      "combined_score": 1.0
+    }
+  },
+  "by_level": {
+    "hard": {
+      "cases": 1,
+      "presence_score": 1.0,
+      "relation_score": 1.0,
+      "combined_score": 1.0
+    }
+  },
+  "by_category_level": {
+    "relative_position_2d::hard": {
+      "cases": 1,
+      "presence_score": 1.0,
+      "relation_score": 1.0,
+      "combined_score": 1.0
+    }
+  },
+  "errors": []
+}

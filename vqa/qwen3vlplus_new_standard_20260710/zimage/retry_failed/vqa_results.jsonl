@@ -1,0 +1,1 @@
+{"id": "ORI09", "category": "orientation_facing", "level": "hard", "model": "qwen3-vl-plus", "image": "/T2I-Blender/related_works/experiments/data/spatial_bench/zimage_turbo_1024/ORI09.png", "question_count": 14, "presence_score": 0.0, "relation_score": 0.0, "combined_score": 0.0, "raw_response": "", "error": "Expecting ',' delimiter: line 78 column 8 (char 3602)"}

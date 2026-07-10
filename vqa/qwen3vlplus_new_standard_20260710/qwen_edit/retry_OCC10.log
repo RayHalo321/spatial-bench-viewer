@@ -1,0 +1,9 @@
+[1/1] OCC10 relation=0.600 presence=1.000 err=
+{
+  "cases": 1,
+  "presence_score": 1.0,
+  "relation_score": 0.6,
+  "combined_score": 0.6799999999999999
+}
+wrote retry_OCC10/vqa_results.jsonl
+wrote retry_OCC10/summary.json

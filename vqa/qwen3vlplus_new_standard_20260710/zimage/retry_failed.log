@@ -1,0 +1,9 @@
+[1/1] ORI09 relation=0.000 presence=0.000 err=Expecting ',' delimiter: line 78 column 8 (char 3602)
+{
+  "cases": 1,
+  "presence_score": 0.0,
+  "relation_score": 0.0,
+  "combined_score": 0.0
+}
+wrote retry_failed/vqa_results.jsonl
+wrote retry_failed/summary.json

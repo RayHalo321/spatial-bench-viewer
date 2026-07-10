@@ -1,0 +1,114 @@
+{
+  "overall": {
+    "cases": 76,
+    "relations": 174,
+    "presence_macro": 0.9853070175438597,
+    "relation_case_macro": 0.8173245614035087,
+    "relation_micro": 0.8620689655172413,
+    "exact_case_pass_rate": 0.7236842105263158,
+    "errors": 0
+  },
+  "by_category": {
+    "absolute_location_2d": {
+      "cases": 6,
+      "relations": 6,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.6666666666666666,
+      "relation_micro": 0.6666666666666666,
+      "exact_case_pass_rate": 0.6666666666666666,
+      "errors": 0
+    },
+    "relative_position_2d": {
+      "cases": 10,
+      "relations": 24,
+      "presence_macro": 0.9666666666666666,
+      "relation_case_macro": 0.73,
+      "relation_micro": 0.7916666666666666,
+      "exact_case_pass_rate": 0.6,
+      "errors": 0
+    },
+    "depth_front_back": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 0.975,
+      "relation_case_macro": 0.85,
+      "relation_micro": 0.9318181818181818,
+      "exact_case_pass_rate": 0.8,
+      "errors": 0
+    },
+    "occlusion_visibility": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.9,
+      "relation_micro": 0.9545454545454546,
+      "exact_case_pass_rate": 0.9,
+      "errors": 0
+    },
+    "support_contact": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 1.0,
+      "relation_case_macro": 1.0,
+      "relation_micro": 1.0,
+      "exact_case_pass_rate": 1.0,
+      "errors": 0
+    },
+    "orientation_facing": {
+      "cases": 10,
+      "relations": 24,
+      "presence_macro": 0.9800000000000001,
+      "relation_case_macro": 0.7733333333333333,
+      "relation_micro": 0.8541666666666666,
+      "exact_case_pass_rate": 0.6,
+      "errors": 0
+    },
+    "rotation_yaw": {
+      "cases": 10,
+      "relations": 22,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.6649999999999999,
+      "relation_micro": 0.6818181818181818,
+      "exact_case_pass_rate": 0.4,
+      "errors": 0
+    },
+    "multi_relation_composition": {
+      "cases": 10,
+      "relations": 32,
+      "presence_macro": 0.9666666666666666,
+      "relation_case_macro": 0.8933333333333333,
+      "relation_micro": 0.875,
+      "exact_case_pass_rate": 0.8,
+      "errors": 0
+    }
+  },
+  "by_level": {
+    "simple": {
+      "cases": 6,
+      "relations": 6,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.6666666666666666,
+      "relation_micro": 0.6666666666666666,
+      "exact_case_pass_rate": 0.6666666666666666,
+      "errors": 0
+    },
+    "normal": {
+      "cases": 49,
+      "relations": 63,
+      "presence_macro": 0.9812925170068026,
+      "relation_case_macro": 0.8027210884353742,
+      "relation_micro": 0.8174603174603174,
+      "exact_case_pass_rate": 0.7755102040816326,
+      "errors": 0
+    },
+    "hard": {
+      "cases": 21,
+      "relations": 105,
+      "presence_macro": 0.9904761904761905,
+      "relation_case_macro": 0.8944444444444445,
+      "relation_micro": 0.9,
+      "exact_case_pass_rate": 0.6190476190476191,
+      "errors": 0
+    }
+  }
+}
