@@ -1,0 +1,161 @@
+{
+  "run_id": "current_20260708_full_qwen_20260710",
+  "judge": "independent_manual_visual_judge_codex",
+  "protocol": "positive_inverse_presence_gate_v1",
+  "partial_run": true,
+  "coverage": {
+    "display": "63/76",
+    "evaluated": 63,
+    "expected": 76,
+    "missing": 13,
+    "rate": 0.8289473684210527,
+    "missing_ids": [
+      "DEP08",
+      "DEP10",
+      "OCC08",
+      "SUP05",
+      "SUP08",
+      "ORI03",
+      "ORI06",
+      "ORI08",
+      "ORI09",
+      "ROT09",
+      "MUL04",
+      "MUL06",
+      "MUL09"
+    ]
+  },
+  "overall": {
+    "cases": 63,
+    "presence_checks": 164,
+    "relation_checks": 126,
+    "presence_macro": 0.9928571428571428,
+    "relation_case_macro": 0.888095238095238,
+    "relation_micro": 0.876984126984127,
+    "exact_case_pass_rate": 0.746031746031746,
+    "combined_macro": 0.9090476190476191
+  },
+  "by_category": {
+    "absolute_location_2d": {
+      "cases": 6,
+      "presence_checks": 6,
+      "relation_checks": 6,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.9166666666666666,
+      "relation_micro": 0.9166666666666666,
+      "exact_case_pass_rate": 0.8333333333333334,
+      "combined_macro": 0.9333333333333332
+    },
+    "depth_front_back": {
+      "cases": 8,
+      "presence_checks": 19,
+      "relation_checks": 12,
+      "presence_macro": 1.0,
+      "relation_case_macro": 1.0,
+      "relation_micro": 1.0,
+      "exact_case_pass_rate": 1.0,
+      "combined_macro": 1.0
+    },
+    "multi_relation_composition": {
+      "cases": 7,
+      "presence_checks": 26,
+      "relation_checks": 22,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.9285714285714285,
+      "relation_micro": 0.9090909090909091,
+      "exact_case_pass_rate": 0.7142857142857143,
+      "combined_macro": 0.9428571428571428
+    },
+    "occlusion_visibility": {
+      "cases": 9,
+      "presence_checks": 24,
+      "relation_checks": 17,
+      "presence_macro": 0.9722222222222222,
+      "relation_case_macro": 0.8888888888888888,
+      "relation_micro": 0.9411764705882353,
+      "exact_case_pass_rate": 0.8888888888888888,
+      "combined_macro": 0.9055555555555556
+    },
+    "orientation_facing": {
+      "cases": 6,
+      "presence_checks": 11,
+      "relation_checks": 11,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.9,
+      "relation_micro": 0.8636363636363636,
+      "exact_case_pass_rate": 0.6666666666666666,
+      "combined_macro": 0.9199999999999999
+    },
+    "relative_position_2d": {
+      "cases": 10,
+      "presence_checks": 33,
+      "relation_checks": 24,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.825,
+      "relation_micro": 0.8125,
+      "exact_case_pass_rate": 0.6,
+      "combined_macro": 0.86
+    },
+    "rotation_yaw": {
+      "cases": 9,
+      "presence_checks": 17,
+      "relation_checks": 18,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.7222222222222222,
+      "relation_micro": 0.7222222222222222,
+      "exact_case_pass_rate": 0.4444444444444444,
+      "combined_macro": 0.7777777777777778
+    },
+    "support_contact": {
+      "cases": 8,
+      "presence_checks": 28,
+      "relation_checks": 16,
+      "presence_macro": 0.975,
+      "relation_case_macro": 0.975,
+      "relation_micro": 0.9375,
+      "exact_case_pass_rate": 0.875,
+      "combined_macro": 0.975
+    }
+  },
+  "by_level": {
+    "hard": {
+      "cases": 13,
+      "presence_checks": 72,
+      "relation_checks": 65,
+      "presence_macro": 0.9846153846153847,
+      "relation_case_macro": 0.8679487179487181,
+      "relation_micro": 0.8692307692307693,
+      "exact_case_pass_rate": 0.38461538461538464,
+      "combined_macro": 0.8912820512820514
+    },
+    "normal": {
+      "cases": 44,
+      "presence_checks": 86,
+      "relation_checks": 55,
+      "presence_macro": 0.9943181818181818,
+      "relation_case_macro": 0.8901515151515151,
+      "relation_micro": 0.8818181818181818,
+      "exact_case_pass_rate": 0.8409090909090909,
+      "combined_macro": 0.9109848484848487
+    },
+    "simple": {
+      "cases": 6,
+      "presence_checks": 6,
+      "relation_checks": 6,
+      "presence_macro": 1.0,
+      "relation_case_macro": 0.9166666666666666,
+      "relation_micro": 0.9166666666666666,
+      "exact_case_pass_rate": 0.8333333333333334,
+      "combined_macro": 0.9333333333333332
+    }
+  },
+  "errors": [],
+  "validation": {
+    "rows": 63,
+    "unique_ids": 63,
+    "presence_checks": 164,
+    "relation_details": 126,
+    "errors": 0,
+    "all_case_formulas_recomputed": true
+  }
+}

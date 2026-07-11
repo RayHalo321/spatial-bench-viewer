@@ -1,0 +1,22 @@
+{
+  "round": 0,
+  "checked_at": "2026-07-11T13:09:29",
+  "full_qwen_complete": 62,
+  "expected_images": 76,
+  "incomplete_prompt_ids": [
+    "case_0023",
+    "case_0024",
+    "case_0025",
+    "case_0033",
+    "case_0040",
+    "case_0043",
+    "case_0048",
+    "case_0051",
+    "case_0053",
+    "case_0054",
+    "case_0064",
+    "case_0069",
+    "case_0071",
+    "case_0074"
+  ]
+}
