@@ -1,0 +1,105 @@
+{
+  "schema_version": "spatial_bench_v3",
+  "judge_model": "qwen3-vl-8b",
+  "result_path": "not_published_in_pages_snapshot",
+  "overall": {
+    "cases": 97,
+    "presence_micro": 0.9265734265734266,
+    "cardinality_micro": 0.8776223776223776,
+    "strict_relation_micro": 0.6332046332046332,
+    "case_exact_rate": 0.4536082474226804,
+    "errors": 0
+  },
+  "by_capability": {
+    "absolute_location_2d": {
+      "cases": 6,
+      "presence_micro": 1.0,
+      "cardinality_micro": 0.6666666666666666,
+      "strict_relation_micro": 0.6666666666666666,
+      "case_exact_rate": 0.6666666666666666,
+      "errors": 0
+    },
+    "depth_front_back": {
+      "cases": 13,
+      "presence_micro": 0.9487179487179487,
+      "cardinality_micro": 0.8974358974358975,
+      "strict_relation_micro": 0.7096774193548387,
+      "case_exact_rate": 0.6153846153846154,
+      "errors": 0
+    },
+    "multi_relation_composition": {
+      "cases": 13,
+      "presence_micro": 0.9183673469387755,
+      "cardinality_micro": 0.8979591836734694,
+      "strict_relation_micro": 0.7906976744186046,
+      "case_exact_rate": 0.6153846153846154,
+      "errors": 0
+    },
+    "occlusion_visibility": {
+      "cases": 13,
+      "presence_micro": 0.8157894736842105,
+      "cardinality_micro": 0.6842105263157895,
+      "strict_relation_micro": 0.21875,
+      "case_exact_rate": 0.23076923076923078,
+      "errors": 0
+    },
+    "orientation_facing": {
+      "cases": 10,
+      "presence_micro": 0.96875,
+      "cardinality_micro": 0.96875,
+      "strict_relation_micro": 0.7837837837837838,
+      "case_exact_rate": 0.6,
+      "errors": 0
+    },
+    "relative_position_2d": {
+      "cases": 13,
+      "presence_micro": 0.9555555555555556,
+      "cardinality_micro": 0.9111111111111111,
+      "strict_relation_micro": 0.631578947368421,
+      "case_exact_rate": 0.3076923076923077,
+      "errors": 0
+    },
+    "support_contact": {
+      "cases": 13,
+      "presence_micro": 0.9090909090909091,
+      "cardinality_micro": 0.9090909090909091,
+      "strict_relation_micro": 0.8181818181818182,
+      "case_exact_rate": 0.7692307692307693,
+      "errors": 0
+    },
+    "yaw_direction": {
+      "cases": 16,
+      "presence_micro": 0.9696969696969697,
+      "cardinality_micro": 0.9090909090909091,
+      "strict_relation_micro": 0.4358974358974359,
+      "case_exact_rate": 0.0625,
+      "errors": 0
+    }
+  },
+  "by_difficulty": {
+    "diagnostic": {
+      "cases": 43,
+      "presence_micro": 0.9705882352941176,
+      "cardinality_micro": 0.8823529411764706,
+      "strict_relation_micro": 0.5813953488372093,
+      "case_exact_rate": 0.5581395348837209,
+      "errors": 0
+    },
+    "hard": {
+      "cases": 28,
+      "presence_micro": 0.8851351351351351,
+      "cardinality_micro": 0.8445945945945946,
+      "strict_relation_micro": 0.5923566878980892,
+      "case_exact_rate": 0.21428571428571427,
+      "errors": 0
+    },
+    "normal": {
+      "cases": 26,
+      "presence_micro": 0.9714285714285714,
+      "cardinality_micro": 0.9428571428571428,
+      "strict_relation_micro": 0.7796610169491526,
+      "case_exact_rate": 0.5384615384615384,
+      "errors": 0
+    }
+  }
+}

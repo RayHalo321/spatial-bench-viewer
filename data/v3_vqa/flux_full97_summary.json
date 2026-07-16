@@ -1,0 +1,105 @@
+{
+  "schema_version": "spatial_bench_v3",
+  "judge_model": "qwen3-vl-8b",
+  "result_path": "not_published_in_pages_snapshot",
+  "overall": {
+    "cases": 97,
+    "presence_micro": 0.9685314685314685,
+    "cardinality_micro": 0.9440559440559441,
+    "strict_relation_micro": 0.7567567567567568,
+    "case_exact_rate": 0.5257731958762887,
+    "errors": 1
+  },
+  "by_capability": {
+    "absolute_location_2d": {
+      "cases": 6,
+      "presence_micro": 1.0,
+      "cardinality_micro": 1.0,
+      "strict_relation_micro": 1.0,
+      "case_exact_rate": 1.0,
+      "errors": 0
+    },
+    "depth_front_back": {
+      "cases": 13,
+      "presence_micro": 0.9743589743589743,
+      "cardinality_micro": 0.8717948717948718,
+      "strict_relation_micro": 0.7419354838709677,
+      "case_exact_rate": 0.5384615384615384,
+      "errors": 0
+    },
+    "multi_relation_composition": {
+      "cases": 13,
+      "presence_micro": 0.8571428571428571,
+      "cardinality_micro": 0.8571428571428571,
+      "strict_relation_micro": 0.7674418604651163,
+      "case_exact_rate": 0.6153846153846154,
+      "errors": 1
+    },
+    "occlusion_visibility": {
+      "cases": 13,
+      "presence_micro": 1.0,
+      "cardinality_micro": 1.0,
+      "strict_relation_micro": 0.71875,
+      "case_exact_rate": 0.38461538461538464,
+      "errors": 0
+    },
+    "orientation_facing": {
+      "cases": 10,
+      "presence_micro": 1.0,
+      "cardinality_micro": 1.0,
+      "strict_relation_micro": 0.918918918918919,
+      "case_exact_rate": 0.8,
+      "errors": 0
+    },
+    "relative_position_2d": {
+      "cases": 13,
+      "presence_micro": 1.0,
+      "cardinality_micro": 0.9777777777777777,
+      "strict_relation_micro": 0.8157894736842105,
+      "case_exact_rate": 0.5384615384615384,
+      "errors": 0
+    },
+    "support_contact": {
+      "cases": 13,
+      "presence_micro": 0.9772727272727273,
+      "cardinality_micro": 0.9772727272727273,
+      "strict_relation_micro": 0.8787878787878788,
+      "case_exact_rate": 0.7692307692307693,
+      "errors": 0
+    },
+    "yaw_direction": {
+      "cases": 16,
+      "presence_micro": 1.0,
+      "cardinality_micro": 0.9393939393939394,
+      "strict_relation_micro": 0.4358974358974359,
+      "case_exact_rate": 0.0,
+      "errors": 0
+    }
+  },
+  "by_difficulty": {
+    "diagnostic": {
+      "cases": 43,
+      "presence_micro": 1.0,
+      "cardinality_micro": 0.9705882352941176,
+      "strict_relation_micro": 0.6744186046511628,
+      "case_exact_rate": 0.6511627906976745,
+      "errors": 0
+    },
+    "hard": {
+      "cases": 28,
+      "presence_micro": 0.9459459459459459,
+      "cardinality_micro": 0.9121621621621622,
+      "strict_relation_micro": 0.7707006369426752,
+      "case_exact_rate": 0.32142857142857145,
+      "errors": 1
+    },
+    "normal": {
+      "cases": 26,
+      "presence_micro": 0.9857142857142858,
+      "cardinality_micro": 0.9857142857142858,
+      "strict_relation_micro": 0.7796610169491526,
+      "case_exact_rate": 0.5384615384615384,
+      "errors": 0
+    }
+  }
+}
