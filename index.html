@@ -243,6 +243,7 @@
     }
     .exact.pass { color: var(--green); background: var(--green-soft); }
     .exact.fail { color: var(--red); background: var(--red-soft); }
+    .exact.pending { color: var(--muted); background: #edf0f4; }
     .model-image-link { display: block; background: #e9edf2; }
     .model-image {
       display: block;
@@ -310,6 +311,7 @@
     .answer.no { color: var(--red); background: var(--red-soft); }
     .answer.unclear { color: var(--amber); background: var(--amber-soft); }
     .answer.missing { color: var(--muted); background: #edf0f4; }
+    .answer.pending { color: var(--muted); background: #edf0f4; }
     .answer-reason { margin-top: 6px; color: var(--muted); font-size: 11px; line-height: 1.35; }
     .load-error { margin: 40px auto; max-width: 560px; color: var(--red); }
 
@@ -351,7 +353,7 @@
   <header class="topbar">
     <div class="brand">
       <h1>Spatial Bench v3 Viewer</h1>
-      <p>Prompt-level comparison with strict local Qwen3-VL-8B evaluation</p>
+      <p>Prompt-level comparison across five spatial generation pipelines</p>
     </div>
     <div class="top-actions">
       <span id="headerCount">Loading 97 cases...</span>
@@ -383,7 +385,7 @@
       <div class="dataset-summary" id="datasetSummary"></div>
       <div class="pipeline-note">
         <strong>Curated 93-case suite</strong>
-        Four visually invalid occlusion/depth cases are archived and excluded. T2I-Blender RGB renders are included in the comparison.
+        Four visually invalid occlusion/depth cases are archived and excluded. T2I-Blender RGB and Qwen-refined outputs are both shown; the new Qwen outputs remain unscored pending judge calibration.
       </div>
     </aside>
 
@@ -512,12 +514,14 @@
     }
 
     function modelCard(model, result) {
-      const exact = result.exact ? "pass" : "fail";
+      const judged = result.judged !== false;
+      const exact = judged ? (result.exact ? "pass" : "fail") : "pending";
+      const exactLabel = judged ? (result.exact ? "Exact pass" : "Exact fail") : "Not judged";
       return `
         <article class="model-card">
           <div class="model-card-head">
             <span class="model-name">${escapeHtml(model.label)}</span>
-            <span class="exact ${exact}">${result.exact ? "Exact pass" : "Exact fail"}</span>
+            <span class="exact ${exact}">${exactLabel}</span>
           </div>
           <a class="model-image-link" href="${escapeHtml(result.image)}" target="_blank" rel="noreferrer" title="Open full image">
             <img class="model-image" src="${escapeHtml(result.image)}" alt="${escapeHtml(model.label)} output" loading="lazy">
@@ -533,6 +537,9 @@
     }
 
     function answerCell(result, checkId) {
+      if (result.judged === false) {
+        return '<span class="answer pending">not judged</span>';
+      }
       const entry = result.answers[checkId];
       const answer = String(entry?.answer ?? "missing").toLowerCase();
       return `

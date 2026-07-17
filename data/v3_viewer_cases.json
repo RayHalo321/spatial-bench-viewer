@@ -18,11 +18,15 @@
     {
       "id": "t2i_blender",
       "label": "T2I-Blender RGB"
+    },
+    {
+      "id": "t2i_blender_qwen",
+      "label": "T2I-Blender + Qwen I2I"
     }
   ],
   "pipeline": {
     "status": "complete",
-    "note": "The active viewer contains the 93-case human-curated suite and T2I-Blender RGB renders."
+    "note": "The active viewer contains the 93-case human-curated suite, T2I-Blender RGB renders, and Qwen-refined outputs. Qwen I2I outputs are intentionally unscored until the calibrated visual judge is ready."
   },
   "cases": [
     {
@@ -210,6 +214,17 @@
               "reason": "No chair to be in right region."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ABS-D01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -398,6 +413,17 @@
               "reason": "The sofa is entirely on the right, not left, side of the image."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ABS-D02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -559,6 +585,17 @@
               "reason": "The TV is positioned in the middle horizontal area of the frame."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ABS-D03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -720,6 +757,17 @@
               "reason": "The table is positioned centrally in the frame."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ABS-D04.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -908,6 +956,17 @@
               "reason": "The bookshelf is not in the right region of the image."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ABS-D05.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -1096,6 +1155,17 @@
               "reason": "The suitcase is not in the left half of the image."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ABS-D06.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -1341,6 +1411,17 @@
               "reason": "The chair is not to the right of the table; it is to the left."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-D01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -1586,6 +1667,17 @@
               "reason": "Sofa is not to the left of the bookshelf; it is to the right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-D02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -1957,6 +2049,17 @@
               "reason": "Laptop is not on right side of table relative to lamp."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -2321,6 +2424,17 @@
               "reason": "Vase is positioned to the right of the coffee table."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-N02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -2566,6 +2680,17 @@
               "reason": "Television is not to the left of the cabinet; it is to the right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-D03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -2993,6 +3118,17 @@
               "reason": "Potted plant is not in front of bench; it is at same depth level."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-N03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -3238,6 +3374,17 @@
               "reason": "The side table is not to the left of the sofa; it is to the right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-D04.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -4022,6 +4169,17 @@
               "reason": "Coffee table is not behind cabinet; it is in front."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -4666,6 +4824,17 @@
               "reason": "Chair is in front of desk, not behind it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-H02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -5331,6 +5500,17 @@
               "reason": "Cabinet is not behind bookshelf; it is to side."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/REL-H03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -5576,6 +5756,17 @@
               "reason": "The chair is not behind the sofa; it is in front."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/DEP-D01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -5821,6 +6012,17 @@
               "reason": "The table is not behind the sofa; it is in front of it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/DEP-D02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -6066,6 +6268,17 @@
               "reason": "The suitcase is not behind the cabinet; it is in front."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/DEP-D03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -6311,6 +6524,17 @@
               "reason": "Barrel is positioned above and closer to camera than crate."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/DEP-D04.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -6556,6 +6780,17 @@
               "reason": "The plant is positioned in front of the bench from the viewer's perspective."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/DEP-D05.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -6801,6 +7036,17 @@
               "reason": "The chair is in front of the table, not the other way around."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/DEP-D06.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -7046,6 +7292,17 @@
               "reason": "The crate is not behind the shelves; it is in front."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/DEP-D07.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -7711,6 +7968,17 @@
               "reason": "Crate is not right of suitcase; it is left."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/DEP-H02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -8376,6 +8644,17 @@
               "reason": "Suitcase is not right of chair; it is left of chair."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/DEP-H03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -8594,6 +8873,17 @@
               "reason": "Plant leaves overlap cabinet, but cabinet remains recognizable."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/OCC-D01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -8812,6 +9102,17 @@
               "reason": "The suitcase is in front of the sofa, not overlapping it visually."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/OCC-D02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -9030,6 +9331,17 @@
               "reason": "The bench's top edge partially covers the bookshelf's front, but the bookshelf remains visible."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/OCC-D03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -9248,6 +9560,17 @@
               "reason": "The crate's top edge overlaps the barrel's base, partially occluding it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/OCC-D04.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -9466,6 +9789,17 @@
               "reason": "Suitcase silhouette overlaps cabinet, cabinet remains recognizable."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/OCC-D06.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -9684,6 +10018,17 @@
               "reason": "The plant is in front of the shelf, not overlapping it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/OCC-D07.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -10358,6 +10703,17 @@
               "reason": "Chair’s silhouette partially covers sofa’s front edge, but sofa remains recognizable."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/OCC-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -10575,6 +10931,17 @@
               "reason": "The vase sits directly on the table's top surface."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-D01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -10792,6 +11159,17 @@
               "reason": "Laptop is placed directly on the desk surface."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-D02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -11009,6 +11387,17 @@
               "reason": "The bowl is positioned directly on the top surface of the side table."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-D03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -11226,6 +11615,17 @@
               "reason": "Lamp base is placed directly on the nightstand's top surface."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-D04.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -11443,6 +11843,17 @@
               "reason": "TV sits directly on top surface of the cabinet."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-D05.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -11660,6 +12071,17 @@
               "reason": "The plate sits directly on the table's top surface."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-D06.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -11877,6 +12299,17 @@
               "reason": "The mug's base is on the table's top surface."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-D07.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -12521,6 +12954,17 @@
               "reason": "Laptop is positioned to the right of the lamp on the desk surface."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -13160,6 +13604,17 @@
               "reason": "Chair is not on left side of sofa in image."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-H02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -13804,6 +14259,17 @@
               "reason": "Laptop is not right of lamp; it is left of it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/SUP-H03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -13966,6 +14432,17 @@
               "reason": "The screen faces forward, directly toward the camera's viewpoint."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ORI-D01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -14128,6 +14605,17 @@
               "reason": "The cabinet’s front face is directly oriented toward the camera."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ORI-D02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -14317,6 +14805,17 @@
               "reason": "The lamp's shade is oriented toward the image right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-D01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -14571,6 +15070,17 @@
               "reason": "The laptop's screen is oriented toward the camera."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ORI-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -14760,6 +15270,17 @@
               "reason": "Chair's front faces image-right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-D02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -14949,6 +15470,17 @@
               "reason": "The sofa’s front is oriented toward the left side of the image."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-D03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -15111,6 +15643,17 @@
               "reason": "The bookshelf’s front face is directly oriented toward the camera."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ORI-D03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -15822,6 +16365,17 @@
               "reason": "Chair’s front does not face away from desk; it faces toward it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ORI-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -16527,6 +17081,17 @@
               "reason": "Chair’s front faces opposite TV’s direction."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ORI-H02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -17231,6 +17796,17 @@
               "reason": "Chair’s front faces away from cabinet, toward image right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/ORI-H03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -17420,6 +17996,17 @@
               "reason": "Shadow direction confirms screen does not face right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-D04.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -17609,6 +18196,17 @@
               "reason": "Chair's front faces image-left direction."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-D05.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -17890,6 +18488,17 @@
               "reason": "Laptop screen faces image-left, matching the question's direction."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -18079,6 +18688,17 @@
               "reason": "The sofa’s front faces the center, not the image right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-D06.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -18268,6 +18888,17 @@
               "reason": "The cabinet's front face is centered, not angled toward the image left."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-D07.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -18457,6 +19088,17 @@
               "reason": "The front face is centered, not angled right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-D08.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -18646,6 +19288,17 @@
               "reason": "The bench’s front faces forward, not image-right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-D09.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -19298,6 +19951,17 @@
               "reason": "Lamp's light source is clearly angled toward the right side of the image."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -19909,6 +20573,17 @@
               "reason": "Suitcase is not behind chair; it is in front based on floor contact point position."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-H02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -20612,6 +21287,17 @@
               "reason": "Sofa’s front faces left side of image, as seen from its orientation."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/YAW-H03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -20949,6 +21635,17 @@
               "reason": "Coffee table is in front of sofa based on floor contact and perspective."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -21314,6 +22011,17 @@
               "reason": "Suitcase is not on the left side of the bench; it is on the right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-N02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -21685,6 +22393,17 @@
               "reason": "Mug is behind laptop from viewer's perspective."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-N03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -22087,6 +22806,17 @@
               "reason": "Chair's back faces the television, so front faces away."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-N04.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -22424,6 +23154,17 @@
               "reason": "Lamp is positioned left of side table from viewer's perspective."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-N05.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -22826,6 +23567,17 @@
               "reason": "Sofa’s front does not face away from TV."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-N06.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -23191,6 +23943,17 @@
               "reason": "Potted plant is not on the left side of the bench; it is on the right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-N07.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -23924,6 +24687,17 @@
               "reason": "No plant occludes television; plant is behind sofa."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -24620,6 +25394,17 @@
               "reason": "Potted plant does not occlude cabinet; both are visible."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-H02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -25233,6 +26018,17 @@
               "reason": "Chair is positioned in front of desk, not behind it based on perspective and floor contact."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/MUL-H03.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -25598,6 +26394,17 @@
               "reason": "Coffee table is closer to camera than sofa."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTREL-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -25936,6 +26743,17 @@
               "reason": "Lamp is on right side of laptop from viewer's perspective."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTREL-N02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -26658,6 +27476,17 @@
               "reason": "Potted plant is left of cabinet in image."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTREL-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -27023,6 +27852,17 @@
               "reason": "Chair is not left of sofa; it is right of it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTDEP-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -27331,6 +28171,17 @@
               "reason": "The suitcase is not on the right side of the cabinet; it is on the left."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTDEP-N02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -27996,6 +28847,17 @@
               "reason": "Potted plant is not on right; it's on left of bookshelf."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTDEP-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -28278,6 +29140,17 @@
               "reason": "The plant does not occlude the cabinet; both are fully visible."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTOCC-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -28560,6 +29433,17 @@
               "reason": "The suitcase is in front of the refrigerator and does not overlap its silhouette."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTOCC-N02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -29174,6 +30058,17 @@
               "reason": "Chair is not left of sofa; it is right of it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTOCC-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -29512,6 +30407,17 @@
               "reason": "Chair is positioned left of side table from viewer's perspective."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTSUP-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -29850,6 +30756,17 @@
               "reason": "Armchair is in front of cabinet based on perspective and floor contact."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTSUP-N02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -30519,6 +31436,17 @@
               "reason": "Bookshelf is not in front of sofa; it is behind it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTSUP-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -30922,6 +31850,17 @@
               "reason": "Sofa’s front does not face away from TV; it faces toward it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTORI-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -31297,6 +32236,17 @@
               "reason": "Lamp is not left of laptop; it is to the right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTORI-N02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -32122,6 +33072,17 @@
               "reason": "Bookshelf is left of cabinet in image."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTORI-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -32431,6 +33392,17 @@
               "reason": "The chair is not to the left of the coffee table; it is to the right."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTYAW-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -32740,6 +33712,17 @@
               "reason": "The box is in front of the refrigerator, not behind it."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTYAW-N02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -33470,6 +34453,17 @@
               "reason": "Potted plant is not visible in image, so cannot determine right of cabinet."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTYAW-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -33808,6 +34802,17 @@
               "reason": "Coffee table is in front of sofa based on floor contact and perspective."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTMUL-N01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -34118,6 +35123,17 @@
               "reason": "The chair’s front faces left, away from the bookshelf’s direction."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTMUL-N02.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     },
@@ -34851,6 +35867,17 @@
               "reason": "Suitcase is not right of bookshelf; it is left."
             }
           }
+        },
+        "t2i_blender_qwen": {
+          "image": "generated/v3_full93/t2i_blender_qwen/PILOTMUL-H01.png",
+          "judged": false,
+          "presence": null,
+          "cardinality": null,
+          "relation": null,
+          "primary_relation": null,
+          "exact": null,
+          "error": "",
+          "answers": {}
         }
       }
     }
