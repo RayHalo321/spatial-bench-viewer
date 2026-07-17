@@ -1,0 +1,31 @@
+{
+  "schema_version": "spatial_bench_v3_curated93_v1",
+  "sources": [
+    "full_72_curated_core_cases.jsonl",
+    "full_97_core_cases.jsonl (21 PILOT* additions)"
+  ],
+  "active_case_count": 93,
+  "base_case_count": 72,
+  "added_pilot_case_count": 21,
+  "selection_scope": "full97 minus four human-confirmed invalid occlusion/depth renders",
+  "removed_cases": [
+    {
+      "id": "OCC-D05",
+      "reason": "Visible gap between the chair and coffee-table silhouettes."
+    },
+    {
+      "id": "OCC-H02",
+      "reason": "The bench does not visibly occlude the metal shelves."
+    },
+    {
+      "id": "OCC-H03",
+      "reason": "The suitcase does not visibly occlude the sofa."
+    },
+    {
+      "id": "DEP-H01",
+      "reason": "The chair is not visibly present, so the relation graph is incomplete."
+    }
+  ],
+  "archival_policy": "The original full76/full97 data, images, and scores remain archived and are not overwritten.",
+  "evaluation_policy": "FLUX, SDXL, LayoutGPT, and T2I-Blender RGB use the same 93 cases, materialized questions, Qwen3-VL-8B judge, and strict scoring code."
+}

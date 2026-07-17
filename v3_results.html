@@ -133,39 +133,28 @@
     const summaryRow = (model, best) => `<tr><td><span class="model">${h(model.label)}</span><span class="scope">${h(model.scope)}</span></td><td>${model.summary.overall.cases}</td>${metricCells(model.summary.overall, best)}<td>${model.summary.overall.errors}</td></tr>`;
     const capabilityRows = (model) => Object.entries(model.summary.by_capability).map(([name, row]) => `<tr><td>${h(name)}</td><td>${row.cases}</td>${metricCells(row)}<td>${row.errors}</td></tr>`).join("");
 
-    fetch("data/v3_results_20260716.json")
+    fetch("data/v3_results_20260717_full93.json")
       .then((response) => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
       .then((data) => {
-        const models = data.full97.models;
+        const models = data.active93.models;
         const best = bestMetrics(models);
-        const pipeline = data.pipeline_pilot;
         document.getElementById("app").innerHTML = `
           <div class="intro">
             <div><h1>Strict spatial evaluation</h1><p>${h(data.description)}</p></div>
             <div class="stamp">Judge: ${h(data.judge.model)}<br>${h(data.generated_at)}</div>
           </div>
-          <div class="status"><strong>T2I-Blender full-suite status:</strong> ${h(data.pipeline_full.status_note)}</div>
 
           <section>
-            <h2>Full 97-case comparison</h2>
+            <h2>Curated 93-case comparison</h2>
             <div class="table-wrap"><table>
               <thead><tr><th>Method</th><th>Cases</th><th>Presence</th><th>Cardinality</th><th>Strict relation</th><th>Exact case</th><th>Judge errors</th></tr></thead>
               <tbody>${models.map((model) => summaryRow(model, best)).join("")}</tbody>
             </table></div>
-            <p class="metric-note">Best values are highlighted. All three rows use the same 97 prompts and the same local judge.</p>
+            <p class="metric-note">Best values are highlighted. All four rows use the same 93 cases, 947 questions, image-only protocol, and local judge.</p>
           </section>
 
           <section>
-            <h2>T2I-Blender pilot</h2>
-            <div class="table-wrap"><table>
-              <thead><tr><th>Method</th><th>Cases</th><th>Presence</th><th>Cardinality</th><th>Strict relation</th><th>Exact case</th><th>Judge errors</th></tr></thead>
-              <tbody>${summaryRow(pipeline)}</tbody>
-            </table></div>
-            <p class="metric-note">Pilot-only result. It is reported separately and is not ranked against the 97-case baselines.</p>
-          </section>
-
-          <section>
-            <div class="breakdown-head"><h2>Capability breakdown</h2><label>Method <select id="modelSelect">${[...models, pipeline].map((model) => `<option value="${h(model.id)}">${h(model.label)} (${model.summary.overall.cases})</option>`).join("")}</select></label></div>
+            <div class="breakdown-head"><h2>Capability breakdown</h2><label>Method <select id="modelSelect">${models.map((model) => `<option value="${h(model.id)}">${h(model.label)} (${model.summary.overall.cases})</option>`).join("")}</select></label></div>
             <div class="table-wrap"><table>
               <thead><tr><th>Capability</th><th>Cases</th><th>Presence</th><th>Cardinality</th><th>Strict relation</th><th>Exact case</th><th>Judge errors</th></tr></thead>
               <tbody id="capabilityRows"></tbody>
@@ -174,12 +163,12 @@
 
           <section>
             <h2>Visual audit sheets</h2>
-            <div class="gallery">${[...models, pipeline].map((model) => `<figure><figcaption>${h(model.label)} · ${h(model.scope)}</figcaption><a href="${h(model.contact_sheet)}"><img src="${h(model.contact_sheet)}" alt="${h(model.label)} contact sheet" loading="lazy"></a></figure>`).join("")}</div>
+            <div class="gallery">${models.map((model) => `<figure><figcaption>${h(model.label)} · ${h(model.scope)}</figcaption><a href="${h(model.contact_sheet)}"><img src="${h(model.contact_sheet)}" alt="${h(model.label)} contact sheet" loading="lazy"></a></figure>`).join("")}</div>
           </section>
 
-          <section class="method"><h2>Evaluation protocol</h2><p>${h(data.judge.protocol)}</p><p>Primary scoring is strict: pass = 1; fail, unclear, contradiction, missing answer, and runtime error = 0. Presence gates relation scoring, and errors remain in the denominator.</p><p><a href="data/v3_results_20260716.json">Download the published result summary.</a></p></section>`;
+          <section class="method"><h2>Evaluation protocol</h2><p>${h(data.judge.protocol)}</p><p>Primary scoring is strict: pass = 1; fail, unclear, contradiction, missing answer, and runtime error = 0. Presence gates relation scoring, and errors remain in the denominator.</p><p><a href="data/v3_results_20260717_full93.json">Download the published result summary.</a></p></section>`;
 
-        const allModels = [...models, pipeline];
+        const allModels = models;
         const select = document.getElementById("modelSelect");
         const renderBreakdown = () => {
           const model = allModels.find((item) => item.id === select.value);

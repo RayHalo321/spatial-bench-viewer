@@ -1,0 +1,141 @@
+{
+  "schema_version": "spatial_bench_v3",
+  "judge_model": "Qwen3-VL-8B-Instruct",
+  "result_path": "benchmarks/spatial_v3/vqa/full93_uniform_20260717/sdxl/vqa_results.jsonl",
+  "overall": {
+    "cases": 93,
+    "presence_micro": 0.9144981412639405,
+    "cardinality_micro": 0.8327137546468402,
+    "strict_relation_micro": 0.5720164609053497,
+    "primary_relation_micro": 0.5757575757575758,
+    "relation_count": 243,
+    "primary_relation_count": 165,
+    "case_exact_rate": 0.3548387096774194,
+    "errors": 0
+  },
+  "by_capability": {
+    "absolute_location_2d": {
+      "cases": 6,
+      "presence_micro": 1.0,
+      "cardinality_micro": 0.8333333333333334,
+      "strict_relation_micro": 0.6666666666666666,
+      "primary_relation_micro": 0.6666666666666666,
+      "relation_count": 6,
+      "primary_relation_count": 6,
+      "case_exact_rate": 0.6666666666666666,
+      "errors": 0
+    },
+    "depth_front_back": {
+      "cases": 12,
+      "presence_micro": 0.8823529411764706,
+      "cardinality_micro": 0.7352941176470589,
+      "strict_relation_micro": 0.5384615384615384,
+      "primary_relation_micro": 0.5,
+      "relation_count": 26,
+      "primary_relation_count": 20,
+      "case_exact_rate": 0.4166666666666667,
+      "errors": 0
+    },
+    "multi_relation_composition": {
+      "cases": 13,
+      "presence_micro": 0.9387755102040817,
+      "cardinality_micro": 0.8163265306122449,
+      "strict_relation_micro": 0.5581395348837209,
+      "primary_relation_micro": 0.5581395348837209,
+      "relation_count": 43,
+      "primary_relation_count": 43,
+      "case_exact_rate": 0.23076923076923078,
+      "errors": 0
+    },
+    "occlusion_visibility": {
+      "cases": 10,
+      "presence_micro": 0.8846153846153846,
+      "cardinality_micro": 0.8846153846153846,
+      "strict_relation_micro": 0.38095238095238093,
+      "primary_relation_micro": 0.5,
+      "relation_count": 21,
+      "primary_relation_count": 12,
+      "case_exact_rate": 0.5,
+      "errors": 0
+    },
+    "orientation_facing": {
+      "cases": 10,
+      "presence_micro": 0.875,
+      "cardinality_micro": 0.8125,
+      "strict_relation_micro": 0.6486486486486487,
+      "primary_relation_micro": 0.6428571428571429,
+      "relation_count": 37,
+      "primary_relation_count": 14,
+      "case_exact_rate": 0.5,
+      "errors": 0
+    },
+    "relative_position_2d": {
+      "cases": 13,
+      "presence_micro": 0.9777777777777777,
+      "cardinality_micro": 0.9333333333333333,
+      "strict_relation_micro": 0.7105263157894737,
+      "primary_relation_micro": 0.6538461538461539,
+      "relation_count": 38,
+      "primary_relation_count": 26,
+      "case_exact_rate": 0.23076923076923078,
+      "errors": 0
+    },
+    "support_contact": {
+      "cases": 13,
+      "presence_micro": 0.9090909090909091,
+      "cardinality_micro": 0.8409090909090909,
+      "strict_relation_micro": 0.6666666666666666,
+      "primary_relation_micro": 0.7916666666666666,
+      "relation_count": 33,
+      "primary_relation_count": 24,
+      "case_exact_rate": 0.46153846153846156,
+      "errors": 0
+    },
+    "yaw_direction": {
+      "cases": 16,
+      "presence_micro": 0.8787878787878788,
+      "cardinality_micro": 0.7878787878787878,
+      "strict_relation_micro": 0.41025641025641024,
+      "primary_relation_micro": 0.3,
+      "relation_count": 39,
+      "primary_relation_count": 20,
+      "case_exact_rate": 0.125,
+      "errors": 0
+    }
+  },
+  "by_difficulty": {
+    "diagnostic": {
+      "cases": 42,
+      "presence_micro": 0.9545454545454546,
+      "cardinality_micro": 0.9090909090909091,
+      "strict_relation_micro": 0.5714285714285714,
+      "primary_relation_micro": 0.5714285714285714,
+      "relation_count": 42,
+      "primary_relation_count": 42,
+      "case_exact_rate": 0.5476190476190477,
+      "errors": 0
+    },
+    "hard": {
+      "cases": 25,
+      "presence_micro": 0.8872180451127819,
+      "cardinality_micro": 0.7744360902255639,
+      "strict_relation_micro": 0.5563380281690141,
+      "primary_relation_micro": 0.5783132530120482,
+      "relation_count": 142,
+      "primary_relation_count": 83,
+      "case_exact_rate": 0.04,
+      "errors": 0
+    },
+    "normal": {
+      "cases": 26,
+      "presence_micro": 0.9285714285714286,
+      "cardinality_micro": 0.8714285714285714,
+      "strict_relation_micro": 0.6101694915254238,
+      "primary_relation_micro": 0.575,
+      "relation_count": 59,
+      "primary_relation_count": 40,
+      "case_exact_rate": 0.34615384615384615,
+      "errors": 0
+    }
+  }
+}
