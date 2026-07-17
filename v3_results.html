@@ -111,7 +111,7 @@
     <h1>Spatial Bench v3 Results</h1>
     <nav aria-label="Report navigation">
       <a href="index.html">Case viewer</a>
-      <a href="vqa_report.html">Legacy report</a>
+      <a href="vqa_report.html">Legacy 8B report</a>
       <a href="our_pipeline_partial_report.html">Pipeline archive</a>
     </nav>
   </header>
@@ -119,44 +119,60 @@
   <script>
     const pct = (value) => value == null ? "-" : (Number(value) * 100).toFixed(1) + "%";
     const h = (value) => String(value ?? "").replace(/[&<>"']/g, (ch) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+    const metricKeys = ["presence_micro", "strict_relation_micro", "primary_relation_micro", "case_exact_rate"];
+    const modelMeta = [
+      { id: "flux", auditId: "flux", label: "FLUX.1-schnell", scope: "93 cases · plain text-to-image", contact_sheet: "generated/v3_full93/flux_contact_sheet.jpg" },
+      { id: "sdxl", auditId: "sdxl", label: "SDXL Base 1.0", scope: "93 cases · plain text-to-image", contact_sheet: "generated/v3_full93/sdxl_contact_sheet.jpg" },
+      { id: "gligen", auditId: "layoutgpt", label: "LayoutGPT + GLIGEN", scope: "93 cases · layout-guided generation", contact_sheet: "generated/v3_full93/gligen_contact_sheet.jpg" },
+      { id: "t2i_blender", auditId: "t2i_blender", label: "T2I-Blender RGB", scope: "93 cases · Blender-agent RGB render", contact_sheet: "generated/v3_full93/t2i_blender_contact_sheet.jpg" }
+    ];
+    const normalizeSummary = (row) => ({ ...row, case_exact_rate: row.exact_case_rate });
+    const buildModels = (audit) => modelMeta.map((meta) => ({
+      ...meta,
+      summary: {
+        overall: normalizeSummary(audit.all_93.overall[meta.auditId]),
+        by_capability: Object.fromEntries(Object.entries(audit.all_93.by_capability).map(([capability, rows]) => [capability, normalizeSummary(rows[meta.auditId])]))
+      }
+    }));
     const metricCells = (summary, best) => {
-      const keys = ["presence_micro", "cardinality_micro", "strict_relation_micro", "case_exact_rate"];
-      return keys.map((key) => `<td class="${best && best[key] === summary[key] ? "best" : ""}">${pct(summary[key])}</td>`).join("");
+      return metricKeys.map((key) => `<td class="${best && best[key] === summary[key] ? "best" : ""}">${pct(summary[key])}</td>`).join("");
     };
     const bestMetrics = (models) => {
       const out = {};
-      for (const key of ["presence_micro", "cardinality_micro", "strict_relation_micro", "case_exact_rate"]) {
+      for (const key of metricKeys) {
         out[key] = Math.max(...models.map((model) => Number(model.summary.overall[key] || 0)));
       }
       return out;
     };
-    const summaryRow = (model, best) => `<tr><td><span class="model">${h(model.label)}</span><span class="scope">${h(model.scope)}</span></td><td>${model.summary.overall.cases}</td>${metricCells(model.summary.overall, best)}<td>${model.summary.overall.errors}</td></tr>`;
-    const capabilityRows = (model) => Object.entries(model.summary.by_capability).map(([name, row]) => `<tr><td>${h(name)}</td><td>${row.cases}</td>${metricCells(row)}<td>${row.errors}</td></tr>`).join("");
+    const summaryRow = (model, best) => `<tr><td><span class="model">${h(model.label)}</span><span class="scope">${h(model.scope)}</span></td><td>${model.summary.overall.cases}</td>${metricCells(model.summary.overall, best)}</tr>`;
+    const capabilityRows = (model) => Object.entries(model.summary.by_capability).map(([name, row]) => `<tr><td>${h(name)}</td><td>${row.cases}</td>${metricCells(row)}</tr>`).join("");
 
-    fetch("data/v3_results_20260717_full93.json")
+    fetch("data/v3_visual_audit_20260717_adjudicated_summary.json?v=20260718-adjudicated")
       .then((response) => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
-      .then((data) => {
-        const models = data.active93.models;
+      .then((audit) => {
+        const models = buildModels(audit);
         const best = bestMetrics(models);
         document.getElementById("app").innerHTML = `
           <div class="intro">
-            <div><h1>Strict spatial evaluation</h1><p>${h(data.description)}</p></div>
-            <div class="stamp">Judge: ${h(data.judge.model)}<br>${h(data.generated_at)}</div>
+            <div><h1>Adjudicated spatial evaluation</h1><p>Four independent first-pass visual reviewers evaluated all 93 cases. Fifty-four disputed cases received a separate second-pass review before the scores were frozen.</p></div>
+            <div class="stamp">Judge: Codex multi-reviewer visual adjudication<br>Frozen 2026-07-17</div>
           </div>
+
+          <div class="status">Qwen-refined outputs are available in the case viewer but are not included in this table until they receive the same separate visual audit.</div>
 
           <section>
             <h2>Curated 93-case comparison</h2>
             <div class="table-wrap"><table>
-              <thead><tr><th>Method</th><th>Cases</th><th>Presence</th><th>Cardinality</th><th>Strict relation</th><th>Exact case</th><th>Judge errors</th></tr></thead>
+              <thead><tr><th>Method</th><th>Cases</th><th>Presence</th><th>Strict relation</th><th>Primary relation</th><th>Exact case</th></tr></thead>
               <tbody>${models.map((model) => summaryRow(model, best)).join("")}</tbody>
             </table></div>
-            <p class="metric-note">Best values are highlighted. All four rows use the same 93 cases, 947 questions, image-only protocol, and local judge.</p>
+            <p class="metric-note">Best values are highlighted. All rows use the same 93 cases, 269 object-instance checks, and 243 explicit relation checks. Fail and unclear both score 0 in the strict metrics.</p>
           </section>
 
           <section>
             <div class="breakdown-head"><h2>Capability breakdown</h2><label>Method <select id="modelSelect">${models.map((model) => `<option value="${h(model.id)}">${h(model.label)} (${model.summary.overall.cases})</option>`).join("")}</select></label></div>
             <div class="table-wrap"><table>
-              <thead><tr><th>Capability</th><th>Cases</th><th>Presence</th><th>Cardinality</th><th>Strict relation</th><th>Exact case</th><th>Judge errors</th></tr></thead>
+              <thead><tr><th>Capability</th><th>Cases</th><th>Presence</th><th>Strict relation</th><th>Primary relation</th><th>Exact case</th></tr></thead>
               <tbody id="capabilityRows"></tbody>
             </table></div>
           </section>
@@ -166,7 +182,7 @@
             <div class="gallery">${models.map((model) => `<figure><figcaption>${h(model.label)} · ${h(model.scope)}</figcaption><a href="${h(model.contact_sheet)}"><img src="${h(model.contact_sheet)}" alt="${h(model.label)} contact sheet" loading="lazy"></a></figure>`).join("")}</div>
           </section>
 
-          <section class="method"><h2>Evaluation protocol</h2><p>${h(data.judge.protocol)}</p><p>Primary scoring is strict: pass = 1; fail, unclear, contradiction, missing answer, and runtime error = 0. Presence gates relation scoring, and errors remain in the denominator.</p><p><a href="data/v3_results_20260717_full93.json">Download the published result summary.</a></p></section>`;
+          <section class="method"><h2>Evaluation protocol</h2><p>Reviewers saw the prompt, explicit object and relation checklist, and the four method images. They independently marked each object instance and relation as pass, fail, or unclear; disputed cells were then reviewed again without using the old Qwen3-VL-8B answer as ground truth.</p><p>Primary scoring is strict: pass = 1; fail and unclear = 0. Exact Case requires every required object instance and every explicit relation to pass.</p><p><a href="data/v3_visual_audit_20260717_adjudicated_summary.json">Download the adjudicated summary</a> · <a href="data/v3_visual_audit_20260717_adjudicated.jsonl">Download all case-level decisions</a></p></section>`;
 
         const allModels = models;
         const select = document.getElementById("modelSelect");

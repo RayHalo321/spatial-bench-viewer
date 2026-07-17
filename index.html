@@ -385,7 +385,7 @@
       <div class="dataset-summary" id="datasetSummary"></div>
       <div class="pipeline-note">
         <strong>Curated 93-case suite</strong>
-        Four visually invalid occlusion/depth cases are archived and excluded. T2I-Blender RGB and Qwen-refined outputs are both shown; the new Qwen outputs remain unscored pending judge calibration.
+        Four visually invalid occlusion/depth cases are archived and excluded. Four pipelines use the frozen multi-reviewer visual adjudication; Qwen-refined outputs remain unscored pending a separate audit.
       </div>
     </aside>
 
@@ -528,7 +528,7 @@
           </a>
           <div class="model-scores">
             <div class="metric"><strong>${metric(result.presence)}</strong><span>Presence</span></div>
-            <div class="metric"><strong>${metric(result.cardinality)}</strong><span>Cardinality</span></div>
+            <div class="metric"><strong>${metric(result.primary_relation)}</strong><span>Primary relation</span></div>
             <div class="metric"><strong>${metric(result.relation)}</strong><span>Relation</span></div>
           </div>
           ${result.error ? `<div class="model-error">Judge error: ${escapeHtml(result.error)}</div>` : ""}
@@ -541,6 +541,9 @@
         return '<span class="answer pending">not judged</span>';
       }
       const entry = result.answers[checkId];
+      if (!entry) {
+        return '<span class="answer pending">not judged</span>';
+      }
       const answer = String(entry?.answer ?? "missing").toLowerCase();
       return `
         <details class="answer-details">
@@ -629,7 +632,7 @@
 
     async function loadViewer() {
       try {
-        const response = await fetch("data/v3_viewer_cases.json?v=20260717-qwen93");
+        const response = await fetch("data/v3_viewer_cases.json?v=20260718-adjudicated");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         state.data = await response.json();
         fillSelect("category", state.data.cases.map(item => item.category));
