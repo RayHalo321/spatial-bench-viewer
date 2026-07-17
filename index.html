@@ -629,7 +629,7 @@
 
     async function loadViewer() {
       try {
-        const response = await fetch("data/v3_viewer_cases.json");
+        const response = await fetch("data/v3_viewer_cases.json?v=20260717-qwen93");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         state.data = await response.json();
         fillSelect("category", state.data.cases.map(item => item.category));
