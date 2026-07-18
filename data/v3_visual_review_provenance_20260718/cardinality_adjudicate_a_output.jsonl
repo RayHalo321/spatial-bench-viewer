@@ -1,0 +1,46 @@
+{"id":"REL-N01","method":"flux","check_id":"cardinality:lamp","answer":"yes","reason":"Exactly one desk lamp is visible beside the laptop.","confidence":"high"}
+{"id":"REL-H03","method":"flux","check_id":"cardinality:potted_plant","answer":"no","reason":"Two separate potted plant forms are visible: a leafy plant on the left and a second pot with a bare stem on the right.","confidence":"high"}
+{"id":"DEP-D05","method":"flux","check_id":"cardinality:potted_plant","answer":"no","reason":"A second plant pot is visible behind the foreground potted plant, so exactly one cannot be confirmed.","confidence":"medium"}
+{"id":"DEP-H02","method":"flux","check_id":"cardinality:crate","answer":"no","reason":"Two crate-like containers are visible in the foreground.","confidence":"high"}
+{"id":"DEP-H03","method":"flux","check_id":"cardinality:cabinet","answer":"no","reason":"The scene contains a large display cabinet and another cabinet-like unit at the right.","confidence":"high"}
+{"id":"OCC-D04","method":"flux","check_id":"cardinality:barrel","answer":"no","reason":"Both a black barrel and a separate wooden barrel end are visible inside the crate.","confidence":"medium"}
+{"id":"SUP-H02","method":"flux","check_id":"cardinality:chair","answer":"yes","reason":"One chair-like seat is visible in the foreground in addition to the sofa.","confidence":"medium"}
+{"id":"ORI-N01","method":"flux","check_id":"cardinality:office_desk","answer":"yes","reason":"The laptop rests on one visible desk surface and no second desk is present.","confidence":"medium"}
+{"id":"YAW-N01","method":"flux","check_id":"cardinality:laptop","answer":"yes","reason":"Exactly one laptop is clearly visible.","confidence":"high"}
+{"id":"YAW-H02","method":"flux","check_id":"cardinality:chair","answer":"yes","reason":"Exactly one armchair is visible on the right side of the scene.","confidence":"high"}
+{"id":"YAW-H02","method":"flux","check_id":"cardinality:coffee_table","answer":"no","reason":"Two distinct coffee tables are visible, one in front and one behind it.","confidence":"high"}
+{"id":"YAW-H02","method":"flux","check_id":"cardinality:sofa","answer":"yes","reason":"Exactly one sofa is visible on the left.","confidence":"high"}
+{"id":"ABS-D01","method":"sdxl","check_id":"cardinality:chair","answer":"yes","reason":"Exactly one chair is visible.","confidence":"high"}
+{"id":"REL-N01","method":"sdxl","check_id":"cardinality:lamp","answer":"no","reason":"The image depicts a large shaded lamp and a second articulated lamp structure.","confidence":"medium"}
+{"id":"REL-N02","method":"sdxl","check_id":"cardinality:vase","answer":"yes","reason":"Exactly one tall vase is visible on the coffee table.","confidence":"high"}
+{"id":"REL-D03","method":"sdxl","check_id":"cardinality:tv","answer":"no","reason":"A large television and a second smaller television are both visible.","confidence":"high"}
+{"id":"REL-N03","method":"sdxl","check_id":"cardinality:potted_plant","answer":"no","reason":"Besides the clear potted plant, a separate large plant leaf appears above the bench, so exactly one plant instance is not unambiguous.","confidence":"medium"}
+{"id":"OCC-D01","method":"sdxl","check_id":"cardinality:cabinet","answer":"no","reason":"Multiple separate cabinet-like white units are visible across the scene.","confidence":"high"}
+{"id":"OCC-H01","method":"sdxl","check_id":"cardinality:cabinet","answer":"no","reason":"No recognizable cabinet is visible.","confidence":"high"}
+{"id":"OCC-H01","method":"sdxl","check_id":"cardinality:sofa","answer":"no","reason":"The only upholstered seat is an armchair rather than a sofa.","confidence":"high"}
+{"id":"SUP-D03","method":"sdxl","check_id":"cardinality:side_table","answer":"no","reason":"Only a cropped white support surface is visible, so one distinct side table cannot be confirmed.","confidence":"medium"}
+{"id":"SUP-H01","method":"sdxl","check_id":"cardinality:plate","answer":"no","reason":"More than one plate or saucer is visible on the desk.","confidence":"high"}
+{"id":"SUP-H02","method":"sdxl","check_id":"cardinality:cabinet","answer":"no","reason":"The television stand and additional wall cabinetry create multiple cabinet objects.","confidence":"high"}
+{"id":"SUP-H02","method":"sdxl","check_id":"cardinality:chair","answer":"no","reason":"No distinct chair is visible; the upholstered seating is a sofa.","confidence":"high"}
+{"id":"SUP-H03","method":"sdxl","check_id":"cardinality:bowl","answer":"no","reason":"The image shows a cup and plates but no recognizable bowl.","confidence":"high"}
+{"id":"YAW-H01","method":"sdxl","check_id":"cardinality:lamp","answer":"yes","reason":"Exactly one lamp is visible on the right side of the desk.","confidence":"high"}
+{"id":"YAW-H03","method":"sdxl","check_id":"cardinality:chair","answer":"yes","reason":"One partially visible chair is present behind the left cabinet and no second chair is visible.","confidence":"medium"}
+{"id":"MUL-N01","method":"sdxl","check_id":"cardinality:sofa","answer":"yes","reason":"Exactly one sofa is visible on the right; the other seat is an armchair.","confidence":"high"}
+{"id":"MUL-N02","method":"sdxl","check_id":"cardinality:bookshelf","answer":"no","reason":"A wide bookcase and a separate narrow bookcase section are both visible.","confidence":"high"}
+{"id":"MUL-N03","method":"sdxl","check_id":"cardinality:mug","answer":"yes","reason":"Exactly one mug is clearly visible.","confidence":"high"}
+{"id":"MUL-N05","method":"sdxl","check_id":"cardinality:side_table","answer":"yes","reason":"Exactly one round side table is visible.","confidence":"medium"}
+{"id":"MUL-N07","method":"sdxl","check_id":"cardinality:suitcase","answer":"yes","reason":"One hard suitcase is visible in the foreground; the object on the bench is a handbag.","confidence":"medium"}
+{"id":"MUL-H01","method":"sdxl","check_id":"cardinality:sofa","answer":"yes","reason":"Exactly one blue sofa is visible; the orange seat is an armchair.","confidence":"high"}
+{"id":"MUL-H01","method":"sdxl","check_id":"cardinality:suitcase","answer":"no","reason":"At least two suitcase-like cases are visible near the coffee table and beneath the armchair.","confidence":"high"}
+{"id":"MUL-H02","method":"sdxl","check_id":"cardinality:cabinet","answer":"yes","reason":"One large cabinet is visible on the right; the smaller foreground object is a chest or crate.","confidence":"medium"}
+{"id":"PILOTREL-H01","method":"sdxl","check_id":"cardinality:bookshelf","answer":"no","reason":"The large storage wall contains multiple distinct bookcase sections, so exactly one bookshelf is not clear.","confidence":"medium"}
+{"id":"PILOTREL-H01","method":"sdxl","check_id":"cardinality:cabinet","answer":"no","reason":"Multiple cabinet-like sections are fused into the storage wall, so exactly one cabinet cannot be confirmed.","confidence":"medium"}
+{"id":"PILOTOCC-N02","method":"sdxl","check_id":"cardinality:refrigerator","answer":"no","reason":"Two distinct refrigerator appliances are visible.","confidence":"high"}
+{"id":"PILOTOCC-H01","method":"sdxl","check_id":"cardinality:cabinet","answer":"no","reason":"No recognizable cabinet is visible.","confidence":"high"}
+{"id":"PILOTOCC-H01","method":"sdxl","check_id":"cardinality:sofa","answer":"no","reason":"The image contains an armchair but no sofa.","confidence":"high"}
+{"id":"PILOTSUP-N02","method":"sdxl","check_id":"cardinality:cabinet","answer":"no","reason":"A television cabinet and a second tall display cabinet are both visible.","confidence":"high"}
+{"id":"PILOTYAW-N01","method":"sdxl","check_id":"cardinality:coffee_table","answer":"yes","reason":"Exactly one coffee table is visible.","confidence":"high"}
+{"id":"PILOTYAW-N02","method":"sdxl","check_id":"cardinality:refrigerator","answer":"no","reason":"Two refrigerators stand side by side.","confidence":"high"}
+{"id":"PILOTYAW-H01","method":"sdxl","check_id":"cardinality:cabinet","answer":"yes","reason":"Exactly one cabinet-like chest is visible behind the seating area.","confidence":"medium"}
+{"id":"PILOTMUL-H01","method":"sdxl","check_id":"cardinality:bookshelf","answer":"no","reason":"Separate shelving sections appear on both sides of the scene, so exactly one bookshelf cannot be confirmed.","confidence":"medium"}
+{"id":"PILOTMUL-H01","method":"sdxl","check_id":"cardinality:laptop","answer":"no","reason":"The visible computer is a desktop monitor, not a laptop.","confidence":"high"}
