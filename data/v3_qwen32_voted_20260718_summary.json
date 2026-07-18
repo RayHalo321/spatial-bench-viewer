@@ -1,0 +1,1388 @@
+{
+  "schema_version": "spatial_bench_v3_qwen32_voted_compact",
+  "judge": "Qwen3-VL-32B-Instruct",
+  "protocol": "Three votes per atomic question; temperature 0.2; seed 20260718; strict unclear/fail = 0.",
+  "headline": false,
+  "models": {
+    "flux": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.9814126394052045,
+        "cardinality_micro": 0.9107806691449815,
+        "strict_relation_micro": 0.8189300411522634,
+        "primary_relation_micro": 0.8242424242424242,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.6236559139784946,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 1.0,
+          "primary_relation_micro": 1.0,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 1.0,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 0.9705882352941176,
+          "cardinality_micro": 0.7941176470588235,
+          "strict_relation_micro": 0.6923076923076923,
+          "primary_relation_micro": 0.75,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.4166666666666667,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.9795918367346939,
+          "cardinality_micro": 0.9795918367346939,
+          "strict_relation_micro": 0.8604651162790697,
+          "primary_relation_micro": 0.8604651162790697,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.6923076923076923,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.9230769230769231,
+          "strict_relation_micro": 0.8571428571428571,
+          "primary_relation_micro": 0.9166666666666666,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.7,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.96875,
+          "strict_relation_micro": 0.9459459459459459,
+          "primary_relation_micro": 0.9285714285714286,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.8,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.9555555555555556,
+          "strict_relation_micro": 0.7894736842105263,
+          "primary_relation_micro": 0.7692307692307693,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.6153846153846154,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 0.9545454545454546,
+          "cardinality_micro": 0.8863636363636364,
+          "strict_relation_micro": 0.9393939393939394,
+          "primary_relation_micro": 1.0,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.6923076923076923,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.9696969696969697,
+          "cardinality_micro": 0.8181818181818182,
+          "strict_relation_micro": 0.6153846153846154,
+          "primary_relation_micro": 0.5,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.375,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.9393939393939394,
+          "strict_relation_micro": 0.8333333333333334,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.7857142857142857,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.9624060150375939,
+          "cardinality_micro": 0.8721804511278195,
+          "strict_relation_micro": 0.795774647887324,
+          "primary_relation_micro": 0.7951807228915663,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.28,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.9571428571428572,
+          "strict_relation_micro": 0.864406779661017,
+          "primary_relation_micro": 0.875,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.6923076923076923,
+          "errors": 0
+        }
+      }
+    },
+    "sdxl": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.862453531598513,
+        "cardinality_micro": 0.7286245353159851,
+        "strict_relation_micro": 0.49382716049382713,
+        "primary_relation_micro": 0.5212121212121212,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.22580645161290322,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.8333333333333334,
+          "strict_relation_micro": 0.5,
+          "primary_relation_micro": 0.5,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 0.3333333333333333,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 0.8529411764705882,
+          "cardinality_micro": 0.6764705882352942,
+          "strict_relation_micro": 0.5769230769230769,
+          "primary_relation_micro": 0.5,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.25,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.7959183673469388,
+          "cardinality_micro": 0.6530612244897959,
+          "strict_relation_micro": 0.4883720930232558,
+          "primary_relation_micro": 0.4883720930232558,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.0,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 0.9230769230769231,
+          "cardinality_micro": 0.7307692307692307,
+          "strict_relation_micro": 0.3333333333333333,
+          "primary_relation_micro": 0.5833333333333334,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.3,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 0.84375,
+          "cardinality_micro": 0.71875,
+          "strict_relation_micro": 0.5675675675675675,
+          "primary_relation_micro": 0.7142857142857143,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.5,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 0.9111111111111111,
+          "cardinality_micro": 0.8444444444444444,
+          "strict_relation_micro": 0.5263157894736842,
+          "primary_relation_micro": 0.4230769230769231,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.07692307692307693,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 0.8636363636363636,
+          "cardinality_micro": 0.6818181818181818,
+          "strict_relation_micro": 0.48484848484848486,
+          "primary_relation_micro": 0.625,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.23076923076923078,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.8484848484848485,
+          "cardinality_micro": 0.7878787878787878,
+          "strict_relation_micro": 0.4358974358974359,
+          "primary_relation_micro": 0.45,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.25,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 0.9393939393939394,
+          "cardinality_micro": 0.7878787878787878,
+          "strict_relation_micro": 0.5714285714285714,
+          "primary_relation_micro": 0.5714285714285714,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.40476190476190477,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.8045112781954887,
+          "cardinality_micro": 0.6842105263157895,
+          "strict_relation_micro": 0.4225352112676056,
+          "primary_relation_micro": 0.4578313253012048,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.0,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 0.9,
+          "cardinality_micro": 0.7571428571428571,
+          "strict_relation_micro": 0.6101694915254238,
+          "primary_relation_micro": 0.6,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.15384615384615385,
+          "errors": 0
+        }
+      }
+    },
+    "gligen": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.895910780669145,
+        "cardinality_micro": 0.8104089219330854,
+        "strict_relation_micro": 0.6954732510288066,
+        "primary_relation_micro": 0.696969696969697,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.5161290322580645,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.6666666666666666,
+          "strict_relation_micro": 1.0,
+          "primary_relation_micro": 1.0,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 0.6666666666666666,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 0.9117647058823529,
+          "cardinality_micro": 0.7352941176470589,
+          "strict_relation_micro": 0.4230769230769231,
+          "primary_relation_micro": 0.4,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.5,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.8775510204081632,
+          "cardinality_micro": 0.8571428571428571,
+          "strict_relation_micro": 0.7674418604651163,
+          "primary_relation_micro": 0.7674418604651163,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.46153846153846156,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 0.8076923076923077,
+          "cardinality_micro": 0.7307692307692307,
+          "strict_relation_micro": 0.5238095238095238,
+          "primary_relation_micro": 0.6666666666666666,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.7,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.875,
+          "strict_relation_micro": 0.8918918918918919,
+          "primary_relation_micro": 0.9285714285714286,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.7,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 0.9111111111111111,
+          "cardinality_micro": 0.8444444444444444,
+          "strict_relation_micro": 0.7368421052631579,
+          "primary_relation_micro": 0.7692307692307693,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.46153846153846156,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 0.8409090909090909,
+          "cardinality_micro": 0.8409090909090909,
+          "strict_relation_micro": 0.7575757575757576,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.6923076923076923,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.9090909090909091,
+          "cardinality_micro": 0.7575757575757576,
+          "strict_relation_micro": 0.5641025641025641,
+          "primary_relation_micro": 0.35,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.1875,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 0.9848484848484849,
+          "cardinality_micro": 0.8939393939393939,
+          "strict_relation_micro": 0.7619047619047619,
+          "primary_relation_micro": 0.7619047619047619,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.6666666666666666,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.8195488721804511,
+          "cardinality_micro": 0.706766917293233,
+          "strict_relation_micro": 0.6197183098591549,
+          "primary_relation_micro": 0.5903614457831325,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.12,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 0.9571428571428572,
+          "cardinality_micro": 0.9285714285714286,
+          "strict_relation_micro": 0.8305084745762712,
+          "primary_relation_micro": 0.85,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.6538461538461539,
+          "errors": 0
+        }
+      }
+    },
+    "lmd_plus": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.9033457249070632,
+        "cardinality_micro": 0.8215613382899628,
+        "strict_relation_micro": 0.6502057613168725,
+        "primary_relation_micro": 0.6121212121212121,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.45161290322580644,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 1.0,
+          "primary_relation_micro": 1.0,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 1.0,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 0.9705882352941176,
+          "cardinality_micro": 0.8529411764705882,
+          "strict_relation_micro": 0.6923076923076923,
+          "primary_relation_micro": 0.65,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.4166666666666667,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.8571428571428571,
+          "cardinality_micro": 0.7755102040816326,
+          "strict_relation_micro": 0.627906976744186,
+          "primary_relation_micro": 0.627906976744186,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.38461538461538464,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.8461538461538461,
+          "strict_relation_micro": 0.42857142857142855,
+          "primary_relation_micro": 0.08333333333333333,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.0,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 0.90625,
+          "cardinality_micro": 0.8125,
+          "strict_relation_micro": 0.6486486486486487,
+          "primary_relation_micro": 0.6428571428571429,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.5,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 0.8888888888888888,
+          "cardinality_micro": 0.8666666666666667,
+          "strict_relation_micro": 0.7105263157894737,
+          "primary_relation_micro": 0.6923076923076923,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.6153846153846154,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 0.8181818181818182,
+          "cardinality_micro": 0.7954545454545454,
+          "strict_relation_micro": 0.7272727272727273,
+          "primary_relation_micro": 0.7916666666666666,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.6153846153846154,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.9393939393939394,
+          "cardinality_micro": 0.7878787878787878,
+          "strict_relation_micro": 0.5897435897435898,
+          "primary_relation_micro": 0.4,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.3125,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.9696969696969697,
+          "strict_relation_micro": 0.6190476190476191,
+          "primary_relation_micro": 0.6190476190476191,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.6190476190476191,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.8345864661654135,
+          "cardinality_micro": 0.6842105263157895,
+          "strict_relation_micro": 0.6197183098591549,
+          "primary_relation_micro": 0.5542168674698795,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.12,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 0.9428571428571428,
+          "cardinality_micro": 0.9428571428571428,
+          "strict_relation_micro": 0.7457627118644068,
+          "primary_relation_micro": 0.725,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.5,
+          "errors": 0
+        }
+      }
+    },
+    "boxdiff_xl": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.724907063197026,
+        "cardinality_micro": 0.7211895910780669,
+        "strict_relation_micro": 0.3991769547325103,
+        "primary_relation_micro": 0.41818181818181815,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.26881720430107525,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 0.6666666666666666,
+          "primary_relation_micro": 0.6666666666666666,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 0.6666666666666666,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 0.6764705882352942,
+          "cardinality_micro": 0.6764705882352942,
+          "strict_relation_micro": 0.2692307692307692,
+          "primary_relation_micro": 0.2,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.25,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.6938775510204082,
+          "cardinality_micro": 0.673469387755102,
+          "strict_relation_micro": 0.4186046511627907,
+          "primary_relation_micro": 0.4186046511627907,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.15384615384615385,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 0.8461538461538461,
+          "cardinality_micro": 0.8461538461538461,
+          "strict_relation_micro": 0.6190476190476191,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.6,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 0.6875,
+          "cardinality_micro": 0.625,
+          "strict_relation_micro": 0.4594594594594595,
+          "primary_relation_micro": 0.6428571428571429,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.3,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 0.8,
+          "cardinality_micro": 0.7555555555555555,
+          "strict_relation_micro": 0.3684210526315789,
+          "primary_relation_micro": 0.34615384615384615,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.07692307692307693,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 0.6136363636363636,
+          "cardinality_micro": 0.6818181818181818,
+          "strict_relation_micro": 0.2727272727272727,
+          "primary_relation_micro": 0.3333333333333333,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.15384615384615385,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.7575757575757576,
+          "cardinality_micro": 0.7878787878787878,
+          "strict_relation_micro": 0.38461538461538464,
+          "primary_relation_micro": 0.35,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.25,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 0.8636363636363636,
+          "cardinality_micro": 0.7878787878787878,
+          "strict_relation_micro": 0.47619047619047616,
+          "primary_relation_micro": 0.47619047619047616,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.40476190476190477,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.6240601503759399,
+          "cardinality_micro": 0.6616541353383458,
+          "strict_relation_micro": 0.31690140845070425,
+          "primary_relation_micro": 0.3253012048192771,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.0,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 0.7857142857142857,
+          "cardinality_micro": 0.7714285714285715,
+          "strict_relation_micro": 0.5423728813559322,
+          "primary_relation_micro": 0.55,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.3076923076923077,
+          "errors": 0
+        }
+      }
+    },
+    "muses_qwen_rgb": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.9330855018587361,
+        "cardinality_micro": 0.9330855018587361,
+        "strict_relation_micro": 0.757201646090535,
+        "primary_relation_micro": 0.7575757575757576,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.6451612903225806,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 1.0,
+          "primary_relation_micro": 1.0,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 1.0,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 0.9705882352941176,
+          "cardinality_micro": 0.9705882352941176,
+          "strict_relation_micro": 0.8846153846153846,
+          "primary_relation_micro": 0.85,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.8333333333333334,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.8571428571428571,
+          "cardinality_micro": 0.8571428571428571,
+          "strict_relation_micro": 0.627906976744186,
+          "primary_relation_micro": 0.627906976744186,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.38461538461538464,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 0.9615384615384616,
+          "cardinality_micro": 0.9615384615384616,
+          "strict_relation_micro": 0.9047619047619048,
+          "primary_relation_micro": 0.9166666666666666,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.8,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 0.96875,
+          "cardinality_micro": 0.96875,
+          "strict_relation_micro": 0.8108108108108109,
+          "primary_relation_micro": 0.7857142857142857,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.7,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 0.9555555555555556,
+          "cardinality_micro": 0.9111111111111111,
+          "strict_relation_micro": 0.8947368421052632,
+          "primary_relation_micro": 0.9230769230769231,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.7692307692307693,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 0.9545454545454546,
+          "cardinality_micro": 0.9772727272727273,
+          "strict_relation_micro": 0.7575757575757576,
+          "primary_relation_micro": 0.75,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.6153846153846154,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.8787878787878788,
+          "cardinality_micro": 0.9090909090909091,
+          "strict_relation_micro": 0.5128205128205128,
+          "primary_relation_micro": 0.55,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.375,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 0.9696969696969697,
+          "cardinality_micro": 0.9696969696969697,
+          "strict_relation_micro": 0.8095238095238095,
+          "primary_relation_micro": 0.8095238095238095,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.8095238095238095,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.9097744360902256,
+          "cardinality_micro": 0.9022556390977443,
+          "strict_relation_micro": 0.7323943661971831,
+          "primary_relation_micro": 0.7108433734939759,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.32,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 0.9428571428571428,
+          "cardinality_micro": 0.9571428571428572,
+          "strict_relation_micro": 0.7796610169491526,
+          "primary_relation_micro": 0.8,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.6923076923076923,
+          "errors": 0
+        }
+      }
+    },
+    "muses_qwen_sdxl": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.9368029739776952,
+        "cardinality_micro": 0.828996282527881,
+        "strict_relation_micro": 0.7613168724279835,
+        "primary_relation_micro": 0.7515151515151515,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.4838709677419355,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 1.0,
+          "primary_relation_micro": 1.0,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 1.0,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 0.9411764705882353,
+          "cardinality_micro": 0.8529411764705882,
+          "strict_relation_micro": 0.7692307692307693,
+          "primary_relation_micro": 0.75,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.6666666666666666,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.8775510204081632,
+          "cardinality_micro": 0.7551020408163265,
+          "strict_relation_micro": 0.7209302325581395,
+          "primary_relation_micro": 0.7209302325581395,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.15384615384615385,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.8076923076923077,
+          "strict_relation_micro": 0.9047619047619048,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.4,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 0.9375,
+          "cardinality_micro": 0.84375,
+          "strict_relation_micro": 0.7297297297297297,
+          "primary_relation_micro": 0.7142857142857143,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.5,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 0.9555555555555556,
+          "cardinality_micro": 0.8,
+          "strict_relation_micro": 0.8947368421052632,
+          "primary_relation_micro": 0.8846153846153846,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.46153846153846156,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 0.9318181818181818,
+          "cardinality_micro": 0.8181818181818182,
+          "strict_relation_micro": 0.6666666666666666,
+          "primary_relation_micro": 0.5833333333333334,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.3076923076923077,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.9393939393939394,
+          "cardinality_micro": 0.9393939393939394,
+          "strict_relation_micro": 0.6666666666666666,
+          "primary_relation_micro": 0.75,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.625,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.9090909090909091,
+          "strict_relation_micro": 0.8095238095238095,
+          "primary_relation_micro": 0.8095238095238095,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.7380952380952381,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.8796992481203008,
+          "cardinality_micro": 0.7969924812030075,
+          "strict_relation_micro": 0.7183098591549296,
+          "primary_relation_micro": 0.6987951807228916,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.16,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 0.9857142857142858,
+          "cardinality_micro": 0.8142857142857143,
+          "strict_relation_micro": 0.8305084745762712,
+          "primary_relation_micro": 0.8,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.38461538461538464,
+          "errors": 0
+        }
+      }
+    },
+    "muses_qwen_rgb_qwen_i2i": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.9479553903345725,
+        "cardinality_micro": 0.9479553903345725,
+        "strict_relation_micro": 0.831275720164609,
+        "primary_relation_micro": 0.793939393939394,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.6666666666666666,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 0.6666666666666666,
+          "primary_relation_micro": 0.6666666666666666,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 0.6666666666666666,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 0.8846153846153846,
+          "primary_relation_micro": 0.85,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.75,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.9183673469387755,
+          "cardinality_micro": 0.8979591836734694,
+          "strict_relation_micro": 0.7441860465116279,
+          "primary_relation_micro": 0.7441860465116279,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.5384615384615384,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 0.9230769230769231,
+          "cardinality_micro": 0.9230769230769231,
+          "strict_relation_micro": 0.9047619047619048,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.8,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.96875,
+          "strict_relation_micro": 0.918918918918919,
+          "primary_relation_micro": 0.9285714285714286,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.6,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 0.9111111111111111,
+          "cardinality_micro": 0.9111111111111111,
+          "strict_relation_micro": 0.8157894736842105,
+          "primary_relation_micro": 0.8076923076923077,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.6923076923076923,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 0.9318181818181818,
+          "cardinality_micro": 0.9772727272727273,
+          "strict_relation_micro": 0.7878787878787878,
+          "primary_relation_micro": 0.7916666666666666,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.6153846153846154,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.9696969696969697,
+          "cardinality_micro": 0.9696969696969697,
+          "strict_relation_micro": 0.8461538461538461,
+          "primary_relation_micro": 0.75,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.6875,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 0.9848484848484849,
+          "cardinality_micro": 0.9848484848484849,
+          "strict_relation_micro": 0.8333333333333334,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.8333333333333334,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.9323308270676691,
+          "cardinality_micro": 0.9398496240601504,
+          "strict_relation_micro": 0.8380281690140845,
+          "primary_relation_micro": 0.7469879518072289,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.4,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 0.9428571428571428,
+          "cardinality_micro": 0.9285714285714286,
+          "strict_relation_micro": 0.8135593220338984,
+          "primary_relation_micro": 0.85,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.6538461538461539,
+          "errors": 0
+        }
+      }
+    },
+    "t2i_blender": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.9516728624535316,
+        "cardinality_micro": 0.9405204460966543,
+        "strict_relation_micro": 0.8436213991769548,
+        "primary_relation_micro": 0.8363636363636363,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.7096774193548387,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 0.8333333333333334,
+          "cardinality_micro": 0.8333333333333334,
+          "strict_relation_micro": 0.8333333333333334,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 0.8333333333333334,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 0.9411764705882353,
+          "cardinality_micro": 0.9411764705882353,
+          "strict_relation_micro": 0.7307692307692307,
+          "primary_relation_micro": 0.75,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.6666666666666666,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.9591836734693877,
+          "cardinality_micro": 0.9591836734693877,
+          "strict_relation_micro": 0.9069767441860465,
+          "primary_relation_micro": 0.9069767441860465,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.7692307692307693,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 0.9615384615384616,
+          "cardinality_micro": 0.9615384615384616,
+          "strict_relation_micro": 0.7142857142857143,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.7,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.9375,
+          "strict_relation_micro": 0.918918918918919,
+          "primary_relation_micro": 0.7857142857142857,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.8,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 0.9555555555555556,
+          "cardinality_micro": 0.9555555555555556,
+          "strict_relation_micro": 0.868421052631579,
+          "primary_relation_micro": 0.8846153846153846,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.6153846153846154,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 0.9545454545454546,
+          "cardinality_micro": 0.9318181818181818,
+          "strict_relation_micro": 0.8181818181818182,
+          "primary_relation_micro": 0.7916666666666666,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.7692307692307693,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.9090909090909091,
+          "cardinality_micro": 0.9090909090909091,
+          "strict_relation_micro": 0.8461538461538461,
+          "primary_relation_micro": 0.8,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.625,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 0.9545454545454546,
+          "cardinality_micro": 0.9545454545454546,
+          "strict_relation_micro": 0.8571428571428571,
+          "primary_relation_micro": 0.8571428571428571,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.8571428571428571,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.9323308270676691,
+          "cardinality_micro": 0.9022556390977443,
+          "strict_relation_micro": 0.8098591549295775,
+          "primary_relation_micro": 0.7831325301204819,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.32,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 0.9857142857142858,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 0.9152542372881356,
+          "primary_relation_micro": 0.925,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.8461538461538461,
+          "errors": 0
+        }
+      }
+    },
+    "t2i_blender_qwen": {
+      "overall": {
+        "cases": 93,
+        "presence_micro": 0.9702602230483272,
+        "cardinality_micro": 0.9591078066914498,
+        "strict_relation_micro": 0.8930041152263375,
+        "primary_relation_micro": 0.8909090909090909,
+        "relation_count": 243,
+        "primary_relation_count": 165,
+        "case_exact_rate": 0.7634408602150538,
+        "errors": 0
+      },
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 0.8333333333333334,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 6,
+          "primary_relation_count": 6,
+          "case_exact_rate": 0.8333333333333334,
+          "errors": 0
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "presence_micro": 0.9411764705882353,
+          "cardinality_micro": 0.9117647058823529,
+          "strict_relation_micro": 0.8076923076923077,
+          "primary_relation_micro": 0.85,
+          "relation_count": 26,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.6666666666666666,
+          "errors": 0
+        },
+        "multi_relation_composition": {
+          "cases": 13,
+          "presence_micro": 0.9591836734693877,
+          "cardinality_micro": 0.9795918367346939,
+          "strict_relation_micro": 0.9534883720930233,
+          "primary_relation_micro": 0.9534883720930233,
+          "relation_count": 43,
+          "primary_relation_count": 43,
+          "case_exact_rate": 0.8461538461538461,
+          "errors": 0
+        },
+        "occlusion_visibility": {
+          "cases": 10,
+          "presence_micro": 0.9615384615384616,
+          "cardinality_micro": 0.9615384615384616,
+          "strict_relation_micro": 0.7619047619047619,
+          "primary_relation_micro": 0.8333333333333334,
+          "relation_count": 21,
+          "primary_relation_count": 12,
+          "case_exact_rate": 0.8,
+          "errors": 0
+        },
+        "orientation_facing": {
+          "cases": 10,
+          "presence_micro": 1.0,
+          "cardinality_micro": 0.96875,
+          "strict_relation_micro": 0.8918918918918919,
+          "primary_relation_micro": 0.7142857142857143,
+          "relation_count": 37,
+          "primary_relation_count": 14,
+          "case_exact_rate": 0.6,
+          "errors": 0
+        },
+        "relative_position_2d": {
+          "cases": 13,
+          "presence_micro": 0.9555555555555556,
+          "cardinality_micro": 0.9111111111111111,
+          "strict_relation_micro": 0.8947368421052632,
+          "primary_relation_micro": 0.8846153846153846,
+          "relation_count": 38,
+          "primary_relation_count": 26,
+          "case_exact_rate": 0.6153846153846154,
+          "errors": 0
+        },
+        "support_contact": {
+          "cases": 13,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 0.9696969696969697,
+          "primary_relation_micro": 0.9583333333333334,
+          "relation_count": 33,
+          "primary_relation_count": 24,
+          "case_exact_rate": 0.9230769230769231,
+          "errors": 0
+        },
+        "yaw_direction": {
+          "cases": 16,
+          "presence_micro": 0.9696969696969697,
+          "cardinality_micro": 0.9696969696969697,
+          "strict_relation_micro": 0.8974358974358975,
+          "primary_relation_micro": 0.9,
+          "relation_count": 39,
+          "primary_relation_count": 20,
+          "case_exact_rate": 0.8125,
+          "errors": 0
+        }
+      },
+      "by_difficulty": {
+        "diagnostic": {
+          "cases": 42,
+          "presence_micro": 1.0,
+          "cardinality_micro": 1.0,
+          "strict_relation_micro": 0.9285714285714286,
+          "primary_relation_micro": 0.9285714285714286,
+          "relation_count": 42,
+          "primary_relation_count": 42,
+          "case_exact_rate": 0.9285714285714286,
+          "errors": 0
+        },
+        "hard": {
+          "cases": 25,
+          "presence_micro": 0.9473684210526315,
+          "cardinality_micro": 0.9323308270676691,
+          "strict_relation_micro": 0.8591549295774648,
+          "primary_relation_micro": 0.8433734939759037,
+          "relation_count": 142,
+          "primary_relation_count": 83,
+          "case_exact_rate": 0.36,
+          "errors": 0
+        },
+        "normal": {
+          "cases": 26,
+          "presence_micro": 0.9857142857142858,
+          "cardinality_micro": 0.9714285714285714,
+          "strict_relation_micro": 0.9491525423728814,
+          "primary_relation_micro": 0.95,
+          "relation_count": 59,
+          "primary_relation_count": 40,
+          "case_exact_rate": 0.8846153846153846,
+          "errors": 0
+        }
+      }
+    }
+  }
+}

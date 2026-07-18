@@ -59,6 +59,22 @@
     }
     .intro p { max-width: 820px; margin: 8px 0 0; color: var(--muted); }
     .stamp { text-align: right; color: var(--muted); font-size: 12px; }
+    .judge-switch { display: inline-flex; margin-top: 10px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+    .judge-switch button {
+      min-height: 32px;
+      padding: 6px 10px;
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .judge-switch button:last-child { border-right: 0; }
+    .judge-switch button[aria-pressed="true"] { background: #e9f1f8; color: var(--accent); }
     .status {
       margin-top: 16px;
       padding: 11px 14px;
@@ -118,62 +134,71 @@
   <script>
     const pct = (value) => value == null ? "-" : (Number(value) * 100).toFixed(1) + "%";
     const h = (value) => String(value ?? "").replace(/[&<>"']/g, (ch) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-    const metricKeys = ["presence_micro", "strict_relation_micro", "primary_relation_micro", "case_exact_rate"];
+    const metricKeys = ["presence_micro", "cardinality_micro", "strict_relation_micro", "primary_relation_micro", "case_exact_rate"];
     const modelMeta = [
       { id: "flux", auditId: "flux", label: "FLUX.1-schnell", scope: "93 cases · plain text-to-image", contact_sheet: "generated/v3_full93/flux_contact_sheet.jpg" },
       { id: "sdxl", auditId: "sdxl", label: "SDXL Base 1.0", scope: "93 cases · plain text-to-image", contact_sheet: "generated/v3_full93/sdxl_contact_sheet.jpg" },
       { id: "gligen", auditId: "layoutgpt", label: "LayoutGPT + GLIGEN", scope: "93 cases · layout-guided generation", contact_sheet: "generated/v3_full93/gligen_contact_sheet.jpg" },
       { id: "lmd_plus", auditId: "lmd_plus", label: "LMD+", scope: "93 cases · LLM layout + grounded diffusion", contact_sheet: "generated/v3_full93/lmd_plus_contact_sheet.jpg" },
       { id: "boxdiff_xl", auditId: "boxdiff_xl", label: "LayoutGPT + BoxDiff-XL", scope: "93 cases · box-attention control", contact_sheet: "generated/v3_full93/boxdiff_xl_contact_sheet.jpg" },
-      { id: "t2i_blender", auditId: "t2i_blender", label: "T2I-Blender RGB", scope: "93 cases · Blender-agent RGB render", contact_sheet: "generated/v3_full93/t2i_blender_contact_sheet.jpg" }
+      { id: "muses_qwen_rgb", auditId: "muses_qwen_rgb", label: "MUSES-Qwen RGB", scope: "93 cases · public MUSES planner + Blender RGB", contact_sheet: "generated/v3_full93/muses_qwen_rgb_contact_sheet.jpg" },
+      { id: "muses_qwen_sdxl", auditId: "muses_qwen_sdxl", label: "MUSES-Qwen + SDXL", scope: "93 cases · MUSES RGB/depth + SDXL ControlNet", contact_sheet: "generated/v3_full93/muses_qwen_sdxl_contact_sheet.jpg" },
+      { id: "muses_qwen_rgb_qwen_i2i", auditId: "muses_qwen_rgb_qwen_i2i", label: "MUSES-Qwen RGB + Qwen I2I", scope: "93 cases · MUSES RGB refined by Qwen", contact_sheet: "generated/v3_full93/muses_qwen_rgb_qwen_i2i_contact_sheet.jpg" },
+      { id: "t2i_blender", auditId: "t2i_blender", label: "T2I-Blender RGB", scope: "93 cases · Blender-agent RGB render", contact_sheet: "generated/v3_full93/t2i_blender_contact_sheet.jpg" },
+      { id: "t2i_blender_qwen", auditId: "t2i_blender_qwen", label: "T2I-Blender + Qwen I2I", scope: "93 cases · render-guided Qwen refinement", contact_sheet: "generated/v3_full93/t2i_blender_qwen_contact_sheet.jpg" }
     ];
-    const normalizeSummary = (row) => ({ ...row, case_exact_rate: row.exact_case_rate });
-    const buildModels = (audit) => modelMeta.map((meta) => ({
+    const state = { mode: "visual", visual: null, qwen32: null };
+    const normalizeVisual = (row) => ({ ...row, case_exact_rate: row.exact_case_rate, cardinality_micro: row.cardinality_micro ?? null });
+    const buildVisualModels = () => modelMeta.filter((meta) => state.visual.all_93.overall[meta.auditId]).map((meta) => ({
       ...meta,
       summary: {
-        overall: normalizeSummary(audit.all_93.overall[meta.auditId]),
-        by_capability: Object.fromEntries(Object.entries(audit.all_93.by_capability).map(([capability, rows]) => [capability, normalizeSummary(rows[meta.auditId])]))
+        overall: normalizeVisual(state.visual.all_93.overall[meta.auditId]),
+        by_capability: Object.fromEntries(Object.entries(state.visual.all_93.by_capability).map(([capability, rows]) => [capability, normalizeVisual(rows[meta.auditId])]))
       }
     }));
+    const buildQwenModels = () => modelMeta.map((meta) => ({
+      ...meta,
+      summary: state.qwen32.models[meta.id]
+    }));
     const metricCells = (summary, best) => {
-      return metricKeys.map((key) => `<td class="${best && best[key] === summary[key] ? "best" : ""}">${pct(summary[key])}</td>`).join("");
+      return metricKeys.map((key) => `<td class="${best && summary[key] != null && best[key] === summary[key] ? "best" : ""}">${pct(summary[key])}</td>`).join("");
     };
     const bestMetrics = (models) => {
       const out = {};
       for (const key of metricKeys) {
-        out[key] = Math.max(...models.map((model) => Number(model.summary.overall[key] || 0)));
+        const values = models.map((model) => model.summary.overall[key]).filter((value) => value != null).map(Number);
+        out[key] = values.length ? Math.max(...values) : null;
       }
       return out;
     };
     const summaryRow = (model, best) => `<tr><td><span class="model">${h(model.label)}</span><span class="scope">${h(model.scope)}</span></td><td>${model.summary.overall.cases}</td>${metricCells(model.summary.overall, best)}</tr>`;
     const capabilityRows = (model) => Object.entries(model.summary.by_capability).map(([name, row]) => `<tr><td>${h(name)}</td><td>${row.cases}</td>${metricCells(row)}</tr>`).join("");
 
-    fetch("data/v3_visual_audit_20260718_six_method_adjudicated_summary.json?v=20260718-six-method")
-      .then((response) => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
-      .then((audit) => {
-        const models = buildModels(audit);
+    function render() {
+        const visualMode = state.mode === "visual";
+        const models = visualMode ? buildVisualModels() : buildQwenModels();
         const best = bestMetrics(models);
         document.getElementById("app").innerHTML = `
           <div class="intro">
-            <div><h1>Adjudicated spatial evaluation</h1><p>Six methods were evaluated on the same 93 cases with direct visual review. Every method received an independent first pass, followed by a separate review of disputed cases before scores were frozen.</p></div>
-            <div class="stamp">Judge: Codex multi-reviewer visual adjudication<br>Frozen 2026-07-18</div>
+            <div><h1>${visualMode ? "Adjudicated spatial evaluation" : "Qwen3-VL-32B diagnostic evaluation"}</h1><p>${visualMode ? "Nine methods were evaluated on the same 93 cases with direct visual review. Every method received an independent first pass, followed by a separate review of failed or disputed cases before scores were frozen." : "Ten methods were evaluated with Qwen3-VL-32B-Instruct using three votes per atomic question. This is a secondary diagnostic view, not the headline ground truth."}</p></div>
+            <div class="stamp">${visualMode ? "Judge: direct multi-reviewer visual adjudication" : "Judge: Qwen3-VL-32B-Instruct · 3-vote"}<br>Frozen 2026-07-18<div class="judge-switch" role="group" aria-label="Evaluation protocol"><button type="button" data-mode="visual" aria-pressed="${visualMode}">Visual adjudication</button><button type="button" data-mode="qwen32" aria-pressed="${!visualMode}">Qwen3-VL-32B</button></div></div>
           </div>
 
-          <div class="status">Qwen-refined outputs are available in the case viewer but are not included in this table until they receive the same separate visual audit.</div>
+          <div class="status">${visualMode ? "Headline protocol. T2I-Blender + Qwen I2I is visible in the case viewer but is omitted here because it has not received the same direct visual adjudication." : "Secondary diagnostic only. Each atomic answer is the majority of three Qwen3-VL-32B votes; fail, unclear, missing, and API error score 0."}</div>
 
           <section>
             <h2>Curated 93-case comparison</h2>
             <div class="table-wrap"><table>
-              <thead><tr><th>Method</th><th>Cases</th><th>Presence</th><th>Strict relation</th><th>Primary relation</th><th>Exact case</th></tr></thead>
+              <thead><tr><th>Method</th><th>Cases</th><th>Presence</th><th>Cardinality</th><th>Strict relation</th><th>Primary relation</th><th>Exact case</th></tr></thead>
               <tbody>${models.map((model) => summaryRow(model, best)).join("")}</tbody>
             </table></div>
-            <p class="metric-note">Best values are highlighted. All rows use the same 93 cases, 269 object-instance checks, and 243 explicit relation checks. Fail and unclear both score 0 in the strict metrics.</p>
+            <p class="metric-note">Best values are highlighted. All rows use the same 93 cases, 269 object-instance checks, and 243 explicit relation checks. Fail and unclear both score 0. ${visualMode ? "A dash means the older direct audit did not separately score cardinality; visual Exact Case uses presence plus explicit relations." : "Qwen32 Exact Case includes extraction, presence, cardinality, and relation checks."}</p>
           </section>
 
           <section>
             <div class="breakdown-head"><h2>Capability breakdown</h2><label>Method <select id="modelSelect">${models.map((model) => `<option value="${h(model.id)}">${h(model.label)} (${model.summary.overall.cases})</option>`).join("")}</select></label></div>
             <div class="table-wrap"><table>
-              <thead><tr><th>Capability</th><th>Cases</th><th>Presence</th><th>Strict relation</th><th>Primary relation</th><th>Exact case</th></tr></thead>
+              <thead><tr><th>Capability</th><th>Cases</th><th>Presence</th><th>Cardinality</th><th>Strict relation</th><th>Primary relation</th><th>Exact case</th></tr></thead>
               <tbody id="capabilityRows"></tbody>
             </table></div>
           </section>
@@ -183,17 +208,26 @@
             <div class="gallery">${models.map((model) => `<figure><figcaption>${h(model.label)} · ${h(model.scope)}</figcaption><a href="${h(model.contact_sheet)}"><img src="${h(model.contact_sheet)}" alt="${h(model.label)} contact sheet" loading="lazy"></a></figure>`).join("")}</div>
           </section>
 
-          <section class="method"><h2>Evaluation protocol</h2><p>Reviewers saw the prompt, explicit object and relation checklist, and the generated images. They independently marked each object instance and relation as pass, fail, or unclear; disputed cells were then reviewed again without using Qwen3-VL-8B or API answers as ground truth.</p><p>Primary scoring is strict: pass = 1; fail and unclear = 0. Exact Case requires every required object instance and every explicit relation to pass.</p><p><a href="data/v3_visual_audit_20260718_six_method_adjudicated_summary.json">Download the adjudicated summary</a> · <a href="data/v3_visual_audit_20260718_six_method_adjudicated.jsonl">Download all case-level decisions</a></p></section>`;
+          <section class="method"><h2>Evaluation protocol</h2><p>${visualMode ? "Reviewers saw the prompt, explicit object and relation checklist, and generated image. Independent direct-visual first passes were followed by blind failed-case adjudication and tie-breaks where required. No 8B, 32B, or API answer was used as headline truth." : "Qwen3-VL-32B-Instruct answered every materialized presence, cardinality, positive relation, and inverse relation question three times at temperature 0.2. Majority voting produced the displayed answer and reason."}</p><p>Primary scoring is strict: pass = 1; fail and unclear = 0. ${visualMode ? "Visual Exact Case requires every required object instance and explicit relation to pass." : "Qwen32 Exact Case also requires cardinality and extraction checks."}</p><p>${visualMode ? '<a href="data/v3_visual_audit_20260718_nine_method_adjudicated_summary.json">Download the adjudicated summary</a> · <a href="data/v3_visual_audit_20260718_nine_method_adjudicated.jsonl">Download all case-level decisions</a>' : '<a href="data/v3_qwen32_voted_20260718_summary.json">Download the Qwen32 summary</a> · <a href="data/v3_viewer_cases.json">Inspect compact per-case answers in viewer data</a>'}</p></section>`;
 
-        const allModels = models;
         const select = document.getElementById("modelSelect");
         const renderBreakdown = () => {
-          const model = allModels.find((item) => item.id === select.value);
+          const model = models.find((item) => item.id === select.value);
           document.getElementById("capabilityRows").innerHTML = capabilityRows(model);
         };
         select.addEventListener("change", renderBreakdown);
+        document.querySelectorAll("[data-mode]").forEach((button) => button.addEventListener("click", () => {
+          state.mode = button.dataset.mode;
+          render();
+        }));
         renderBreakdown();
-      })
+    }
+
+    Promise.all([
+      fetch("data/v3_visual_audit_20260718_nine_method_adjudicated_summary.json?v=20260718-muses-qwen32").then((response) => { if (!response.ok) throw new Error(`Visual HTTP ${response.status}`); return response.json(); }),
+      fetch("data/v3_qwen32_voted_20260718_summary.json?v=20260718-muses-qwen32").then((response) => { if (!response.ok) throw new Error(`Qwen32 HTTP ${response.status}`); return response.json(); })
+    ])
+      .then(([visual, qwen32]) => { state.visual = visual; state.qwen32 = qwen32; render(); })
       .catch((error) => { document.getElementById("app").innerHTML = `<div class="error">Could not load v3 results: ${h(error.message)}</div>`; });
   </script>
 </body>

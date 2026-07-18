@@ -209,12 +209,27 @@
     .model-section { padding: 18px 0; border-bottom: 1px solid var(--line); }
     .model-section-head {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
       gap: 12px;
       margin-bottom: 10px;
     }
+    .judge-tools { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
     .judge-label { color: var(--muted); font-size: 12px; }
+    .judge-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+    .judge-switch button {
+      min-height: 30px;
+      padding: 5px 9px;
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .judge-switch button:last-child { border-right: 0; }
+    .judge-switch button[aria-pressed="true"] { background: var(--blue-soft); color: var(--blue); }
     .model-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
     .model-card {
       min-width: 0;
@@ -253,7 +268,7 @@
     }
     .model-scores {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid var(--line);
     }
     .metric { padding: 8px 5px; text-align: center; min-width: 0; }
@@ -343,6 +358,8 @@
       .detail-head { display: block; }
       .count-pills { justify-content: flex-start; margin-top: 10px; }
       .prompt-en { font-size: 16px; }
+      .model-section-head { align-items: flex-start; flex-direction: column; }
+      .judge-tools { align-items: flex-start; flex-direction: column; }
       .model-grid { grid-template-columns: 1fr; }
       .model-card-head { flex-direction: row; }
       .spec-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -353,7 +370,7 @@
   <header class="topbar">
     <div class="brand">
       <h1>Spatial Bench v3 Viewer</h1>
-      <p>Prompt-level comparison across seven spatial generation outputs</p>
+      <p>Prompt-level comparison across ten spatial generation outputs</p>
     </div>
     <div class="top-actions">
       <span id="headerCount">Loading 97 cases...</span>
@@ -385,7 +402,7 @@
       <div class="dataset-summary" id="datasetSummary"></div>
       <div class="pipeline-note">
         <strong>Curated 93-case suite</strong>
-        Four visually invalid occlusion/depth cases are archived and excluded. Six methods use frozen two-pass visual adjudication; Qwen-refined outputs remain unscored pending a separate audit.
+        Four visually invalid occlusion/depth cases are archived and excluded. Direct visual adjudication is the headline protocol; Qwen3-VL-32B three-vote scores are included as a separate diagnostic view.
       </div>
     </aside>
 
@@ -403,7 +420,7 @@
   </main>
 
   <script>
-    const state = { data: null, filtered: [], selectedId: null };
+    const state = { data: null, filtered: [], selectedId: null, judgeMode: "visual" };
     const $ = id => document.getElementById(id);
 
     function escapeHtml(value) {
@@ -513,10 +530,15 @@
       if (window.innerWidth <= 920) $("detail").scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
+    function evaluationFor(result) {
+      return state.judgeMode === "qwen32" ? result?.qwen32 : result;
+    }
+
     function modelCard(model, result) {
-      const judged = result.judged !== false;
-      const exact = judged ? (result.exact ? "pass" : "fail") : "pending";
-      const exactLabel = judged ? (result.exact ? "Exact pass" : "Exact fail") : "Not judged";
+      const evaluation = evaluationFor(result) || { judged: false, answers: {} };
+      const judged = evaluation.judged !== false;
+      const exact = judged ? (evaluation.exact ? "pass" : "fail") : "pending";
+      const exactLabel = judged ? (evaluation.exact ? "Exact pass" : "Exact fail") : "Not judged";
       return `
         <article class="model-card">
           <div class="model-card-head">
@@ -527,20 +549,22 @@
             <img class="model-image" src="${escapeHtml(result.image)}" alt="${escapeHtml(model.label)} output" loading="lazy">
           </a>
           <div class="model-scores">
-            <div class="metric"><strong>${metric(result.presence)}</strong><span>Presence</span></div>
-            <div class="metric"><strong>${metric(result.primary_relation)}</strong><span>Primary relation</span></div>
-            <div class="metric"><strong>${metric(result.relation)}</strong><span>Relation</span></div>
+            <div class="metric"><strong>${metric(evaluation.presence)}</strong><span>Presence</span></div>
+            <div class="metric"><strong>${metric(evaluation.cardinality)}</strong><span>Count</span></div>
+            <div class="metric"><strong>${metric(evaluation.primary_relation)}</strong><span>Primary</span></div>
+            <div class="metric"><strong>${metric(evaluation.relation)}</strong><span>Relation</span></div>
           </div>
-          ${result.error ? `<div class="model-error">Judge error: ${escapeHtml(result.error)}</div>` : ""}
+          ${evaluation.error ? `<div class="model-error">Judge error: ${escapeHtml(evaluation.error)}</div>` : ""}
         </article>
       `;
     }
 
     function answerCell(result, checkId) {
-      if (result.judged === false) {
+      const evaluation = evaluationFor(result);
+      if (!evaluation || evaluation.judged === false) {
         return '<span class="answer pending">not judged</span>';
       }
-      const entry = result.answers[checkId];
+      const entry = evaluation.answers[checkId];
       if (!entry) {
         return '<span class="answer pending">not judged</span>';
       }
@@ -578,6 +602,10 @@
           ${state.data.models.map(model => `<td>${answerCell(item.results[model.id], check.id)}</td>`).join("")}
         </tr>
       `).join("");
+      const judge = state.data.judges.find(item => item.id === state.judgeMode) || state.data.judges[0];
+      const judgeButtons = state.data.judges.map(item => `
+        <button type="button" data-judge="${escapeHtml(item.id)}" aria-pressed="${item.id === state.judgeMode}">${escapeHtml(item.label)}</button>
+      `).join("");
 
       $("detail").innerHTML = `
         <div class="detail-head">
@@ -600,7 +628,10 @@
         <section class="model-section">
           <div class="model-section-head">
             <h3 class="section-title">Generated outputs</h3>
-            <span class="judge-label">Judge: ${escapeHtml(state.data.judge)}</span>
+            <div class="judge-tools">
+              <span class="judge-label">${escapeHtml(judge.description)}</span>
+              <div class="judge-switch" role="group" aria-label="Evaluation protocol">${judgeButtons}</div>
+            </div>
           </div>
           <div class="model-grid">${modelCards}</div>
         </section>
@@ -628,11 +659,17 @@
           </div>
         </section>
       `;
+      document.querySelectorAll("[data-judge]").forEach(button => {
+        button.addEventListener("click", () => {
+          state.judgeMode = button.dataset.judge;
+          renderDetail();
+        });
+      });
     }
 
     async function loadViewer() {
       try {
-        const response = await fetch("data/v3_viewer_cases.json?v=20260718-six-method");
+        const response = await fetch("data/v3_viewer_cases.json?v=20260718-muses-qwen32");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         state.data = await response.json();
         fillSelect("category", state.data.cases.map(item => item.category));
