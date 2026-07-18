@@ -353,7 +353,7 @@
   <header class="topbar">
     <div class="brand">
       <h1>Spatial Bench v3 Viewer</h1>
-      <p>Prompt-level comparison across five spatial generation pipelines</p>
+      <p>Prompt-level comparison across seven spatial generation outputs</p>
     </div>
     <div class="top-actions">
       <span id="headerCount">Loading 97 cases...</span>
@@ -385,7 +385,7 @@
       <div class="dataset-summary" id="datasetSummary"></div>
       <div class="pipeline-note">
         <strong>Curated 93-case suite</strong>
-        Four visually invalid occlusion/depth cases are archived and excluded. Four pipelines use the frozen multi-reviewer visual adjudication; Qwen-refined outputs remain unscored pending a separate audit.
+        Four visually invalid occlusion/depth cases are archived and excluded. Six methods use frozen two-pass visual adjudication; Qwen-refined outputs remain unscored pending a separate audit.
       </div>
     </aside>
 
@@ -632,7 +632,7 @@
 
     async function loadViewer() {
       try {
-        const response = await fetch("data/v3_viewer_cases.json?v=20260718-adjudicated");
+        const response = await fetch("data/v3_viewer_cases.json?v=20260718-six-method");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         state.data = await response.json();
         fillSelect("category", state.data.cases.map(item => item.category));

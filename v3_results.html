@@ -111,7 +111,6 @@
     <h1>Spatial Bench v3 Results</h1>
     <nav aria-label="Report navigation">
       <a href="index.html">Case viewer</a>
-      <a href="vqa_report.html">Legacy 8B report</a>
       <a href="our_pipeline_partial_report.html">Pipeline archive</a>
     </nav>
   </header>
@@ -124,6 +123,8 @@
       { id: "flux", auditId: "flux", label: "FLUX.1-schnell", scope: "93 cases · plain text-to-image", contact_sheet: "generated/v3_full93/flux_contact_sheet.jpg" },
       { id: "sdxl", auditId: "sdxl", label: "SDXL Base 1.0", scope: "93 cases · plain text-to-image", contact_sheet: "generated/v3_full93/sdxl_contact_sheet.jpg" },
       { id: "gligen", auditId: "layoutgpt", label: "LayoutGPT + GLIGEN", scope: "93 cases · layout-guided generation", contact_sheet: "generated/v3_full93/gligen_contact_sheet.jpg" },
+      { id: "lmd_plus", auditId: "lmd_plus", label: "LMD+", scope: "93 cases · LLM layout + grounded diffusion", contact_sheet: "generated/v3_full93/lmd_plus_contact_sheet.jpg" },
+      { id: "boxdiff_xl", auditId: "boxdiff_xl", label: "LayoutGPT + BoxDiff-XL", scope: "93 cases · box-attention control", contact_sheet: "generated/v3_full93/boxdiff_xl_contact_sheet.jpg" },
       { id: "t2i_blender", auditId: "t2i_blender", label: "T2I-Blender RGB", scope: "93 cases · Blender-agent RGB render", contact_sheet: "generated/v3_full93/t2i_blender_contact_sheet.jpg" }
     ];
     const normalizeSummary = (row) => ({ ...row, case_exact_rate: row.exact_case_rate });
@@ -147,15 +148,15 @@
     const summaryRow = (model, best) => `<tr><td><span class="model">${h(model.label)}</span><span class="scope">${h(model.scope)}</span></td><td>${model.summary.overall.cases}</td>${metricCells(model.summary.overall, best)}</tr>`;
     const capabilityRows = (model) => Object.entries(model.summary.by_capability).map(([name, row]) => `<tr><td>${h(name)}</td><td>${row.cases}</td>${metricCells(row)}</tr>`).join("");
 
-    fetch("data/v3_visual_audit_20260717_adjudicated_summary.json?v=20260718-adjudicated")
+    fetch("data/v3_visual_audit_20260718_six_method_adjudicated_summary.json?v=20260718-six-method")
       .then((response) => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
       .then((audit) => {
         const models = buildModels(audit);
         const best = bestMetrics(models);
         document.getElementById("app").innerHTML = `
           <div class="intro">
-            <div><h1>Adjudicated spatial evaluation</h1><p>Four independent first-pass visual reviewers evaluated all 93 cases. Fifty-four disputed cases received a separate second-pass review before the scores were frozen.</p></div>
-            <div class="stamp">Judge: Codex multi-reviewer visual adjudication<br>Frozen 2026-07-17</div>
+            <div><h1>Adjudicated spatial evaluation</h1><p>Six methods were evaluated on the same 93 cases with direct visual review. Every method received an independent first pass, followed by a separate review of disputed cases before scores were frozen.</p></div>
+            <div class="stamp">Judge: Codex multi-reviewer visual adjudication<br>Frozen 2026-07-18</div>
           </div>
 
           <div class="status">Qwen-refined outputs are available in the case viewer but are not included in this table until they receive the same separate visual audit.</div>
@@ -182,7 +183,7 @@
             <div class="gallery">${models.map((model) => `<figure><figcaption>${h(model.label)} · ${h(model.scope)}</figcaption><a href="${h(model.contact_sheet)}"><img src="${h(model.contact_sheet)}" alt="${h(model.label)} contact sheet" loading="lazy"></a></figure>`).join("")}</div>
           </section>
 
-          <section class="method"><h2>Evaluation protocol</h2><p>Reviewers saw the prompt, explicit object and relation checklist, and the four method images. They independently marked each object instance and relation as pass, fail, or unclear; disputed cells were then reviewed again without using the old Qwen3-VL-8B answer as ground truth.</p><p>Primary scoring is strict: pass = 1; fail and unclear = 0. Exact Case requires every required object instance and every explicit relation to pass.</p><p><a href="data/v3_visual_audit_20260717_adjudicated_summary.json">Download the adjudicated summary</a> · <a href="data/v3_visual_audit_20260717_adjudicated.jsonl">Download all case-level decisions</a></p></section>`;
+          <section class="method"><h2>Evaluation protocol</h2><p>Reviewers saw the prompt, explicit object and relation checklist, and the generated images. They independently marked each object instance and relation as pass, fail, or unclear; disputed cells were then reviewed again without using Qwen3-VL-8B or API answers as ground truth.</p><p>Primary scoring is strict: pass = 1; fail and unclear = 0. Exact Case requires every required object instance and every explicit relation to pass.</p><p><a href="data/v3_visual_audit_20260718_six_method_adjudicated_summary.json">Download the adjudicated summary</a> · <a href="data/v3_visual_audit_20260718_six_method_adjudicated.jsonl">Download all case-level decisions</a></p></section>`;
 
         const allModels = models;
         const select = document.getElementById("modelSelect");
