@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://t2i-blender.local/schemas/spatial_bench_v3/t2i_blender_adapter.schema.json",
+  "title": "Spatial Bench v3 T2I-Blender Asset Adapter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "adapter_version", "registry_path", "registry_sha256", "profiles"],
+  "properties": {
+    "schema_version": {"const": "spatial_bench_v3"},
+    "adapter_version": {"type": "string", "minLength": 1},
+    "registry_path": {"type": "string", "minLength": 1},
+    "registry_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "profiles": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/asset_profile"}
+    }
+  },
+  "$defs": {
+    "asset_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical", "asset_id", "task_profiles", "measured_dimensions_m"],
+      "properties": {
+        "canonical": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "asset_id": {"type": "string", "minLength": 1},
+        "task_profiles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "absolute_location",
+              "relative_position",
+              "depth",
+              "occlusion_subject",
+              "occlusion_target",
+              "support_subject",
+              "support_surface",
+              "orientation_subject",
+              "orientation_target"
+            ]
+          }
+        },
+        "measured_dimensions_m": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"type": "number", "exclusiveMinimum": 0}
+        },
+        "orientation_profile": {"$ref": "#/$defs/orientation_profile"}
+      }
+    },
+    "orientation_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_front_axis",
+        "front_confidence",
+        "has_distinct_front",
+        "yaw_symmetry_order",
+        "profiler_model",
+        "profiler_version",
+        "view_hashes",
+        "vlm_raw_output",
+        "raw_output_sha256",
+        "human_review",
+        "profile_version"
+      ],
+      "properties": {
+        "canonical_front_axis": {"enum": ["+X", "-X", "+Y", "-Y"]},
+        "front_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "has_distinct_front": {"type": "boolean"},
+        "yaw_symmetry_order": {"type": "integer", "minimum": 1},
+        "profiler_model": {"type": "string", "minLength": 1},
+        "profiler_version": {"type": "string", "minLength": 1},
+        "view_hashes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["+X", "-X", "+Y", "-Y", "+Z", "-Z"],
+          "properties": {
+            "+X": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "-X": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "+Y": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "-Y": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "+Z": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "-Z": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+          }
+        },
+        "vlm_raw_output": {"type": "object"},
+        "raw_output_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "human_review": {"enum": ["pending", "accepted", "rejected"]},
+        "profile_version": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

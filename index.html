@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="data:,">
-  <title>Spatial Bench v3 Viewer</title>
+  <title>Spatial Bench v3.2 Viewer</title>
   <style>
     :root {
       color-scheme: light;
@@ -369,11 +369,11 @@
 <body>
   <header class="topbar">
     <div class="brand">
-      <h1>Spatial Bench v3 Viewer</h1>
+      <h1>Spatial Bench v3.2 Viewer</h1>
       <p>Prompt-level comparison across ten spatial generation outputs</p>
     </div>
     <div class="top-actions">
-      <span id="headerCount">Loading 97 cases...</span>
+      <span id="headerCount">Loading 90 cases...</span>
       <a class="report-link" href="v3_results.html">Results table</a>
     </div>
   </header>
@@ -401,8 +401,8 @@
       </div>
       <div class="dataset-summary" id="datasetSummary"></div>
       <div class="pipeline-note">
-        <strong>Curated 93-case suite</strong>
-        Four visually invalid occlusion/depth cases are archived and excluded. Direct visual adjudication is the headline protocol; Qwen3-VL-32B three-vote scores are included as a separate diagnostic view.
+        <strong>Frozen 90-case v3.2 suite</strong>
+        Six absolute-location diagnostics and twelve cases per remaining capability. Direct visual adjudication is the headline protocol; Qwen3-VL-32B remains a separate diagnostic view.
       </div>
     </aside>
 
@@ -669,7 +669,7 @@
 
     async function loadViewer() {
       try {
-        const response = await fetch("data/v3_viewer_cases.json?v=20260718-muses-qwen32");
+        const response = await fetch("data/v3_viewer_cases.json?v=20260721-v32-final");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         state.data = await response.json();
         fillSelect("category", state.data.cases.map(item => item.category));

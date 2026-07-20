@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://t2i-blender.local/schemas/spatial_bench_v3/core_case.schema.json",
+  "title": "Spatial Bench v3 Core Case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "subset",
+    "difficulty",
+    "focus_capability",
+    "prompt_en",
+    "prompt_zh",
+    "objects",
+    "relations"
+  ],
+  "properties": {
+    "schema_version": {"const": "spatial_bench_v3"},
+    "id": {"type": "string", "pattern": "^[A-Z]+-(D|N|H)[0-9]{2}$"},
+    "subset": {"enum": ["diagnostic", "compositional"]},
+    "difficulty": {"type": ["string", "null"], "enum": [null, "normal", "hard"]},
+    "focus_capability": {
+      "enum": [
+        "absolute_location_2d",
+        "relative_position_2d",
+        "depth_front_back",
+        "occlusion_visibility",
+        "support_contact",
+        "orientation_facing",
+        "yaw_direction",
+        "continuous_yaw",
+        "multi_relation_composition"
+      ]
+    },
+    "registered_pattern": {"enum": ["ordered_between"]},
+    "prompt_en": {"type": "string", "minLength": 1},
+    "prompt_zh": {"type": "string", "minLength": 1},
+    "objects": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/object"}
+    },
+    "relations": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 7,
+      "items": {"$ref": "#/$defs/relation"}
+    }
+  },
+  "$defs": {
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "canonical", "mention"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*_[0-9]+$"},
+        "canonical": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "mention": {"type": "string", "minLength": 1},
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {"type": ["string", "number", "boolean"]}
+        }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "subject", "primary"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^r[1-9][0-9]*$"},
+        "type": {
+          "enum": [
+            "absolute_location",
+            "left_of",
+            "right_of",
+            "above",
+            "below",
+            "in_front",
+            "behind",
+            "on_top",
+            "on_surface",
+            "under",
+            "inside",
+            "same_surface",
+            "partially_occludes",
+            "face",
+            "face_angle",
+            "rotate_yaw"
+          ]
+        },
+        "subject": {"type": "string"},
+        "target": {"type": "string"},
+        "primary": {"type": "boolean"},
+        "frame": {"enum": ["camera", "image", "object_target", "scene_world", "support"]},
+        "scene_region": {
+          "enum": [
+            "left",
+            "right",
+            "center",
+            "upper_left",
+            "upper_right",
+            "lower_left",
+            "lower_right",
+            "center_foreground",
+            "center_background"
+          ]
+        },
+        "facing_intent": {
+          "enum": ["toward_camera", "toward_target", "away_from_target", "left", "right"]
+        },
+        "facing_part": {"enum": ["front_side", "screen_side", "lens_side", "emitting_side"]},
+        "occlusion_policy": {"const": "partial"},
+        "direction": {"enum": ["left", "right", "clockwise", "counterclockwise"]},
+        "degrees": {"type": "number", "minimum": 0, "maximum": 360},
+        "reference": {"enum": ["facing_camera", "current_pose", "canonical_front"]},
+        "angle_degrees": {"enum": [30, 60, 90]},
+        "angle_reference": {"const": "facing_viewer"},
+        "tolerance_deg": {"type": "number", "exclusiveMinimum": 0, "maximum": 45}
+      }
+    }
+  }
+}

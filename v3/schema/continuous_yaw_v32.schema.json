@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://t2i-blender.local/schemas/spatial_bench_v3.2/continuous_yaw_relation.schema.json",
+  "title": "Spatial Bench v3.2 Continuous Yaw Relation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "subject",
+    "primary",
+    "frame",
+    "direction",
+    "angle_degrees",
+    "angle_reference",
+    "tolerance_deg",
+    "facing_part"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^r[1-9][0-9]*$"},
+    "type": {"const": "face_angle"},
+    "subject": {"type": "string"},
+    "primary": {"const": true},
+    "frame": {"const": "image"},
+    "direction": {"enum": ["left", "right"]},
+    "angle_degrees": {"enum": [30, 60, 90]},
+    "angle_reference": {"const": "facing_viewer"},
+    "tolerance_deg": {"const": 15},
+    "facing_part": {"enum": ["front_side", "screen_side", "lens_side", "emitting_side"]}
+  }
+}
