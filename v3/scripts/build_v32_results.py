@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the v3.2 visual and Qwen32 result tables from complete 90-case audits."""
+"""Build the v3.2 result tables from complete 90-case visual audits."""
 
 from __future__ import annotations
 
@@ -202,6 +202,7 @@ def main() -> None:
     parser.add_argument("--core", type=Path, required=True)
     parser.add_argument("--visual-dir", type=Path, required=True)
     parser.add_argument("--qwen-dir", type=Path, required=True)
+    parser.add_argument("--qwen38-dir", type=Path)
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-csv", type=Path, required=True)
     args = parser.parse_args()
@@ -210,6 +211,8 @@ def main() -> None:
     if len(cases) != 90:
         raise ValueError(f"expected frozen 90-case core, got {len(cases)}")
     results = {"visual": {}, "qwen32_diagnostic": {}}
+    if args.qwen38_dir:
+        results["qwen38_diagnostic"] = {}
     case_rows = {}
     for method in METHODS:
         visual_rows = load_jsonl(args.visual_dir / f"{method}_full90_final.jsonl")
@@ -219,10 +222,19 @@ def main() -> None:
         )
         results["visual"][method] = summary(cases, direct)
         results["qwen32_diagnostic"][method] = summary(cases, qwen)
+        qwen38 = None
+        if args.qwen38_dir:
+            qwen38 = qwen_decisions(
+                cases,
+                load_jsonl(args.qwen38_dir / method / "vqa_results.jsonl"),
+                method,
+            )
+            results["qwen38_diagnostic"][method] = summary(cases, qwen38)
         for case in cases:
             case_rows.setdefault(case["id"], {})[method] = {
                 "visual": direct[case["id"]],
                 "qwen32": qwen[case["id"]],
+                **({"qwen38": qwen38[case["id"]]} if qwen38 else {}),
             }
 
     output = {
@@ -232,6 +244,26 @@ def main() -> None:
             "spatial_macro": "Macro average of primary relation accuracy over all eight capabilities.",
             "case_exact": "All required objects, cardinalities, and explicit relations pass.",
             "qwen32_diagnostic": "Diagnostic only; direct visual adjudication is the headline judge.",
+            "qwen38_diagnostic": "Diagnostic only; Qwen3.8-Max Preview does not replace direct visual adjudication.",
+        },
+        "judges": {
+            "visual": {"role": "headline", "protocol": "blind multi-reviewer adjudication"},
+            "qwen32_diagnostic": {
+                "role": "diagnostic",
+                "model": "Qwen3-VL-32B-Instruct",
+            },
+            **(
+                {
+                    "qwen38_diagnostic": {
+                        "role": "diagnostic",
+                        "model": "qwen3.8-max-preview",
+                        "provider": "Alibaba Cloud Model Studio Token Plan",
+                        "base_url": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+                    }
+                }
+                if args.qwen38_dir
+                else {}
+            ),
         },
         **{
             judge: {
@@ -258,7 +290,7 @@ def main() -> None:
         fieldnames = ["judge", *output["visual"]["rows"][0]]
         writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
-        for judge in ("visual", "qwen32_diagnostic"):
+        for judge in results:
             for row in output[judge]["rows"]:
                 writer.writerow({"judge": judge, **row})
     print(f"wrote {args.output_json}")

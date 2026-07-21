@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import base64
 import json
+import os
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -363,7 +364,10 @@ def main() -> int:
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--model", default="qwen3-vl-8b")
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
-    parser.add_argument("--api-key", default="EMPTY")
+    parser.add_argument(
+        "--api-key",
+        default=os.environ.get("DASHSCOPE_API_KEY") or os.environ.get("OPENAI_API_KEY") or "EMPTY",
+    )
     parser.add_argument("--timeout", type=float, default=90.0)
     parser.add_argument("--max-tokens", type=int, default=2048)
     parser.add_argument("--judge-attempts", type=int, default=2)

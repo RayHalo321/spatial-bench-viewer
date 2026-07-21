@@ -1,0 +1,728 @@
+{
+  "schema_version": "spatial_bench_v3_2_qwen38_audit",
+  "case_count": 90,
+  "methods": {
+    "flux": {
+      "exact_agreement_with_visual": 0.8888888888888888,
+      "exact_agreement_with_qwen32": 0.7888888888888889,
+      "relation_agreement_with_visual": 0.9415584415584416,
+      "visual_pass_qwen38_fail_count": 7,
+      "visual_pass_qwen38_fail_ids": [
+        "OCC-N05",
+        "OCC-N06",
+        "OCC-H01",
+        "OCC-H05",
+        "SUP-H01",
+        "ORI-N02",
+        "MUL-N06"
+      ],
+      "qwen38_pass_visual_fail_count": 3,
+      "qwen38_pass_visual_fail_ids": [
+        "ABS-D04",
+        "DEP-H02",
+        "SUP-N02"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 4,
+          "qwen38_exact": 5,
+          "agreement": 5
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 6,
+          "qwen38_exact": 6,
+          "agreement": 12
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 8,
+          "qwen38_exact": 9,
+          "agreement": 11
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 10,
+          "qwen38_exact": 6,
+          "agreement": 8
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 8,
+          "qwen38_exact": 8,
+          "agreement": 10
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 8,
+          "agreement": 11
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 1,
+          "qwen38_exact": 1,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 7,
+          "qwen38_exact": 6,
+          "agreement": 11
+        }
+      }
+    },
+    "sdxl": {
+      "exact_agreement_with_visual": 0.9444444444444444,
+      "exact_agreement_with_qwen32": 0.9111111111111111,
+      "relation_agreement_with_visual": 0.8863636363636364,
+      "visual_pass_qwen38_fail_count": 2,
+      "visual_pass_qwen38_fail_ids": [
+        "YAW-N04",
+        "MUL-N03"
+      ],
+      "qwen38_pass_visual_fail_count": 3,
+      "qwen38_pass_visual_fail_ids": [
+        "ABS-D04",
+        "DEP-N04",
+        "YAW-N02"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 1,
+          "qwen38_exact": 2,
+          "agreement": 5
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 1,
+          "qwen38_exact": 1,
+          "agreement": 12
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 1,
+          "qwen38_exact": 2,
+          "agreement": 11
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 0,
+          "qwen38_exact": 0,
+          "agreement": 12
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 1,
+          "qwen38_exact": 1,
+          "agreement": 12
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 3,
+          "qwen38_exact": 3,
+          "agreement": 12
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 1,
+          "qwen38_exact": 1,
+          "agreement": 10
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 4,
+          "qwen38_exact": 3,
+          "agreement": 11
+        }
+      }
+    },
+    "gligen": {
+      "exact_agreement_with_visual": 0.8666666666666667,
+      "exact_agreement_with_qwen32": 0.7777777777777778,
+      "relation_agreement_with_visual": 0.8603896103896104,
+      "visual_pass_qwen38_fail_count": 5,
+      "visual_pass_qwen38_fail_ids": [
+        "OCC-N06",
+        "OCC-H03",
+        "OCC-H05",
+        "MUL-N04",
+        "MUL-N06"
+      ],
+      "qwen38_pass_visual_fail_count": 7,
+      "qwen38_pass_visual_fail_ids": [
+        "ABS-D02",
+        "ABS-D05",
+        "OCC-H02",
+        "SUP-N01",
+        "SUP-N04",
+        "SUP-H05",
+        "MUL-H01"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 4,
+          "qwen38_exact": 6,
+          "agreement": 4
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 7,
+          "qwen38_exact": 7,
+          "agreement": 12
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 5,
+          "qwen38_exact": 5,
+          "agreement": 12
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 7,
+          "agreement": 8
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 5,
+          "qwen38_exact": 8,
+          "agreement": 9
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 6,
+          "qwen38_exact": 6,
+          "agreement": 12
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 0,
+          "qwen38_exact": 0,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 6,
+          "qwen38_exact": 5,
+          "agreement": 9
+        }
+      }
+    },
+    "lmd_plus": {
+      "exact_agreement_with_visual": 0.8777777777777778,
+      "exact_agreement_with_qwen32": 0.8444444444444444,
+      "relation_agreement_with_visual": 0.8344155844155844,
+      "visual_pass_qwen38_fail_count": 1,
+      "visual_pass_qwen38_fail_ids": [
+        "MUL-N04"
+      ],
+      "qwen38_pass_visual_fail_count": 10,
+      "qwen38_pass_visual_fail_ids": [
+        "REL-N02",
+        "REL-H02",
+        "REL-H05",
+        "DEP-N02",
+        "DEP-H02",
+        "DEP-H03",
+        "SUP-N02",
+        "SUP-N04",
+        "MUL-N07",
+        "MUL-H01"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 6,
+          "qwen38_exact": 6,
+          "agreement": 6
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 6,
+          "qwen38_exact": 9,
+          "agreement": 9
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 3,
+          "qwen38_exact": 6,
+          "agreement": 9
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 1,
+          "qwen38_exact": 1,
+          "agreement": 12
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 11,
+          "agreement": 10
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 6,
+          "qwen38_exact": 6,
+          "agreement": 12
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 0,
+          "qwen38_exact": 0,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 5,
+          "qwen38_exact": 6,
+          "agreement": 9
+        }
+      }
+    },
+    "boxdiff_xl": {
+      "exact_agreement_with_visual": 0.8444444444444444,
+      "exact_agreement_with_qwen32": 0.7444444444444445,
+      "relation_agreement_with_visual": 0.8214285714285714,
+      "visual_pass_qwen38_fail_count": 7,
+      "visual_pass_qwen38_fail_ids": [
+        "REL-N07",
+        "DEP-N03",
+        "DEP-N04",
+        "OCC-N01",
+        "OCC-N03",
+        "SUP-N06",
+        "MUL-N03"
+      ],
+      "qwen38_pass_visual_fail_count": 7,
+      "qwen38_pass_visual_fail_ids": [
+        "ABS-D02",
+        "ABS-D03",
+        "DEP-N02",
+        "OCC-N04",
+        "SUP-N02",
+        "SUP-N03",
+        "SUP-N04"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 1,
+          "qwen38_exact": 3,
+          "agreement": 4
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 2,
+          "qwen38_exact": 1,
+          "agreement": 11
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 2,
+          "qwen38_exact": 1,
+          "agreement": 9
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 2,
+          "qwen38_exact": 1,
+          "agreement": 9
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 1,
+          "qwen38_exact": 3,
+          "agreement": 8
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 0,
+          "qwen38_exact": 0,
+          "agreement": 12
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 0,
+          "qwen38_exact": 0,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 2,
+          "qwen38_exact": 1,
+          "agreement": 11
+        }
+      }
+    },
+    "muses_qwen_rgb": {
+      "exact_agreement_with_visual": 0.8111111111111111,
+      "exact_agreement_with_qwen32": 0.7555555555555555,
+      "relation_agreement_with_visual": 0.8571428571428571,
+      "visual_pass_qwen38_fail_count": 6,
+      "visual_pass_qwen38_fail_ids": [
+        "SUP-H05",
+        "ORI-N01",
+        "ORI-N07",
+        "MUL-N03",
+        "MUL-N05",
+        "MUL-H02"
+      ],
+      "qwen38_pass_visual_fail_count": 11,
+      "qwen38_pass_visual_fail_ids": [
+        "REL-H05",
+        "SUP-N02",
+        "SUP-N05",
+        "SUP-N07",
+        "SUP-H01",
+        "ORI-N02",
+        "ORI-H02",
+        "ORI-H03",
+        "ORI-H04",
+        "MUL-N06",
+        "MUL-H03"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 6,
+          "qwen38_exact": 6,
+          "agreement": 6
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 10,
+          "agreement": 11
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 10,
+          "qwen38_exact": 10,
+          "agreement": 12
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 9,
+          "agreement": 12
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 6,
+          "qwen38_exact": 9,
+          "agreement": 7
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 6,
+          "qwen38_exact": 8,
+          "agreement": 6
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 1,
+          "qwen38_exact": 1,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 8,
+          "qwen38_exact": 7,
+          "agreement": 7
+        }
+      }
+    },
+    "muses_qwen_sdxl": {
+      "exact_agreement_with_visual": 0.9444444444444444,
+      "exact_agreement_with_qwen32": 0.7888888888888889,
+      "relation_agreement_with_visual": 0.8961038961038961,
+      "visual_pass_qwen38_fail_count": 0,
+      "visual_pass_qwen38_fail_ids": [],
+      "qwen38_pass_visual_fail_count": 5,
+      "qwen38_pass_visual_fail_ids": [
+        "ABS-D04",
+        "DEP-N04",
+        "DEP-H05",
+        "OCC-N07",
+        "SUP-H02"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 5,
+          "qwen38_exact": 6,
+          "agreement": 5
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 8,
+          "qwen38_exact": 8,
+          "agreement": 12
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 11,
+          "agreement": 10
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 3,
+          "qwen38_exact": 4,
+          "agreement": 11
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 3,
+          "qwen38_exact": 4,
+          "agreement": 11
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 4,
+          "qwen38_exact": 4,
+          "agreement": 12
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 0,
+          "qwen38_exact": 0,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 4,
+          "qwen38_exact": 4,
+          "agreement": 12
+        }
+      }
+    },
+    "muses_qwen_rgb_qwen_i2i": {
+      "exact_agreement_with_visual": 0.8111111111111111,
+      "exact_agreement_with_qwen32": 0.7333333333333333,
+      "relation_agreement_with_visual": 0.8409090909090909,
+      "visual_pass_qwen38_fail_count": 3,
+      "visual_pass_qwen38_fail_ids": [
+        "OCC-N01",
+        "SUP-N01",
+        "YAW-N06"
+      ],
+      "qwen38_pass_visual_fail_count": 14,
+      "qwen38_pass_visual_fail_ids": [
+        "REL-H03",
+        "REL-H04",
+        "REL-H05",
+        "DEP-H01",
+        "OCC-H01",
+        "SUP-N02",
+        "SUP-N04",
+        "SUP-N05",
+        "SUP-H01",
+        "SUP-H02",
+        "ORI-H04",
+        "MUL-N06",
+        "MUL-H03",
+        "MUL-H05"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 5,
+          "qwen38_exact": 5,
+          "agreement": 6
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 8,
+          "qwen38_exact": 11,
+          "agreement": 9
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 10,
+          "qwen38_exact": 11,
+          "agreement": 11
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 10,
+          "qwen38_exact": 10,
+          "agreement": 10
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 6,
+          "qwen38_exact": 10,
+          "agreement": 6
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 4,
+          "qwen38_exact": 5,
+          "agreement": 11
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 2,
+          "qwen38_exact": 1,
+          "agreement": 11
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 7,
+          "qwen38_exact": 10,
+          "agreement": 9
+        }
+      }
+    },
+    "t2i_blender_rgb": {
+      "exact_agreement_with_visual": 0.8777777777777778,
+      "exact_agreement_with_qwen32": 0.6888888888888889,
+      "relation_agreement_with_visual": 0.9448051948051948,
+      "visual_pass_qwen38_fail_count": 7,
+      "visual_pass_qwen38_fail_ids": [
+        "ORI-N02",
+        "ORI-N03",
+        "ORI-H01",
+        "ORI-H04",
+        "YAW-N01",
+        "YAW-N04",
+        "YAW-H02"
+      ],
+      "qwen38_pass_visual_fail_count": 4,
+      "qwen38_pass_visual_fail_ids": [
+        "SUP-H04",
+        "ORI-H02",
+        "ORI-H03",
+        "MUL-H04"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 5,
+          "qwen38_exact": 5,
+          "agreement": 6
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 11,
+          "qwen38_exact": 11,
+          "agreement": 12
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 11,
+          "qwen38_exact": 11,
+          "agreement": 12
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 9,
+          "agreement": 12
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 11,
+          "qwen38_exact": 12,
+          "agreement": 11
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 7,
+          "agreement": 6
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 6,
+          "agreement": 9
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 8,
+          "qwen38_exact": 9,
+          "agreement": 11
+        }
+      }
+    },
+    "t2i_blender_qwen": {
+      "exact_agreement_with_visual": 0.8777777777777778,
+      "exact_agreement_with_qwen32": 0.7555555555555555,
+      "relation_agreement_with_visual": 0.9415584415584416,
+      "visual_pass_qwen38_fail_count": 9,
+      "visual_pass_qwen38_fail_ids": [
+        "ABS-D05",
+        "ORI-H01",
+        "ORI-H04",
+        "YAW-N04",
+        "YAW-N05",
+        "YAW-H01",
+        "YAW-H02",
+        "YAW-H03",
+        "YAW-H05"
+      ],
+      "qwen38_pass_visual_fail_count": 2,
+      "qwen38_pass_visual_fail_ids": [
+        "ORI-H02",
+        "MUL-H04"
+      ],
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 6,
+          "qwen38_exact": 5,
+          "agreement": 5
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 9,
+          "agreement": 12
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 10,
+          "qwen38_exact": 10,
+          "agreement": 12
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 9,
+          "agreement": 12
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 11,
+          "qwen38_exact": 11,
+          "agreement": 12
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 9,
+          "qwen38_exact": 8,
+          "agreement": 9
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 10,
+          "qwen38_exact": 4,
+          "agreement": 6
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 8,
+          "qwen38_exact": 9,
+          "agreement": 11
+        }
+      }
+    }
+  }
+}

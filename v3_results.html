@@ -134,7 +134,7 @@
   <script>
     const pct = (value) => value == null ? "-" : (Number(value) * 100).toFixed(1) + "%";
     const h = (value) => String(value ?? "").replace(/[&<>"']/g, (ch) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-    const detailMetricKeys = ["presence_micro", "cardinality_micro", "strict_relation_micro", "primary_relation_micro", "case_exact_rate"];
+    const detailMetricKeys = ["presence_micro", "cardinality_micro", "strict_relation_micro", "primary_relation_micro", "exact_case_rate"];
     const paperMetricKeys = ["presence", "cardinality", "layout_2d", "depth_contact_occlusion", "orientation_yaw", "composition", "spatial_macro", "case_exact"];
     const modelMeta = [
       { id: "flux", label: "FLUX.1-schnell", scope: "90 cases · plain text-to-image" },
@@ -148,10 +148,33 @@
       { id: "t2i_blender_rgb", label: "T2I-Blender RGB", scope: "90 cases · Blender-agent RGB render" },
       { id: "t2i_blender_qwen", label: "T2I-Blender + Qwen I2I", scope: "90 cases · render-guided Qwen refinement" }
     ].map((meta) => ({ ...meta, contact_sheet: `generated/v3_full90_v32/${meta.id}_contact_sheet.jpg` }));
+    const judgeMeta = {
+      visual: {
+        key: "visual",
+        title: "Adjudicated spatial evaluation",
+        judge: "direct multi-reviewer visual adjudication",
+        intro: "Ten methods were evaluated on the same 90 v3.2 cases with blind direct visual review, independent failed-case review, and a third vote only for disagreements.",
+        status: "Headline protocol. All ten methods include Presence, Cardinality, explicit Relation checks, and the same strict Case Exact definition."
+      },
+      qwen32: {
+        key: "qwen32_diagnostic",
+        title: "Qwen3-VL-32B diagnostic evaluation",
+        judge: "Qwen3-VL-32B-Instruct",
+        intro: "Ten methods were evaluated with Qwen3-VL-32B-Instruct using the same materialized atomic checklist. This remains a secondary diagnostic view, not the headline ground truth.",
+        status: "Secondary diagnostic only. Qwen3-VL-32B answers the same atomic checklist; fail, unclear, missing, and API error score 0."
+      },
+      qwen38: {
+        key: "qwen38_diagnostic",
+        title: "Qwen3.8-Max Preview diagnostic evaluation",
+        judge: "Qwen3.8-Max Preview",
+        intro: "Ten methods were re-audited with Qwen3.8-Max Preview using the same 90 images and materialized atomic checklist. This is a diagnostic comparison, not the headline ground truth.",
+        status: "Secondary diagnostic only. Qwen3.8-Max Preview uses the same strict scoring: fail, unclear, missing, and API error score 0."
+      }
+    };
     const state = { mode: "visual", final: null };
     const buildModels = () => modelMeta.map((meta) => ({
       ...meta,
-      summary: state.final[state.mode === "visual" ? "visual" : "qwen32_diagnostic"].summary[meta.id]
+      summary: state.final[judgeMeta[state.mode].key].summary[meta.id]
     }));
     const detailMetricCells = (summary) => {
       return detailMetricKeys.map((key) => `<td>${pct(summary[key])}</td>`).join("");
@@ -176,17 +199,17 @@
     const capabilityRows = (model) => Object.entries(model.summary.by_capability).map(([name, row]) => `<tr><td>${h(name)}</td><td>${row.cases}</td>${detailMetricCells(row)}</tr>`).join("");
 
     function render() {
-        const visualMode = state.mode === "visual";
+        const meta = judgeMeta[state.mode];
         const models = buildModels();
-        const paperRows = state.final[visualMode ? "visual" : "qwen32_diagnostic"].rows;
+        const paperRows = state.final[meta.key].rows;
         const best = bestPaperMetrics(paperRows);
         document.getElementById("app").innerHTML = `
           <div class="intro">
-            <div><h1>${visualMode ? "Adjudicated spatial evaluation" : "Qwen3-VL-32B diagnostic evaluation"}</h1><p>${visualMode ? "Ten methods were evaluated on the same 90 v3.2 cases with blind direct visual review, independent failed-case review, and a third vote only for disagreements." : "Ten methods were evaluated with Qwen3-VL-32B-Instruct using the same materialized atomic checklist. This remains a secondary diagnostic view, not the headline ground truth."}</p></div>
-            <div class="stamp">${visualMode ? "Judge: direct multi-reviewer visual adjudication" : "Judge: Qwen3-VL-32B-Instruct"}<br>Spatial Bench v3.2<div class="judge-switch" role="group" aria-label="Evaluation protocol"><button type="button" data-mode="visual" aria-pressed="${visualMode}">Visual adjudication</button><button type="button" data-mode="qwen32" aria-pressed="${!visualMode}">Qwen3-VL-32B</button></div></div>
+            <div><h1>${meta.title}</h1><p>${meta.intro}</p></div>
+            <div class="stamp">Judge: ${meta.judge}<br>Spatial Bench v3.2<div class="judge-switch" role="group" aria-label="Evaluation protocol"><button type="button" data-mode="visual" aria-pressed="${state.mode === "visual"}">Visual adjudication</button><button type="button" data-mode="qwen32" aria-pressed="${state.mode === "qwen32"}">Qwen3-VL-32B</button>${state.final.qwen38_diagnostic ? `<button type="button" data-mode="qwen38" aria-pressed="${state.mode === "qwen38"}">Qwen3.8-Max</button>` : ""}</div></div>
           </div>
 
-          <div class="status">${visualMode ? "Headline protocol. All ten methods now include Presence, Cardinality, explicit Relation checks, and the same strict Case Exact definition." : "Secondary diagnostic only. Qwen3-VL-32B answers the same atomic checklist; fail, unclear, missing, and API error score 0."}</div>
+          <div class="status">${meta.status}</div>
 
           <section>
             <h2>Main paper table · 90 cases</h2>
@@ -219,7 +242,7 @@
             <div class="gallery">${models.map((model) => `<figure><figcaption>${h(model.label)} · ${h(model.scope)}</figcaption><a href="${h(model.contact_sheet)}"><img src="${h(model.contact_sheet)}" alt="${h(model.label)} contact sheet" loading="lazy"></a></figure>`).join("")}</div>
           </section>
 
-          <section class="method"><h2>Evaluation protocol</h2><p>${visualMode ? "Reviewers saw only the prompt, explicit checklist, and one method image. Failed first-pass cases received an independent second pass; disagreements received a third blind vote. Qwen32 never replaced the final visual decision." : "Qwen3-VL-32B-Instruct answered every materialized presence, cardinality, positive relation, and inverse relation question under one frozen protocol."}</p><p>Primary scoring is strict: pass = 1; fail and unclear = 0. Case Exact requires presence, cardinality, and every explicit relation.</p><p><a href="data/v32_final_results_20260720.csv">Download table CSV</a> · <a href="data/v32_final_results_20260720.json">Download complete JSON</a> · <a href="data/v3_viewer_cases.json">Inspect case-level answers</a></p></section>`;
+          <section class="method"><h2>Evaluation protocol</h2><p>${state.mode === "visual" ? "Reviewers saw only the prompt, explicit checklist, and one method image. Failed first-pass cases received an independent second pass; disagreements received a third blind vote. Automated judges never replaced the final visual decision." : `${meta.judge} answered every materialized presence, cardinality, positive relation, and inverse relation question under one frozen protocol.`}</p><p>Primary scoring is strict: pass = 1; fail and unclear = 0. Case Exact requires presence, cardinality, and every explicit relation.</p><p><a href="data/v32_final_results_20260721.csv">Download table CSV</a> · <a href="data/v32_final_results_20260721.json">Download complete JSON</a> · <a href="data/v32_qwen38_audit_20260721.json">Qwen3.8 disagreement audit</a> · <a href="data/v3_viewer_cases.json">Inspect case-level answers</a></p></section>`;
 
         const select = document.getElementById("modelSelect");
         const renderBreakdown = () => {
@@ -234,7 +257,7 @@
         renderBreakdown();
     }
 
-    fetch("data/v32_final_results_20260720.json?v=20260721-v32-final")
+    fetch("data/v32_final_results_20260721.json?v=20260721-qwen38-final")
       .then((response) => { if (!response.ok) throw new Error(`Results HTTP ${response.status}`); return response.json(); })
       .then((final) => { state.final = final; render(); })
       .catch((error) => { document.getElementById("app").innerHTML = `<div class="error">Could not load v3 results: ${h(error.message)}</div>`; });
