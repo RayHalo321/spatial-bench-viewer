@@ -1,0 +1,969 @@
+{
+  "schema_version": "spatial_bench_v3_2_gpt56_audit",
+  "case_count": 90,
+  "method_count": 10,
+  "judge": {
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "provider": "Right Code",
+    "base_url": "https://www.right.codes/codex/v1",
+    "role": "diagnostic"
+  },
+  "methods": {
+    "flux": {
+      "metrics": {
+        "method": "flux",
+        "presence": 0.99079754601227,
+        "cardinality": 0.9447852760736196,
+        "layout_2d": 0.7566666666666667,
+        "depth_contact_occlusion": 0.9824561403508771,
+        "orientation_yaw": 0.4411764705882353,
+        "composition": 0.8604651162790697,
+        "spatial_macro": 0.7754399764801883,
+        "case_exact": 0.5888888888888889,
+        "diagnostic_exact": 0.8333333333333334,
+        "normal_exact": 0.7346938775510204,
+        "hard_exact": 0.34285714285714286
+      },
+      "exact_agreement_with_visual": 0.9333333333333333,
+      "exact_agreement_with_qwen32": 0.7888888888888889,
+      "exact_agreement_with_qwen38": 0.8888888888888888,
+      "relation_agreement_with_visual": 0.974025974025974,
+      "relation_agreement_with_qwen32": 0.8863636363636364,
+      "relation_agreement_with_qwen38": 0.948051948051948,
+      "visual_pass_gpt56_fail_count": 3,
+      "visual_pass_gpt56_fail_ids": [
+        "OCC-H01",
+        "SUP-H01",
+        "YAW-N02"
+      ],
+      "gpt56_pass_visual_fail_count": 3,
+      "gpt56_pass_visual_fail_ids": [
+        "ABS-D04",
+        "REL-H05",
+        "SUP-H04"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 0,
+      "unclear_rate": 0.0,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 4,
+          "gpt56_exact": 5,
+          "agreement": 5
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 6,
+          "gpt56_exact": 7,
+          "agreement": 11
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 8,
+          "gpt56_exact": 8,
+          "agreement": 12
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 10,
+          "gpt56_exact": 9,
+          "agreement": 11
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 8,
+          "gpt56_exact": 8,
+          "agreement": 10
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 9,
+          "agreement": 12
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 1,
+          "gpt56_exact": 0,
+          "agreement": 11
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 7,
+          "gpt56_exact": 7,
+          "agreement": 12
+        }
+      }
+    },
+    "sdxl": {
+      "metrics": {
+        "method": "sdxl",
+        "presence": 0.8895705521472392,
+        "cardinality": 0.7760736196319018,
+        "layout_2d": 0.5066666666666667,
+        "depth_contact_occlusion": 0.5409941520467837,
+        "orientation_yaw": 0.4411764705882353,
+        "composition": 0.6046511627906976,
+        "spatial_macro": 0.5154149866801065,
+        "case_exact": 0.2,
+        "diagnostic_exact": 0.3333333333333333,
+        "normal_exact": 0.30612244897959184,
+        "hard_exact": 0.02857142857142857
+      },
+      "exact_agreement_with_visual": 0.9111111111111111,
+      "exact_agreement_with_qwen32": 0.9222222222222223,
+      "exact_agreement_with_qwen38": 0.9222222222222223,
+      "relation_agreement_with_visual": 0.8538961038961039,
+      "relation_agreement_with_qwen32": 0.8311688311688312,
+      "relation_agreement_with_qwen38": 0.9025974025974026,
+      "visual_pass_gpt56_fail_count": 1,
+      "visual_pass_gpt56_fail_ids": [
+        "YAW-N04"
+      ],
+      "gpt56_pass_visual_fail_count": 7,
+      "gpt56_pass_visual_fail_ids": [
+        "ABS-D04",
+        "REL-N02",
+        "DEP-N02",
+        "SUP-N04",
+        "ORI-N06",
+        "ORI-H05",
+        "YAW-N02"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 2,
+      "unclear_rate": 0.0016992353440951572,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 1,
+          "gpt56_exact": 2,
+          "agreement": 5
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 1,
+          "gpt56_exact": 2,
+          "agreement": 11
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 1,
+          "gpt56_exact": 2,
+          "agreement": 11
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 0,
+          "gpt56_exact": 0,
+          "agreement": 12
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 1,
+          "gpt56_exact": 2,
+          "agreement": 11
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 3,
+          "gpt56_exact": 5,
+          "agreement": 10
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 1,
+          "gpt56_exact": 1,
+          "agreement": 10
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 4,
+          "gpt56_exact": 4,
+          "agreement": 12
+        }
+      }
+    },
+    "gligen": {
+      "metrics": {
+        "method": "gligen",
+        "presence": 0.9631901840490797,
+        "cardinality": 0.9233128834355828,
+        "layout_2d": 0.88,
+        "depth_contact_occlusion": 0.8069005847953217,
+        "orientation_yaw": 0.35294117647058826,
+        "composition": 0.9069767441860465,
+        "spatial_macro": 0.7241951064391485,
+        "case_exact": 0.5888888888888889,
+        "diagnostic_exact": 1.0,
+        "normal_exact": 0.673469387755102,
+        "hard_exact": 0.4
+      },
+      "exact_agreement_with_visual": 0.8555555555555555,
+      "exact_agreement_with_qwen32": 0.6777777777777778,
+      "exact_agreement_with_qwen38": 0.8555555555555555,
+      "relation_agreement_with_visual": 0.8668831168831169,
+      "relation_agreement_with_qwen32": 0.8538961038961039,
+      "relation_agreement_with_qwen38": 0.8896103896103896,
+      "visual_pass_gpt56_fail_count": 1,
+      "visual_pass_gpt56_fail_ids": [
+        "MUL-N06"
+      ],
+      "gpt56_pass_visual_fail_count": 12,
+      "gpt56_pass_visual_fail_ids": [
+        "ABS-D02",
+        "ABS-D05",
+        "REL-H05",
+        "DEP-N05",
+        "OCC-H02",
+        "SUP-N01",
+        "SUP-H01",
+        "SUP-H04",
+        "ORI-N01",
+        "MUL-N03",
+        "MUL-H01",
+        "MUL-H05"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 18,
+      "unclear_rate": 0.015293118096856415,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 4,
+          "gpt56_exact": 6,
+          "agreement": 4
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 7,
+          "gpt56_exact": 8,
+          "agreement": 11
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 5,
+          "gpt56_exact": 6,
+          "agreement": 11
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 10,
+          "agreement": 11
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 5,
+          "gpt56_exact": 8,
+          "agreement": 9
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 6,
+          "gpt56_exact": 7,
+          "agreement": 11
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 0,
+          "gpt56_exact": 0,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 6,
+          "gpt56_exact": 8,
+          "agreement": 8
+        }
+      }
+    },
+    "lmd_plus": {
+      "metrics": {
+        "method": "lmd_plus",
+        "presence": 0.9601226993865031,
+        "cardinality": 0.9079754601226994,
+        "layout_2d": 0.9199999999999999,
+        "depth_contact_occlusion": 0.6144444444444445,
+        "orientation_yaw": 0.35294117647058826,
+        "composition": 0.7906976744186046,
+        "spatial_macro": 0.6474891700866393,
+        "case_exact": 0.5555555555555556,
+        "diagnostic_exact": 1.0,
+        "normal_exact": 0.6122448979591837,
+        "hard_exact": 0.4
+      },
+      "exact_agreement_with_visual": 0.8222222222222222,
+      "exact_agreement_with_qwen32": 0.7888888888888889,
+      "exact_agreement_with_qwen38": 0.9222222222222223,
+      "relation_agreement_with_visual": 0.8344155844155844,
+      "relation_agreement_with_qwen32": 0.8668831168831169,
+      "relation_agreement_with_qwen38": 0.922077922077922,
+      "visual_pass_gpt56_fail_count": 1,
+      "visual_pass_gpt56_fail_ids": [
+        "MUL-N05"
+      ],
+      "gpt56_pass_visual_fail_count": 15,
+      "gpt56_pass_visual_fail_ids": [
+        "REL-N02",
+        "REL-N03",
+        "REL-H02",
+        "REL-H05",
+        "DEP-N02",
+        "DEP-N06",
+        "DEP-H02",
+        "DEP-H03",
+        "SUP-N02",
+        "SUP-N04",
+        "SUP-H02",
+        "ORI-N02",
+        "ORI-H01",
+        "MUL-N07",
+        "MUL-H01"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 18,
+      "unclear_rate": 0.015293118096856415,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 6,
+          "gpt56_exact": 6,
+          "agreement": 6
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 6,
+          "gpt56_exact": 10,
+          "agreement": 8
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 3,
+          "gpt56_exact": 7,
+          "agreement": 8
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 1,
+          "gpt56_exact": 1,
+          "agreement": 12
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 12,
+          "agreement": 9
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 6,
+          "gpt56_exact": 8,
+          "agreement": 10
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 0,
+          "gpt56_exact": 0,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 5,
+          "gpt56_exact": 6,
+          "agreement": 9
+        }
+      }
+    },
+    "boxdiff_xl": {
+      "metrics": {
+        "method": "boxdiff_xl",
+        "presence": 0.8496932515337423,
+        "cardinality": 0.8006134969325154,
+        "layout_2d": 0.5900000000000001,
+        "depth_contact_occlusion": 0.645906432748538,
+        "orientation_yaw": 0.44117647058823534,
+        "composition": 0.46511627906976744,
+        "spatial_macro": 0.5581485648114815,
+        "case_exact": 0.26666666666666666,
+        "diagnostic_exact": 0.5,
+        "normal_exact": 0.3673469387755102,
+        "hard_exact": 0.08571428571428572
+      },
+      "exact_agreement_with_visual": 0.7777777777777778,
+      "exact_agreement_with_qwen32": 0.7222222222222222,
+      "exact_agreement_with_qwen38": 0.8,
+      "relation_agreement_with_visual": 0.7045454545454546,
+      "relation_agreement_with_qwen32": 0.7467532467532467,
+      "relation_agreement_with_qwen38": 0.7272727272727273,
+      "visual_pass_gpt56_fail_count": 3,
+      "visual_pass_gpt56_fail_ids": [
+        "DEP-N03",
+        "DEP-N04",
+        "SUP-N06"
+      ],
+      "gpt56_pass_visual_fail_count": 17,
+      "gpt56_pass_visual_fail_ids": [
+        "ABS-D02",
+        "ABS-D06",
+        "REL-N01",
+        "REL-N02",
+        "REL-N05",
+        "REL-H02",
+        "DEP-N02",
+        "DEP-H04",
+        "OCC-N04",
+        "OCC-H05",
+        "SUP-N01",
+        "SUP-N02",
+        "SUP-N03",
+        "ORI-N01",
+        "ORI-N02",
+        "YAW-N07",
+        "MUL-N01"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 4,
+      "unclear_rate": 0.0033984706881903144,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 1,
+          "gpt56_exact": 3,
+          "agreement": 4
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 2,
+          "gpt56_exact": 6,
+          "agreement": 8
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 2,
+          "gpt56_exact": 2,
+          "agreement": 8
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 2,
+          "gpt56_exact": 4,
+          "agreement": 10
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 1,
+          "gpt56_exact": 3,
+          "agreement": 8
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 0,
+          "gpt56_exact": 2,
+          "agreement": 10
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 0,
+          "gpt56_exact": 1,
+          "agreement": 11
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 2,
+          "gpt56_exact": 3,
+          "agreement": 11
+        }
+      }
+    },
+    "muses_qwen_rgb": {
+      "metrics": {
+        "method": "muses_qwen_rgb",
+        "presence": 1.0,
+        "cardinality": 0.9969325153374233,
+        "layout_2d": 0.98,
+        "depth_contact_occlusion": 0.9866666666666667,
+        "orientation_yaw": 0.5882352941176471,
+        "composition": 0.9534883720930233,
+        "spatial_macro": 0.8812448700410397,
+        "case_exact": 0.8222222222222222,
+        "diagnostic_exact": 1.0,
+        "normal_exact": 0.8571428571428571,
+        "hard_exact": 0.7428571428571429
+      },
+      "exact_agreement_with_visual": 0.7222222222222222,
+      "exact_agreement_with_qwen32": 0.7555555555555555,
+      "exact_agreement_with_qwen38": 0.8222222222222222,
+      "relation_agreement_with_visual": 0.8344155844155844,
+      "relation_agreement_with_qwen32": 0.8896103896103896,
+      "relation_agreement_with_qwen38": 0.9058441558441559,
+      "visual_pass_gpt56_fail_count": 3,
+      "visual_pass_gpt56_fail_ids": [
+        "OCC-H04",
+        "MUL-N05",
+        "MUL-H02"
+      ],
+      "gpt56_pass_visual_fail_count": 22,
+      "gpt56_pass_visual_fail_ids": [
+        "REL-H04",
+        "REL-H05",
+        "DEP-H01",
+        "OCC-N07",
+        "OCC-H01",
+        "OCC-H05",
+        "SUP-N01",
+        "SUP-N02",
+        "SUP-N05",
+        "SUP-N07",
+        "SUP-H01",
+        "SUP-H02",
+        "ORI-N02",
+        "ORI-N04",
+        "ORI-H02",
+        "ORI-H03",
+        "ORI-H04",
+        "ORI-H05",
+        "MUL-N04",
+        "MUL-N06",
+        "MUL-H03",
+        "MUL-H05"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 4,
+      "unclear_rate": 0.0033984706881903144,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 6,
+          "gpt56_exact": 6,
+          "agreement": 6
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 11,
+          "agreement": 10
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 10,
+          "gpt56_exact": 11,
+          "agreement": 11
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 11,
+          "agreement": 8
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 6,
+          "gpt56_exact": 12,
+          "agreement": 6
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 6,
+          "gpt56_exact": 12,
+          "agreement": 6
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 1,
+          "gpt56_exact": 1,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 8,
+          "gpt56_exact": 10,
+          "agreement": 6
+        }
+      }
+    },
+    "muses_qwen_sdxl": {
+      "metrics": {
+        "method": "muses_qwen_sdxl",
+        "presence": 0.9723926380368099,
+        "cardinality": 0.8588957055214724,
+        "layout_2d": 0.9199999999999999,
+        "depth_contact_occlusion": 0.8258479532163743,
+        "orientation_yaw": 0.47058823529411764,
+        "composition": 0.8604651162790697,
+        "spatial_macro": 0.7648981808145534,
+        "case_exact": 0.45555555555555555,
+        "diagnostic_exact": 1.0,
+        "normal_exact": 0.5306122448979592,
+        "hard_exact": 0.2571428571428571
+      },
+      "exact_agreement_with_visual": 0.9222222222222223,
+      "exact_agreement_with_qwen32": 0.8333333333333334,
+      "exact_agreement_with_qwen38": 0.9555555555555556,
+      "relation_agreement_with_visual": 0.8766233766233766,
+      "relation_agreement_with_qwen32": 0.8538961038961039,
+      "relation_agreement_with_qwen38": 0.9090909090909091,
+      "visual_pass_gpt56_fail_count": 1,
+      "visual_pass_gpt56_fail_ids": [
+        "MUL-N07"
+      ],
+      "gpt56_pass_visual_fail_count": 6,
+      "gpt56_pass_visual_fail_ids": [
+        "ABS-D04",
+        "DEP-N04",
+        "OCC-N07",
+        "SUP-N04",
+        "SUP-H02",
+        "ORI-N02"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 11,
+      "unclear_rate": 0.009345794392523364,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 5,
+          "gpt56_exact": 6,
+          "agreement": 5
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 8,
+          "gpt56_exact": 8,
+          "agreement": 12
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 10,
+          "agreement": 11
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 3,
+          "gpt56_exact": 4,
+          "agreement": 11
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 3,
+          "gpt56_exact": 5,
+          "agreement": 10
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 4,
+          "gpt56_exact": 5,
+          "agreement": 11
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 0,
+          "gpt56_exact": 0,
+          "agreement": 12
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 4,
+          "gpt56_exact": 3,
+          "agreement": 11
+        }
+      }
+    },
+    "muses_qwen_rgb_qwen_i2i": {
+      "metrics": {
+        "method": "muses_qwen_rgb_qwen_i2i",
+        "presence": 0.9938650306748467,
+        "cardinality": 0.9815950920245399,
+        "layout_2d": 0.9166666666666667,
+        "depth_contact_occlusion": 0.9722222222222222,
+        "orientation_yaw": 0.5,
+        "composition": 0.9302325581395349,
+        "spatial_macro": 0.8350290697674418,
+        "case_exact": 0.7666666666666667,
+        "diagnostic_exact": 0.8333333333333334,
+        "normal_exact": 0.8163265306122449,
+        "hard_exact": 0.6857142857142857
+      },
+      "exact_agreement_with_visual": 0.7444444444444445,
+      "exact_agreement_with_qwen32": 0.7111111111111111,
+      "exact_agreement_with_qwen38": 0.8444444444444444,
+      "relation_agreement_with_visual": 0.8214285714285714,
+      "relation_agreement_with_qwen32": 0.8896103896103896,
+      "relation_agreement_with_qwen38": 0.9285714285714286,
+      "visual_pass_gpt56_fail_count": 3,
+      "visual_pass_gpt56_fail_ids": [
+        "OCC-H04",
+        "YAW-N02",
+        "YAW-N06"
+      ],
+      "gpt56_pass_visual_fail_count": 20,
+      "gpt56_pass_visual_fail_ids": [
+        "REL-H02",
+        "REL-H03",
+        "REL-H04",
+        "DEP-H01",
+        "DEP-H05",
+        "OCC-H01",
+        "SUP-N02",
+        "SUP-N04",
+        "SUP-N05",
+        "SUP-N07",
+        "SUP-H01",
+        "SUP-H02",
+        "ORI-N02",
+        "ORI-N04",
+        "ORI-N06",
+        "ORI-H02",
+        "ORI-H03",
+        "ORI-H04",
+        "MUL-N06",
+        "MUL-H05"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 4,
+      "unclear_rate": 0.0033984706881903144,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 5,
+          "gpt56_exact": 5,
+          "agreement": 6
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 8,
+          "gpt56_exact": 11,
+          "agreement": 9
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 10,
+          "gpt56_exact": 12,
+          "agreement": 10
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 10,
+          "gpt56_exact": 10,
+          "agreement": 10
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 6,
+          "gpt56_exact": 12,
+          "agreement": 6
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 4,
+          "gpt56_exact": 10,
+          "agreement": 6
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 2,
+          "gpt56_exact": 0,
+          "agreement": 10
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 7,
+          "gpt56_exact": 9,
+          "agreement": 10
+        }
+      }
+    },
+    "t2i_blender_rgb": {
+      "metrics": {
+        "method": "t2i_blender_rgb",
+        "presence": 0.950920245398773,
+        "cardinality": 0.950920245398773,
+        "layout_2d": 0.8366666666666667,
+        "depth_contact_occlusion": 0.89,
+        "orientation_yaw": 0.5882352941176471,
+        "composition": 0.9069767441860465,
+        "spatial_macro": 0.8033475832193342,
+        "case_exact": 0.7333333333333333,
+        "diagnostic_exact": 0.8333333333333334,
+        "normal_exact": 0.8367346938775511,
+        "hard_exact": 0.5714285714285714
+      },
+      "exact_agreement_with_visual": 0.8333333333333334,
+      "exact_agreement_with_qwen32": 0.8222222222222222,
+      "exact_agreement_with_qwen38": 0.8444444444444444,
+      "relation_agreement_with_visual": 0.9318181818181818,
+      "relation_agreement_with_qwen32": 0.9090909090909091,
+      "relation_agreement_with_qwen38": 0.9415584415584416,
+      "visual_pass_gpt56_fail_count": 11,
+      "visual_pass_gpt56_fail_ids": [
+        "REL-H03",
+        "DEP-H02",
+        "OCC-N05",
+        "ORI-N07",
+        "YAW-N01",
+        "YAW-N04",
+        "YAW-N05",
+        "YAW-N07",
+        "YAW-H01",
+        "YAW-H02",
+        "YAW-H03"
+      ],
+      "gpt56_pass_visual_fail_count": 4,
+      "gpt56_pass_visual_fail_ids": [
+        "SUP-H04",
+        "ORI-H02",
+        "MUL-H03",
+        "MUL-H04"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 2,
+      "unclear_rate": 0.0016992353440951572,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 5,
+          "gpt56_exact": 5,
+          "agreement": 6
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 11,
+          "gpt56_exact": 10,
+          "agreement": 11
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 11,
+          "gpt56_exact": 10,
+          "agreement": 11
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 8,
+          "agreement": 11
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 11,
+          "gpt56_exact": 12,
+          "agreement": 11
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 9,
+          "agreement": 10
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 2,
+          "agreement": 5
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 8,
+          "gpt56_exact": 10,
+          "agreement": 10
+        }
+      }
+    },
+    "t2i_blender_qwen": {
+      "metrics": {
+        "method": "t2i_blender_qwen",
+        "presence": 0.9693251533742331,
+        "cardinality": 0.9631901840490797,
+        "layout_2d": 0.98,
+        "depth_contact_occlusion": 0.9177777777777778,
+        "orientation_yaw": 0.5882352941176471,
+        "composition": 0.9069767441860465,
+        "spatial_macro": 0.8495975832193342,
+        "case_exact": 0.7777777777777778,
+        "diagnostic_exact": 1.0,
+        "normal_exact": 0.8775510204081632,
+        "hard_exact": 0.6
+      },
+      "exact_agreement_with_visual": 0.8666666666666667,
+      "exact_agreement_with_qwen32": 0.7666666666666667,
+      "exact_agreement_with_qwen38": 0.9222222222222223,
+      "relation_agreement_with_visual": 0.9383116883116883,
+      "relation_agreement_with_qwen32": 0.8863636363636364,
+      "relation_agreement_with_qwen38": 0.9512987012987013,
+      "visual_pass_gpt56_fail_count": 7,
+      "visual_pass_gpt56_fail_ids": [
+        "YAW-N04",
+        "YAW-N05",
+        "YAW-N06",
+        "YAW-H01",
+        "YAW-H02",
+        "YAW-H03",
+        "YAW-H05"
+      ],
+      "gpt56_pass_visual_fail_count": 5,
+      "gpt56_pass_visual_fail_ids": [
+        "REL-H03",
+        "SUP-N03",
+        "ORI-H02",
+        "ORI-H03",
+        "MUL-H04"
+      ],
+      "answer_count": 1177,
+      "unclear_count": 0,
+      "unclear_rate": 0.0,
+      "by_capability": {
+        "absolute_location_2d": {
+          "cases": 6,
+          "visual_exact": 6,
+          "gpt56_exact": 6,
+          "agreement": 6
+        },
+        "relative_position_2d": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 10,
+          "agreement": 11
+        },
+        "depth_front_back": {
+          "cases": 12,
+          "visual_exact": 10,
+          "gpt56_exact": 10,
+          "agreement": 12
+        },
+        "occlusion_visibility": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 9,
+          "agreement": 12
+        },
+        "support_contact": {
+          "cases": 12,
+          "visual_exact": 11,
+          "gpt56_exact": 12,
+          "agreement": 11
+        },
+        "orientation_facing": {
+          "cases": 12,
+          "visual_exact": 9,
+          "gpt56_exact": 11,
+          "agreement": 10
+        },
+        "continuous_yaw": {
+          "cases": 12,
+          "visual_exact": 10,
+          "gpt56_exact": 3,
+          "agreement": 5
+        },
+        "multi_relation_composition": {
+          "cases": 12,
+          "visual_exact": 8,
+          "gpt56_exact": 9,
+          "agreement": 11
+        }
+      }
+    }
+  }
+}

@@ -183,6 +183,7 @@ def typed_yaw_answers(
 def call_typed_yaw(
     client: OpenAI,
     model: str,
+    reasoning_effort: str | None,
     image_path: Path,
     case: dict[str, Any],
     relation: dict[str, Any],
@@ -204,6 +205,7 @@ def call_typed_yaw(
         max_tokens=max_tokens,
         timeout=timeout,
         response_format={"type": "json_object"},
+        **({"reasoning_effort": reasoning_effort} if reasoning_effort else {}),
     )
     raw = response.choices[0].message.content or ""
     return typed_yaw_answers(case, relation, extract_json(raw)), raw
@@ -248,6 +250,7 @@ def index_manifest(path: Path) -> tuple[dict[str, str], dict[str, bool]]:
 def call_vqa(
     client: OpenAI,
     model: str,
+    reasoning_effort: str | None,
     image_path: Path,
     questions: list[dict[str, str]],
     timeout: float,
@@ -287,6 +290,7 @@ def call_vqa(
         max_tokens=max_tokens,
         timeout=timeout,
         response_format={"type": "json_object"},
+        **({"reasoning_effort": reasoning_effort} if reasoning_effort else {}),
     )
     raw = response.choices[0].message.content or ""
     parsed = extract_json(raw)
@@ -363,6 +367,7 @@ def main() -> int:
     parser.add_argument("--image-subdir", default="")
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--model", default="qwen3-vl-8b")
+    parser.add_argument("--reasoning-effort", choices=("low", "medium", "high", "xhigh"))
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
     parser.add_argument(
         "--api-key",
@@ -441,6 +446,7 @@ def main() -> int:
                     answers, raw_response = call_vqa(
                         client,
                         args.model,
+                        args.reasoning_effort,
                         image_path,
                         questions,
                         args.timeout,
@@ -461,6 +467,7 @@ def main() -> int:
                         typed_answers, typed_response = call_typed_yaw(
                             client,
                             args.model,
+                            args.reasoning_effort,
                             image_path,
                             case,
                             relation,
@@ -501,6 +508,7 @@ def main() -> int:
                 "difficulty": case.get("difficulty"),
                 "focus_capability": case["focus_capability"],
                 "model": args.model,
+                "reasoning_effort": args.reasoning_effort,
                 "image": str(image_path),
                 "question_count": len(all_questions),
                 "presence_check_count": len(case["evaluation"]["presence_checks"]),

@@ -203,6 +203,7 @@ def main() -> None:
     parser.add_argument("--visual-dir", type=Path, required=True)
     parser.add_argument("--qwen-dir", type=Path, required=True)
     parser.add_argument("--qwen38-dir", type=Path)
+    parser.add_argument("--gpt56-dir", type=Path)
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-csv", type=Path, required=True)
     args = parser.parse_args()
@@ -213,6 +214,8 @@ def main() -> None:
     results = {"visual": {}, "qwen32_diagnostic": {}}
     if args.qwen38_dir:
         results["qwen38_diagnostic"] = {}
+    if args.gpt56_dir:
+        results["gpt56_diagnostic"] = {}
     case_rows = {}
     for method in METHODS:
         visual_rows = load_jsonl(args.visual_dir / f"{method}_full90_final.jsonl")
@@ -230,11 +233,20 @@ def main() -> None:
                 method,
             )
             results["qwen38_diagnostic"][method] = summary(cases, qwen38)
+        gpt56 = None
+        if args.gpt56_dir:
+            gpt56 = qwen_decisions(
+                cases,
+                load_jsonl(args.gpt56_dir / method / "vqa_results.jsonl"),
+                method,
+            )
+            results["gpt56_diagnostic"][method] = summary(cases, gpt56)
         for case in cases:
             case_rows.setdefault(case["id"], {})[method] = {
                 "visual": direct[case["id"]],
                 "qwen32": qwen[case["id"]],
                 **({"qwen38": qwen38[case["id"]]} if qwen38 else {}),
+                **({"gpt56": gpt56[case["id"]]} if gpt56 else {}),
             }
 
     output = {
@@ -245,6 +257,7 @@ def main() -> None:
             "case_exact": "All required objects, cardinalities, and explicit relations pass.",
             "qwen32_diagnostic": "Diagnostic only; direct visual adjudication is the headline judge.",
             "qwen38_diagnostic": "Diagnostic only; Qwen3.8-Max Preview does not replace direct visual adjudication.",
+            "gpt56_diagnostic": "Diagnostic only; GPT-5.6 SOL xhigh does not replace direct visual adjudication.",
         },
         "judges": {
             "visual": {"role": "headline", "protocol": "blind multi-reviewer adjudication"},
@@ -262,6 +275,19 @@ def main() -> None:
                     }
                 }
                 if args.qwen38_dir
+                else {}
+            ),
+            **(
+                {
+                    "gpt56_diagnostic": {
+                        "role": "diagnostic",
+                        "model": "gpt-5.6-sol",
+                        "reasoning_effort": "xhigh",
+                        "provider": "Right Code",
+                        "base_url": "https://www.right.codes/codex/v1",
+                    }
+                }
+                if args.gpt56_dir
                 else {}
             ),
         },
