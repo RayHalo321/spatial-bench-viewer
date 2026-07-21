@@ -402,7 +402,7 @@
       <div class="dataset-summary" id="datasetSummary"></div>
       <div class="pipeline-note">
         <strong>Frozen 90-case v3.2 suite</strong>
-        Six absolute-location diagnostics and twelve cases per remaining capability. Direct visual adjudication is the headline protocol; Qwen3-VL-32B remains a separate diagnostic view.
+        Six absolute-location diagnostics and twelve cases per remaining capability. Direct visual adjudication is the headline protocol.
       </div>
     </aside>
 
@@ -531,7 +531,7 @@
     }
 
     function evaluationFor(result) {
-      return state.judgeMode === "qwen32" ? result?.qwen32 : result;
+      return result;
     }
 
     function modelCard(model, result) {
@@ -669,9 +669,10 @@
 
     async function loadViewer() {
       try {
-        const response = await fetch("data/v3_viewer_cases.json?v=20260721-v32-final");
+        const response = await fetch("data/v3_viewer_cases.json?v=20260721-public-visual-only");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         state.data = await response.json();
+        state.data.judges = state.data.judges.filter(item => item.id === "visual");
         fillSelect("category", state.data.cases.map(item => item.category));
         fillSelect("difficulty", state.data.cases.map(item => item.difficulty));
         fillSelect("subset", state.data.cases.map(item => item.subset));
