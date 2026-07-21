@@ -117,8 +117,6 @@
       main { width: min(100% - 20px, 1240px); margin-top: 18px; }
       .intro { display: flex; }
       .stamp { text-align: left; }
-      .judge-switch { flex-wrap: wrap; gap: 4px; border: 0; overflow: visible; }
-      .judge-switch button { border: 1px solid var(--line); border-radius: 4px; }
       .gallery { grid-template-columns: 1fr; }
       .breakdown-head { align-items: flex-start; flex-direction: column; }
     }
@@ -158,26 +156,12 @@
         intro: "Ten methods were evaluated on the same 90 v3.2 cases with blind direct visual review, independent failed-case review, and a third vote only for disagreements.",
         status: "Headline protocol. All ten methods include Presence, Cardinality, explicit Relation checks, and the same strict Case Exact definition."
       },
-      qwen32: {
-        key: "qwen32_diagnostic",
-        title: "Qwen3-VL-32B diagnostic evaluation",
-        judge: "Qwen3-VL-32B-Instruct",
-        intro: "Ten methods were evaluated with Qwen3-VL-32B-Instruct using the same materialized atomic checklist. This remains a secondary diagnostic view, not the headline ground truth.",
-        status: "Secondary diagnostic only. Qwen3-VL-32B answers the same atomic checklist; fail, unclear, missing, and API error score 0."
-      },
       qwen38: {
         key: "qwen38_diagnostic",
         title: "Qwen3.8-Max Preview diagnostic evaluation",
         judge: "Qwen3.8-Max Preview",
         intro: "Ten methods were re-audited with Qwen3.8-Max Preview using the same 90 images and materialized atomic checklist. This is a diagnostic comparison, not the headline ground truth.",
         status: "Secondary diagnostic only. Qwen3.8-Max Preview uses the same strict scoring: fail, unclear, missing, and API error score 0."
-      },
-      gpt56: {
-        key: "gpt56_diagnostic",
-        title: "GPT-5.6 SOL xhigh diagnostic evaluation",
-        judge: "GPT-5.6 SOL · xhigh",
-        intro: "Ten methods were re-audited with GPT-5.6 SOL at xhigh reasoning effort using the same 90 images and materialized atomic checklist. This is a diagnostic comparison, not the headline ground truth.",
-        status: "Secondary diagnostic only. GPT-5.6 SOL uses the same strict scoring: fail, unclear, missing, and API error score 0."
       }
     };
     const state = { mode: "visual", final: null };
@@ -215,7 +199,7 @@
         document.getElementById("app").innerHTML = `
           <div class="intro">
             <div><h1>${meta.title}</h1><p>${meta.intro}</p></div>
-            <div class="stamp">Judge: ${meta.judge}<br>Spatial Bench v3.2<div class="judge-switch" role="group" aria-label="Evaluation protocol"><button type="button" data-mode="visual" aria-pressed="${state.mode === "visual"}">Visual adjudication</button><button type="button" data-mode="qwen32" aria-pressed="${state.mode === "qwen32"}">Qwen3-VL-32B</button>${state.final.qwen38_diagnostic ? `<button type="button" data-mode="qwen38" aria-pressed="${state.mode === "qwen38"}">Qwen3.8-Max</button>` : ""}${state.final.gpt56_diagnostic ? `<button type="button" data-mode="gpt56" aria-pressed="${state.mode === "gpt56"}">GPT-5.6 SOL</button>` : ""}</div></div>
+            <div class="stamp">Judge: ${meta.judge}<br>Spatial Bench v3.2<div class="judge-switch" role="group" aria-label="Evaluation protocol"><button type="button" data-mode="visual" aria-pressed="${state.mode === "visual"}">Visual adjudication</button>${state.final.qwen38_diagnostic ? `<button type="button" data-mode="qwen38" aria-pressed="${state.mode === "qwen38"}">Qwen3.8-Max</button>` : ""}</div></div>
           </div>
 
           <div class="status">${meta.status}</div>
@@ -251,7 +235,7 @@
             <div class="gallery">${models.map((model) => `<figure><figcaption>${h(model.label)} · ${h(model.scope)}</figcaption><a href="${h(model.contact_sheet)}"><img src="${h(model.contact_sheet)}" alt="${h(model.label)} contact sheet" loading="lazy"></a></figure>`).join("")}</div>
           </section>
 
-          <section class="method"><h2>Evaluation protocol</h2><p>${state.mode === "visual" ? "Reviewers saw only the prompt, explicit checklist, and one method image. Failed first-pass cases received an independent second pass; disagreements received a third blind vote. Automated judges never replaced the final visual decision." : `${meta.judge} answered every materialized presence, cardinality, positive relation, and inverse relation question under one frozen protocol.`}</p><p>Primary scoring is strict: pass = 1; fail and unclear = 0. Case Exact requires presence, cardinality, and every explicit relation.</p><p><a href="data/v32_final_results_20260721.csv">Download table CSV</a> · <a href="data/v32_final_results_20260721.json">Download complete JSON</a> · <a href="data/v32_qwen38_audit_20260721.json">Qwen3.8 disagreement audit</a> · ${state.final.gpt56_diagnostic ? `<a href="data/v32_gpt56_audit_20260721.json">GPT-5.6 disagreement audit</a> · ` : ""}<a href="data/v3_viewer_cases.json">Inspect case-level answers</a></p></section>`;
+          <section class="method"><h2>Evaluation protocol</h2><p>${state.mode === "visual" ? "Reviewers saw only the prompt, explicit checklist, and one method image. Failed first-pass cases received an independent second pass; disagreements received a third blind vote. Automated judges never replaced the final visual decision." : `${meta.judge} answered every materialized presence, cardinality, positive relation, and inverse relation question under one frozen protocol.`}</p><p>Primary scoring is strict: pass = 1; fail and unclear = 0. Case Exact requires presence, cardinality, and every explicit relation.</p><p><a href="data/v32_qwen38_audit_20260721.json">Qwen3.8 disagreement audit</a> · <a href="index.html">Inspect case-level outputs</a></p></section>`;
 
         const select = document.getElementById("modelSelect");
         const renderBreakdown = () => {
@@ -266,7 +250,7 @@
         renderBreakdown();
     }
 
-    fetch("data/v32_final_results_20260721.json?v=20260721-gpt56-final")
+    fetch("data/v32_final_results_20260721.json?v=20260721-public-withdrawal")
       .then((response) => { if (!response.ok) throw new Error(`Results HTTP ${response.status}`); return response.json(); })
       .then((final) => { state.final = final; render(); })
       .catch((error) => { document.getElementById("app").innerHTML = `<div class="error">Could not load v3 results: ${h(error.message)}</div>`; });
